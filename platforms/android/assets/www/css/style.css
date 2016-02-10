@@ -1,0 +1,354 @@
+
+.border-box {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+calendar {
+  float: left;
+  display: block;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  background: white;
+  width: 100%;
+  border: solid 1px #CCC;
+  margin-bottom: 10px;
+}
+calendar >div.header {
+  float: left;
+  width: 100%;
+  background: black;
+  height: 40px;
+  color: white;
+}
+calendar >div.header >* {
+  height: 40px;
+  line-height: 40px !important;
+  display: inline-block;
+  vertical-align: middle;
+}
+calendar >div.header >i {
+  float: left;
+  width: 40px;
+  font-size: 1.125em;
+  font-weight: bold;
+  position: relative;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding: 0 10px;
+  cursor: pointer;
+}
+calendar >div.header >i.fa-angle-left {
+  text-align: left;
+}
+calendar >div.header >i.fa-angle-right {
+  text-align: right;
+  margin-left: -40px;
+}
+calendar >div.header >span {
+  float: left;
+  width: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding-left: 50px;
+  margin-left: -40px;
+  text-align: center;
+  padding-right: 40px;
+  color: inherit;
+}
+calendar >div.week {
+  float: left;
+  width: 100%;
+  border-top: solid 1px #CCC;
+}
+calendar >div.week:first-child {
+  border-top: none;
+}
+calendar >div.week >span.day {
+  float: left;
+  width: 14.285714285714%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  border-left: solid 1px #CCC;
+  font-size: 0.75em;
+  text-align: center;
+  height: 50px;
+  line-height: 30px !important;
+  display: inline-block;
+  vertical-align: middle;
+  background: white;
+  cursor: pointer;
+  color: black;
+}
+calendar >div.week >span.day:first-child {
+  border-left: none;
+}
+calendar >div.week >span.day.today {
+  background: #E3F2FF;
+}
+calendar >div.week >span.day.different-month {
+  color: #C0C0C0;
+}
+calendar >div.week >span.day.selected {
+  background: purple;
+  color: white;
+}
+
+calendar >div.week >span.day.customerDate {
+  background: green;
+  color: white;
+}
+
+calendar >div.week.names>span {
+  color: purple;
+  font-weight: bold;
+}
+/****************************************/
+
+
+#login-view{
+    background: url("../img/app/background.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+
+}
+
+
+#login-view ion-content {
+  display: table !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+#login-view ion-content .scroll {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+#login-view h1 {
+    font-size: -webkit-xxx-large;
+    color: white;
+    font-family: inherit;
+}
+#login-view p {
+    font-size: medium;
+    color: white;
+    font-family: inherit;
+}
+
+#review-view{
+    background: url("../img/app/background.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+
+
+#review-view h1 {
+    font-size: -webkit-xxx-large;
+    color: white;
+    font-family: inherit;
+}
+#review-view p {
+    font-size: medium;
+    color: white;
+    font-family: inherit;
+}
+
+#review .card, .list-inset
+{
+    background: transparent;
+}
+#review-view .list .item {
+    
+    color: white;
+    background: transparent;
+    font-family: inherit;
+}
+
+#review-view .card .item.item-input input, .list-inset .item.item-input input, .padding > .list .item.item-input input, .padding-horizontal > .list .item.item-input input  {
+    
+    color: white;
+    background: transparent;
+    font-family: inherit;
+}
+
+#review-view-profile-placeholder
+{
+   border-radius: 50%;
+
+    height: 100px;
+}
+
+
+#choose-profile-view{
+    background: url("../img/app/background.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+#choose-profile-view ion-content {
+  display: table !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+#choose-profile-view ion-content .scroll {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+#choose-profile-view p {
+    font-size: medium;
+    color: white;
+    font-family: inherit;
+}
+#home-view .scroll{
+  height: 100% !important;
+  background:gray;
+  display: -webkit-box !important;
+  display: -moz-box !important;
+  display: -ms-flexbox !important;
+  display: -webkit-flex !important;
+  display: flex !important;
+  -webkit-box-direction: normal !important;
+  -moz-box-direction: normal !important;
+  -webkit-box-orient: vertical !important;
+  -moz-box-orient: vertical !important;
+  -webkit-flex-direction: column !important;
+  -ms-flex-direction: column !important;
+  flex-direction: column !important;
+
+}
+
+
+#home-view img {
+    max-height:100%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+
+
+}
+
+
+#home-view .row{
+  
+  -webkit-box-flex: 0 !important;
+  -moz-box-flex: 0 !important;
+  -webkit-flex: 0 1 33% !important;
+  -ms-flex: 0 1 33% !important;
+  flex: 0 1 33% !important;
+      position:relative;
+   
+}
+
+#home-view .col{
+padding: initial;
+    min-height:180px;
+  position:relative;
+}
+
+
+
+#fleek-service-category-view #item{
+    min-height: 150px;
+    background-repeat: no-repeat;
+    color: white;
+    background-size: 100% 100%;
+    padding: 10px;
+}
+/**********************************************/
+
+
+
+
+/**********************************************/
+
+/******GLOBALS****/
+/****Global Row Center ************/
+
+.global-row-profile-height-title
+{
+    height:150px;
+}
+
+
+.global-row-center
+{
+    text-align:center;
+}
+/****Global Col Center ************/
+.global-col-center
+{
+    text-align:center;
+}
+/****Global Row BlackBackground White letter ************/
+.global-row-content-black-white
+{
+    background:black;
+    color:white;
+}
+
+.global-paddin-zero
+{
+    padding:0;
+}
+
+.global-profile-background
+{
+    background-image:url('../img/app/background.jpg');
+    text-align:center;
+    color:white;
+}
+
+.global-profile-avatar
+{
+    position: static;
+   border-radius: 50%;
+    max-width: 120px;
+    height: 120px;
+}
+
+.global-profile-black-panel
+{
+    background:black;
+}
+
+
+/* Global for the provider Avatar
+select-provider-view */
+.global-provider-avatar
+{
+    position: fixed;
+    border-radius: 50%;
+    width: 80px;
+    height: 100px;
+    padding: 0;
+}
+/* Global for the provider Work
+select-provider-view */
+.global-provider-work
+{
+    position: fixed;
+    border-radius: 20%;
+    width: 80px;
+    height: 100px;
+    padding: 0;
+}
+
+
+/*Rating Stars*/
+ul.rating li {
+  display: inline;
+  border: 0px;
+  background: none;
+  padding: 5px 2px;
+}
+ul.rating li i {
+  font-size: 15px;
+    color: purple;
+    
+}

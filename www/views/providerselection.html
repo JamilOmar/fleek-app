@@ -1,0 +1,77 @@
+<ion-view view-title="Fleek" id="provider-selection-view" >  
+    <ion-content>
+        <div style="background-image:url('../img/app/background.jpg');text-align:center;color:white;">
+        <div class="row" style="height:150px">
+            <div class="col">
+            <img  ng-src="img/app/home/neworder.jpg" style="position: static;
+   border-radius: 50%;
+    max-width: 120px;
+    height: 120px;"  />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row global-row-center">
+            <div class="col">
+        <rating ng-model="rate"  max="max"></rating>
+            </div>
+        </div><div class="row global-row-center">
+            <div class="col">
+              <p style="background:black;">
+        "Maria Fernanda Colina"
+                </p>
+                El inca
+            </div>
+        </div>
+            </div>
+        </div>
+        </div>    
+ <ion-slide-box show-pager="false">
+     <ion-slide>
+    <div class="row  global-row-center">
+        <div class="col">
+            <p>
+               Confirmas tu cita
+            </p>
+            <p>
+               Hora: 930
+            </p>
+            <p>
+               El inca
+            </p>
+              <div class="button-bar bar-dark">
+  <a class="button" ng-click="nextSlide()">Aceptar</a>
+  <a class="button" ui-sref='tabs.providerinformation'>Cancelar</a>
+
+</div>
+        </div>         
+    </div>
+    </ion-slide>
+       <ion-slide>
+    <div class="row global-row-center">
+        <div class="col">
+            <p>
+             Muchas gracias por confirmar
+            </p>
+            <p>
+               Hora: 930
+            </p>
+            <p>
+               Por favor si tienes una duda llama a 
+                
+            </p>
+            <p>
+            23040923480293842
+            
+            </p>
+             <button class="button button-block button-royal" ui-sref='tabs.fleekservicecategory'>
+             Listo
+            </button>
+        </div>         
+    </div>
+    </ion-slide>
+    </ion-slide-box>
+        
+    </ion-content>
+
+</ion-view>

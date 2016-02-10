@@ -1,0 +1,30 @@
+<ion-view view-title="Provider Work" id="provider-work-view">
+<ion-nav-title>
+      Fleek
+</ion-nav-title> 
+    <ion-content>     
+       
+     <div class="list card" ng-repeat="item in items"  >
+      <div class="item item-body">
+          <p>
+          Corte de Cabello
+          </p>
+        <img class="full-image" ng-src="img/app/home/neworder.jpg">
+          <p>
+          
+          El corte tiene ....
+          </p>
+    <p>
+      <a href="#" class="subdued">{{item.id}} Like</a>
+    </p>
+  </div>
+
+  <div class="item tabs tabs-secondary tabs-icon-left">
+    <a class="tab-item" href="#">
+      <i class="icon ion-thumbsup"></i>
+      Like
+    </a>
+  </div>
+      </div>
+     </ion-content>
+</ion-view>

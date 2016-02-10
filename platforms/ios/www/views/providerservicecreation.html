@@ -1,0 +1,206 @@
+<ion-view id="profile-service-creation-view"   nav-direction="foward">
+
+    <ion-header-bar class="bar-dark">
+Fleek
+</ion-header-bar>
+         
+<ion-content >
+    
+    
+     <ion-slide-box show-pager="false">
+      <ion-slide>
+      <ion-list>
+      <ion-item ng-repeat="service in serviceList" style="background-image:url('{{ service.image }}');" ui-sref='tabs.fleekservicelist'>
+     
+      
+   {{service.title}}
+ 
+
+      </ion-item>
+    </ion-list>
+     </ion-slide>
+         <ion-slide>
+             
+             
+            <div class="list">
+  <label class="item item-input">
+    <span class="input-label">Service:</span>
+    <input type="text">
+  </label>
+  <label class="item item-input item-select">
+    <span class="input-label">Time:</span>
+    <select>
+      <option selected>15 min</option>
+      <option >30 min</option>
+      <option>45 min</option>
+        <option>1 hora</option>
+        <option>1 hora 15 min</option>
+        <option>1 hora 30 min</option>
+        <option>1 hora 45 min</option>
+        <option>2 horas</option>
+    </select>
+  </label>
+    <label class="item item-input">
+    <span class="input-label">Description:</span>
+    <input type="text">
+  </label>
+</div>
+             
+             
+         </ion-slide>
+      <ion-slide>
+   <ul class="list">
+
+  <li class="item item-checkbox">
+     <label class="checkbox">
+       <input type="checkbox">
+     </label>
+     Domingo
+  </li>
+       <li class="item item-checkbox">
+     <label class="checkbox">
+       <input type="checkbox">
+     </label>
+     Lunes
+  </li>
+<li class="item item-checkbox">
+     <label class="checkbox">
+       <input type="checkbox">
+     </label>
+     Martes 
+  </li>
+ <li class="item item-checkbox">
+     <label class="checkbox">
+       <input type="checkbox">
+     </label>
+     Miercoles 
+  </li>
+       <li class="item item-checkbox">
+     <label class="checkbox">
+       <input type="checkbox">
+     </label>
+     Jueves 
+  </li>
+       <li class="item item-checkbox">
+     <label class="checkbox">
+       <input type="checkbox">
+     </label>
+     Viernes 
+  </li>
+       <li class="item item-checkbox">
+     <label class="checkbox">
+       <input type="checkbox">
+     </label>
+     Sabado 
+  </li>
+
+</ul>
+</ion-slide>
+         
+   <ion-slide>
+             
+             
+            <div class="list">
+  <label class="item item-input item-select">
+    <span class="input-label">Day:</span>
+    <select>
+      
+        <option>Todos</option>
+           <option>Domingo</option>
+        <option>Lunes</option>
+        <option>Martes</option>
+        <option>Miercoles</option>
+        <option>Jueves</option>
+        <option>Viernes</option>
+        <option>Sabado</option>
+       
+    </select>
+  </label>
+                  <label class="item item-input item-select">
+    <span class="input-label">From:</span>
+    <select>
+      
+        <option>1:00</option>
+        <option>2:00</option>
+        <option>3:00</option>
+        <option>4:00</option>
+        <option>5:00</option>
+        <option>6:00</option>
+        <option>7:00</option>
+        <option>8:00</option>
+        <option>9:00</option>
+        <option>10:00</option>
+        <option>11:00</option>
+        <option>12:00</option>
+        <option>13:00</option>
+        <option>14:00</option>
+        <option>15:00</option>
+        <option>16:00</option>
+        <option>17:00</option>
+        <option>18:00</option>
+        <option>19:00</option>
+        <option>20:00</option>
+        <option>21:00</option>
+        <option>22:00</option>
+        <option>23:00</option>
+        <option>24:00</option>
+    </select>
+  </label>
+  <label class="item item-input item-select">
+    <span class="input-label">To:</span>
+    <select>
+      
+        <option>1:00</option>
+        <option>2:00</option>
+        <option>3:00</option>
+        <option>4:00</option>
+        <option>5:00</option>
+        <option>6:00</option>
+        <option>7:00</option>
+        <option>8:00</option>
+        <option>9:00</option>
+        <option>10:00</option>
+        <option>11:00</option>
+        <option>12:00</option>
+        <option>13:00</option>
+        <option>14:00</option>
+        <option>15:00</option>
+        <option>16:00</option>
+        <option>17:00</option>
+        <option>18:00</option>
+        <option>19:00</option>
+        <option>20:00</option>
+        <option>21:00</option>
+        <option>22:00</option>
+        <option>23:00</option>
+        <option>24:00</option>
+    </select>
+  </label>
+</div>
+             
+             
+         </ion-slide>         
+        <ion-slide>
+             
+             
+      <calendar on-press="press(dayClass)" selected="dayClass"  ></calendar>
+             
+         </ion-slide>   
+         
+         
+          <ion-slide>
+             
+             
+      Thank you
+             
+         </ion-slide>   
+         
+ </ion-slide-box>         
+</ion-content>
+    <ion-footer-bar class="bar-dark">
+        <button class="button button-block button-royal" ng-click=" nextSlide()">
+                {{"review_save" | translate}}
+            </button>
+       </br>
+    </ion-footer-bar> 
+</ion-view>   

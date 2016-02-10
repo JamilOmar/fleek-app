@@ -1,0 +1,21 @@
+{
+"hello_message": "Howdy espanol",
+"goodbye_message": "chao",
+    "login_login": "Ingresar",
+    "login_message": "Por favor usa tu cuenta de Facebook para ingresar.",
+    "review_message" : "Vamos a usar tu información asociada con la cuenta de Facebook.",
+    "review_firstname" : "Nombre",
+    "review_lastname": "Apellido",
+    "review_email": "email",
+    "review_telephone": "Ingrese su número de contacto",
+    "review_confirm_telephone":"Confirme su número de contacto",
+    "review_save" : "Guardar",
+     "choose_profile_message" : "Eres un:",  
+    "choose_profile_customer" : "Cliente",
+    "choose_profile_provider" : "Proveedor",
+    "fleek_service_category_search" : "Buscar",
+    "fleek_service_list_search" : "Buscar",
+    "calendar_go" : "Ir",
+    "select_provider_clients":"Clientes",
+    "select_provider_search":"Buscar"
+}

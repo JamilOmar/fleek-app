@@ -1,0 +1,44 @@
+<ion-view view-title="Fleek" id="provider-view" >  
+<ion-header-bar class="bar-dark">
+Fleek
+</ion-header-bar>
+<ion-content class="has-header padding">
+        <div class="global-profile-background">
+        <div class="row global-row-profile-height-title">
+            <div class="col">
+            <img  ng-src="img/app/home/neworder.jpg" class="global-profile-avatar"  />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row global-row-center">
+            <div class="col">
+        <rating ng-model="rate"  max="max"></rating>
+            </div>
+        </div><div class="row global-row-center" >
+            <div class="col">
+              <p class="global-profile-black-panel">
+        "Maria Fernanda Colina"
+                </p>
+                El inca
+            </div>
+        </div>
+            </div>
+        </div>
+        </div>    
+<div class="button-bar bar-dark">
+<a class="button" ui-sref='tabs.providerwork'>Work</a>
+<a class="button" ui-sref='tabs.providerinformation'>Information</a>
+<a class="button" ui-sref='tabs.providerrecommendation'>Reviews</a>
+</div>
+<!--<ion-scroll direction="y" style="position:fixed;height:100%; width:100%;  white-space: nowrap;overflow">-->
+<ion-list >
+<a href="#" class="item item-icon-left" ng-repeat="item in items" ui-sref="tabs.calendar">
+<i class="icon ion-chevron-right"></i>
+<p>Corte de Caballo hhhhhhhhhhhhhhh</p>
+</p>15 min</p>
+</a>
+      </ion-list>
+<!--             </ion-scroll>-->
+     </ion-content>
+</ion-view>

@@ -1,0 +1,68 @@
+ <ion-view view-title="review" hide-nav-bar="true" id="review-view" cache-view="false">
+<ion-content>        
+    <div class="row">
+        <div class="col" style="text-align:center">
+            <h1>
+                Fleek    
+            </h1>
+        </div>         
+    </div>
+         <ion-slide-box show-pager="false">
+     <ion-slide>
+    <div class="row">
+        <div class="col">
+            <p>
+                {{"review_message" | translate}}
+            </p>
+        </div>         
+    </div>
+    </ion-slide>
+      <ion-slide>
+    <div class="row  global-row-center">
+        <div class="col">
+            <div class="list list-inset">
+          <div style="text-align:center">   
+                <img id="review-view-profile-placeholder" ng-src="img/app/review-view-profile-placeholder.jpg">
+        </div>
+            <label class="item">{{"review_firstname" | translate}}</label>
+            <label class="item">{{"review_lastname" | translate}}</label>
+            <label class="item">{{"review_email" | translate}}</label>
+            <label class="item item-input">
+                <input type="text" placeholder="{{'review_telephone' | translate}}">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="{{'review_confirm_telephone' | translate}}">
+            </label>   
+            </div>
+        </div> 
+    </div>
+    </ion-slide>
+      <ion-slide>
+    <div class="row row-center">
+        <div class="col">
+            <div class="list list-inset">
+          <div style="text-align:center">   
+                <img id="review-view-profile-placeholder" ng-src="img/app/review-view-profile-placeholder.jpg">
+        </div>
+            <label class="item">{{"review_firstname" | translate}}</label>
+            <label class="item">{{"review_lastname" | translate}}</label>
+            <label class="item">{{"review_email" | translate}}</label>
+            <label class="item item-input">
+                <input type="text" placeholder="{{'review_telephone' | translate}}">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="{{'review_confirm_telephone' | translate}}">
+            </label>
+            </div>
+        </div> 
+    </div>
+    </ion-slide>         
+    </ion-slide-box>
+</ion-content>
+   <ion-footer-bar class="bar-dark">
+        <button class="button button-block button-royal" ng-click=" nextSlide()">
+                {{"review_save" | translate}}
+            </button>
+       </br>
+    </ion-footer-bar>  
+</ion-view>   

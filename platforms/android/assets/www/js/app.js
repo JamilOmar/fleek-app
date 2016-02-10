@@ -1,0 +1,224 @@
+// Ionic Starter App
+
+// angular.module is a global place for creating, registering and retrieving Angular modules
+// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// the 2nd parameter is an array of 'requires'
+var mainApp = angular.module('app', ['ionic','ngCordova','pascalprecht.translate','ionic.rating'])
+
+.run(function($ionicPlatform) {
+  $ionicPlatform.ready(function() {
+      
+      
+      ///method for globalization and language retreival
+      
+      if(typeof navigator.globalization !== "undefined") {
+            navigator.globalization.getPreferredLanguage(function(language) {
+            $translate.use((language.value).split("-")[0]).then(function(data) {
+                console.log("SUCCESS -> " + data);
+            }, function(error) {
+            console.log("ERROR -> " + error);
+        });
+    }, null);
+}
+      
+      
+      
+    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+    // for form inputs)
+    if(window.cordova && window.cordova.plugins.Keyboard) {
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    }
+    if(window.StatusBar) {
+      StatusBar.styleDefault();
+    }
+  });
+})
+.config(function ($stateProvider,$urlRouterProvider,$translateProvider) {
+    console.log($stateProvider);
+   $stateProvider
+ //abstract main customer tab
+.state('tabs', {
+      url: "/tabs",
+      abstract: true,
+      templateUrl: "views/tabs.html"
+    })
+//abstract main provider tab   
+.state('tabsprovider', {
+      url: "/tabsprovider",
+      abstract: true,
+      templateUrl: "views/tabsprovider.html"
+    })
+//login tab   
+.state('login', {
+    url: '/login',
+    controller :'LoginController',
+    templateUrl: 'views/login.html'
+  })
+.state('review', {
+    url: '/review',
+    controller :'ReviewController',
+    templateUrl: 'views/review.html'
+  })
+.state('chooseProfile', {
+    url: '/chooseProfile',
+    controller :'ChooseProfileController',
+    templateUrl: 'views/chooseProfile.html'
+  })
+  .state('tabs.home', {
+    url: '/home',
+   controller :'HomeController',
+    templateUrl: 'views/home.html'
+  })
+.state('tabs.fleekservicecategory', {
+    url: '/fleekservicecategory',
+       views:{
+           'services-tab' :
+           {
+           
+    controller :'FleekServiceCategoryController',
+    templateUrl: 'views/fleekServiceCategory.html'
+       }
+   }
+  })
+   .state('tabs.providerreservation', {
+      url: "/providerreservation",
+      views: {
+        'providerreservation-tab': {
+               controller :'ProviderReservationController',
+          templateUrl: "views/providerreservation.html"
+        }
+      }
+    })
+     .state('tabs.providerreservationinformation', {
+      url: "/providerreservationinformation",
+      views: {
+        'providerreservation-tab': {
+               controller :'ProviderReservationInformationController',
+          templateUrl: "views/providerreservationinformation.html"
+        }
+      }
+    })
+ 
+  
+   .state('tabs.fleekservicelist', {
+    url: '/fleekservicelist',
+        views:{
+           'services-tab' :
+           {
+    controller :'FleekServiceListController',
+    templateUrl: 'views/fleekServiceList.html'
+           }
+        }
+  })
+.state('tabs.calendar', {
+    url: '/calendar',
+        views:{
+           'services-tab' :
+           {
+    controller :'CalendarController',
+    templateUrl: 'views/calendar.html'
+           }
+        }
+  })
+.state('tabs.selectprovider', {
+    url: '/selectprovider',
+        views:{
+           'services-tab' :
+           {
+    controller :'SelectProviderController',
+    templateUrl: 'views/selectprovider.html'
+           }
+        }
+  }) 
+   .state('tabs.provider', {
+    url: '/provider',
+        views:{
+           'services-tab' :
+           {
+     controller :'ProviderController',
+    templateUrl: 'views/provider.html'
+           }
+        }
+  }) 
+    .state('tabs.providerwork', {
+    url: '/providerwork',
+        views:{
+           'services-tab' :
+           {
+     controller :'ProviderWorkController',
+    templateUrl: 'views/providerwork.html'
+           }
+        }
+  }) 
+    .state('tabs.providerrecommendation', {
+    url: '/providerrecommendation',
+        views:{
+           'services-tab' :
+           {
+    controller :'ProviderRecommendationController',
+    templateUrl: 'views/providerrecommendation.html'
+           }
+        }
+  })
+    .state('tabs.providerinformation', {
+    url: '/providerinformation',
+        views:{
+           'services-tab' :
+           {
+    controller :'ProviderInformationController',
+    templateUrl: 'views/providerinformation.html'
+           }
+        }
+  }) 
+   .state('tabs.providerselection', {
+    url: '/providerselection',
+        views:{
+           'services-tab' :
+           {
+    controller :'ProviderSelectionController',
+    templateUrl: 'views/providerselection.html'
+           }
+        }
+  })
+.state('tabs.profile', {
+    url: '/profile',
+        views:{
+           'profile-tab' :
+           {
+  
+    templateUrl: 'views/profile.html'
+           }
+        }
+  })
+.state('tabsprovider.profile', {
+    url: '/profile',
+        views:{
+           'profile-tab' :
+           {
+  
+    templateUrl: 'views/profile.html'
+           }
+        }
+  })
+.state('tabsprovider.providerservicecreation', {
+    url: '/providerservicecreation',
+        views:{
+           'services-tab' :
+           {
+  controller :'ProviderServiceCreationController',
+    templateUrl: 'views/providerservicecreation.html'
+           }
+        }
+  })   
+   
+   ;
+    
+  $urlRouterProvider.otherwise('/login')
+    //configuration setting for the language
+  $translateProvider.useStaticFilesLoader({
+    prefix: 'js/translations/translations-',
+    suffix: '.json'
+});
+ $translateProvider.preferredLanguage("es");
+        $translateProvider.fallbackLanguage("en");
+});

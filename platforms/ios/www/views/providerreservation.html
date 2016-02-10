@@ -1,0 +1,46 @@
+<ion-view id="provider-reservation-view" view-title="Provider" >
+<ion-header-bar class="bar-dark">
+Fleek
+</ion-header-bar> 
+<ion-content class="has-header padding">
+<div class="bar bar-header item-input-inset">
+<label class="item-input-wrapper">
+<i class="icon ion-ios-search placeholder-icon"></i>
+<input type="search" placeholder='{{"select_provider_search" | translate}}'>
+</label>
+</div>
+<a class="item" ng-repeat="item in items" ui-sref="tabs.providerreservationinformation" class="global-paddin-zero">
+<div class="row">
+<div class="col">
+<img  ng-src="{{item.provider_image}}"  class="global-provider-avatar"  />
+</div>
+<div class="col col-50">
+<h2>{{item.provider_name}}</h2>
+<p>{{item.provider_title}}</p>
+<rating ng-model="item.provider_rate"  max="max"></rating>
+<p>{{item.provider_clients}} {{"select_provider_clients" | translate}}</p>
+</div>
+<div class="col">
+
+    <p>Cita el:</p>
+       
+  
+    <p>11/11/2014</p>
+       
+        <p>11:30am<p>
+   <u href="url">Ver mas</u>
+       
+</div>
+</div>
+</br>
+<div class="row global-row-content-black-white">
+<div class="col global-col-center">
+{{item.provider_distance}}
+  </div>
+  <div class="col col-75">
+     <p>{{item.provider_zone}}</p>
+  </div>
+</div>         
+</a>   
+</ion-content>       
+</ion-view>   

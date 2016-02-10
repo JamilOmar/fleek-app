@@ -1,0 +1,25 @@
+
+<ion-view id="calendar-view" cache-view="false" >
+  <ion-nav-title>
+      Fleek
+    </ion-nav-title>
+ 
+<ion-header-bar class="bar-dark">
+</ion-header-bar>
+  <ion-content>
+       <calendar on-press="press(dayClass)" selected="dayClass"  ></calendar>
+   <div class="row">
+       <div class="col">
+       <ion-scroll direction="y" style="height:160px; min-height: 160px;  white-space: nowrap;">
+        <a href="#" class="item " ng-repeat="item in items">
+          <button class="button button-block button-royal" ui-sref="tabs.providerselection" ui-sref-opts="dayClass">
+        9:{{item.id}}
+      </button>        
+        </a>
+    </ion-scroll>
+        </div>
+    </div>      
+    </ion-content>
+    <ion-footer-bar class="bar-dark">
+    </ion-footer-bar>
+</ion-view>   
