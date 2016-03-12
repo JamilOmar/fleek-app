@@ -18,20 +18,21 @@
     </div>
     </ion-slide>
       <ion-slide>
-    <div class="row  global-row-center">
+    <div class="row">
         <div class="col">
             <div class="list list-inset">
-          <div style="text-align:center">   
+          <div >   
                 <img id="review-view-profile-placeholder" ng-src="img/app/review-view-profile-placeholder.jpg">
         </div>
-            <label class="item">{{"review_firstname" | translate}}</label>
-            <label class="item">{{"review_lastname" | translate}}</label>
-            <label class="item">{{"review_email" | translate}}</label>
+            
             <label class="item item-input">
-                <input type="text" placeholder="{{'review_telephone' | translate}}">
+                <input type="text" placeholder="{{'review_username' | translate}}">
             </label>
             <label class="item item-input">
-                <input type="text" placeholder="{{'review_confirm_telephone' | translate}}">
+                <input type="password" placeholder="{{'review_password' | translate}}">
+            </label>
+            <label class="item item-input">
+                <input type="password" placeholder="{{'review_confirm_password' | translate}}">
             </label>   
             </div>
         </div> 
@@ -41,18 +42,34 @@
     <div class="row row-center">
         <div class="col">
             <div class="list list-inset">
-          <div style="text-align:center">   
+          <div >   
                 <img id="review-view-profile-placeholder" ng-src="img/app/review-view-profile-placeholder.jpg">
         </div>
-            <label class="item">{{"review_firstname" | translate}}</label>
-            <label class="item">{{"review_lastname" | translate}}</label>
-            <label class="item">{{"review_email" | translate}}</label>
             <label class="item item-input">
-                <input type="text" placeholder="{{'review_telephone' | translate}}">
+                <input type="text" placeholder="{{'review_email' | translate}}">
             </label>
             <label class="item item-input">
-                <input type="text" placeholder="{{'review_confirm_telephone' | translate}}">
+                <input type="text" placeholder="{{'review_firstname' | translate}}">
             </label>
+            <label class="item item-input">
+                <input type="text" placeholder="{{'review_lastname' | translate}}">
+            </label>
+            <label class="item item-input">
+                <input type="number" placeholder="{{'review_age' | translate}}">
+            </label>
+                <label class="item item-input item-select">
+    <div class="input-label">
+    {{"review_gender" | translate}}
+    </div>
+    <select>
+      <option>Male</option>
+      <option selected>Female</option>
+      <option>Red</option>
+    </select>
+  </label>
+                
+                
+               
             </div>
         </div> 
     </div>

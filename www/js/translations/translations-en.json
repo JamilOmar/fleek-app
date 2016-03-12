@@ -3,8 +3,12 @@
 "goodbye_message": "Goodbye",
     "login_login": "Log In",
     "login_message": "Please use your Facebook account to access",
-    
     "review_message" : "We are going to use the information associated with your Facebook account",
+    "review_username" : "Username",
+     "review_password" : "Password",
+     "review_confirm_password" : "Confirm Password",
+     "review_gender" : "Gender",
+     "review_age" : "Age",
     "review_firstname" : "Firstname",
     "review_lastname": "Lastname",
     "review_email": "email",

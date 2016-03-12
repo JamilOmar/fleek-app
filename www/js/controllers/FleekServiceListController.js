@@ -1,50 +1,13 @@
  
-mainApp.controller('FleekServiceListController', function($scope,$state) {
-   $scope.serviceList = [
-   
+mainApp.controller('FleekServiceListController', function($scope,$state, $stateParams,ServiceService,serviceListId) {
+    $scope.loadData = function()
    {
-   title:"1",
-       image:"../img/app/home/neworder.jpg"
-   
-   
-   },
-    {
-   title:"2",
-       image:"../img/app/home/neworder.jpg"
-   
-   },
-    {
-   title:"3",
-       image:"../img/app/home/neworder.jpg"
-   
-   
-   },
-     {
-   title:"3",
-       image:"../img/app/home/neworder.jpg"
-   
-   
-   },
-        {
-   title:"3",
-       image:"../img/app/home/neworder.jpg"
-   
-   
-   },
-        {
-   title:"3",
-       image:"../img/app/home/neworder.jpg"
-   
-   
-   },
-        {
-   title:"3",
-       image:"../img/app/home/neworder.jpg"
-   
-   
-   },
-   
-   ];
+       ServiceService.getServiceByTypeId(serviceListId).then(function (result) {
+       $scope.serviceList  = result;   
+        }, function (error) {
+            console.log('error');
+        });   
+   }  
     
     $scope.goTo = function(path,item)
     {

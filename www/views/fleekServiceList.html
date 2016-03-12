@@ -1,4 +1,4 @@
-<ion-view id="fleek-service-list-view" >
+<ion-view id="fleek-service-list-view"  ng-init="loadData()">
 <ion-nav-title>
       Fleek
     </ion-nav-title>
@@ -14,7 +14,7 @@
  <ion-list>
        <a ui-sref="tabs.selectprovider"  class="item item-icon-left" ng-repeat="service in serviceList">
    <i class="icon ion-chevron-right"></i>
-           <p>{{service.title}}</p>
+           <p>{{service.name}}</p>
   </a>
     </ion-list>
 </ion-content>       
