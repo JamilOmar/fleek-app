@@ -320,6 +320,14 @@ ul.rating li i {
   font-size: 15px;
   color: purple; }
 
+.has-errors {
+  border-left: 3px solid #cc2511;
+  border-right: 3px solid #cc2511; }
+
+.no-errors {
+  border-left: 3px solid #3d8b3d;
+  border-right: 3px solid #3d8b3d; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/

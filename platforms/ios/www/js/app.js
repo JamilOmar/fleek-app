@@ -3,14 +3,25 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var mainApp = angular.module('app', ['ionic','ngCordova','pascalprecht.translate','ionic.rating'])
+var mainApp = angular.module('app', ['ionic','ngCordova','pascalprecht.translate','ionic.rating','base64', 'ion-google-place'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,$rootScope,$ionicLoading) {
   $ionicPlatform.ready(function() {
-      
-      
-      ///method for globalization and language retreival
-      
+//*******************************************************************************************
+//loading show
+//*******************************************************************************************  
+    $rootScope.$on('loading:show', function() {
+    $ionicLoading.show({template: 'Loading...'})
+  })
+//*******************************************************************************************
+//loading hide
+//*******************************************************************************************      
+  $rootScope.$on('loading:hide', function() {
+    $ionicLoading.hide()
+  })
+//*******************************************************************************************
+//Globalization and language retreival
+//*******************************************************************************************            
       if(typeof navigator.globalization !== "undefined") {
             navigator.globalization.getPreferredLanguage(function(language) {
             $translate.use((language.value).split("-")[0]).then(function(data) {
@@ -33,8 +44,16 @@ var mainApp = angular.module('app', ['ionic','ngCordova','pascalprecht.translate
     }
   });
 })
-.config(function ($stateProvider,$urlRouterProvider,$translateProvider) {
-    console.log($stateProvider);
+.config(function ($stateProvider,$urlRouterProvider,$translateProvider,$httpProvider) {
+    
+//*******************************************************************************************
+//Interceptor for request and response
+//*******************************************************************************************  
+  $httpProvider.interceptors.push('AuthInterceptor');
+
+//*******************************************************************************************
+//Controllers
+//*******************************************************************************************  
    $stateProvider
  //abstract main customer tab
 .state('tabs', {
@@ -54,6 +73,12 @@ var mainApp = angular.module('app', ['ionic','ngCordova','pascalprecht.translate
     controller :'LoginController',
     templateUrl: 'views/login.html'
   })
+//create User tab   
+.state('createUser', {
+    url: '/createUser',
+    controller :'CreateUserController',
+    templateUrl: 'views/createUser.html'
+  })   
 .state('review', {
     url: '/review',
     controller :'ReviewController',
@@ -80,6 +105,23 @@ var mainApp = angular.module('app', ['ionic','ngCordova','pascalprecht.translate
        }
    }
   })
+   .state('tabs.fleekservicelist', {
+    url: '/fleekservicelist/:serviceListId',
+      
+    views:{
+   'services-tab' :
+   {
+    controller :'FleekServiceListController',
+    templateUrl: 'views/fleekServiceList.html',
+    resolve: {
+      serviceListId: function($stateParams) {
+        return $stateParams.serviceListId;
+      }}   
+       
+   }
+        }
+   
+  })
    .state('tabs.providerreservation', {
       url: "/providerreservation",
       views: {
@@ -98,18 +140,6 @@ var mainApp = angular.module('app', ['ionic','ngCordova','pascalprecht.translate
         }
       }
     })
- 
-  
-   .state('tabs.fleekservicelist', {
-    url: '/fleekservicelist',
-        views:{
-           'services-tab' :
-           {
-    controller :'FleekServiceListController',
-    templateUrl: 'views/fleekServiceList.html'
-           }
-        }
-  })
 .state('tabs.calendar', {
     url: '/calendar',
         views:{
@@ -129,7 +159,16 @@ var mainApp = angular.module('app', ['ionic','ngCordova','pascalprecht.translate
     templateUrl: 'views/selectprovider.html'
            }
         }
-  }) 
+  }) .state('tabs.searchmap', {
+    url: '/searchmap',
+        views:{
+           'services-tab' :
+           {
+     controller :'SearchMapController',
+    templateUrl: 'views/searchmap.html'
+           }
+        }
+  })  
    .state('tabs.provider', {
     url: '/provider',
         views:{

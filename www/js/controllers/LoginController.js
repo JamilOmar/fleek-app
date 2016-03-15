@@ -16,7 +16,7 @@ mainApp.controller('LoginController', function($scope,$state,AuthenticationServi
     }, function (error) {
             console.log('error');
   });
-      
+        
     
     
   }

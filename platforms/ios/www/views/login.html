@@ -1,5 +1,6 @@
 <ion-view view-title="login" hide-nav-bar="true" id="login-view" nav-direction="foward">
-<ion-content>        
+<ion-content padding="true">
+    <form name="loginForm" novalidate ng-submit="login(user)">
     <div class="row">
         <div class="col">
             <h1>
@@ -14,27 +15,41 @@
             </p>
         </div>         
     </div>
+   <div class="row row-center">
+        <div class="col col-10">
+        </div>
+        <div class="col col-80">
+            <div class="list list-inset">
+                <label class="item item-input" ng-class="{ 'has-errors' : loginForm.username.$invalid && !loginForm.username.$pristine, 'no-errors' : loginForm.username.$valid}" >
+                <input type="text"  ng-model="user.username"name ='username' required  ng-minlength="3" ng-maxlength="60"  placeholder="{{'login_username' | translate}}">
+           </label>
+               
+            <label class="item item-input" ng-class="{ 'has-errors' : loginForm.password.$invalid && !loginForm.password.$pristine, 'no-errors' : loginForm.password.$valid}"   >
+                <input type="password" ng-model="user.password"  name='password' ng-minlength="3" ng-maxlength="64" required placeholder="{{'login_password' | translate}}">
+            </label>
+            </div>
+        </div>
+        <div class="col col-10">
+        </div>
+    </div>
     <div class="row row-center">
         <div class="col col-33">
         </div>
         <div class="col col-33">
-            <button class="button button-block button-royal" ng-click="login()">
-                {{"login_login" | translate}}
+            <button  class="button button-block button-royal" type="submit"  ng-disabled="loginForm.$invalid" >
+            {{"login_login" | translate}}
             </button>
+              
+            
         </div>
         <div class="col col-33">
         </div>
     </div>
-    <div class="row row-center">
-        <div class="col col-33">
-        </div>
-        <div class="col col-33">
-            <button class="button button-block button-royal" ng-click="login()">
-                {{"login_login" | translate}}
-            </button>
-        </div>
-        <div class="col col-33">
-        </div>
-    </div>
+  </form>        
 </ion-content>
+    <ion-footer-bar class="bar-dark">
+        <button class="button button-block button-royal" ui-sref="createUser">
+                {{"login_signup" | translate}}
+        </button>
+    </ion-footer-bar>  
 </ion-view>   

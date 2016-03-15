@@ -13,5 +13,5 @@ mainApp.controller('FleekServiceListController', function($scope,$state, $stateP
     {
         $state.go(path,item);
     }
-
+     $scope.loadData();
 }); 

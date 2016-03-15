@@ -7,5 +7,6 @@ mainApp.controller('FleekServiceCategoryController', function($scope,$state, Ser
         }, function (error) {
             console.log('error');
         });   
-   }  
+   }
+     $scope.loadData();
 }); 
