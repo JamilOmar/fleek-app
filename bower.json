@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "ionic-timepicker": "^0.4.0",
-    "ion-google-place": "^0.0.1"
+    "ion-google-place": "^0.0.1",
+    "ng-intl-tel-input": "^1.4.0"
   }
 }

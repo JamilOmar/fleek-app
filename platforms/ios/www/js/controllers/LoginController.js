@@ -6,7 +6,7 @@ mainApp.controller('LoginController', function($scope,$state,AuthenticationServi
       AuthenticationService.authenticate(user.username,user.password ).then(function (result) {   
           if(result)
             {
-                $state.go('tabs.home');
+                $state.go('tabs.profile');
             }
             else
                 {

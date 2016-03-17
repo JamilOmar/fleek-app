@@ -1,0 +1,41 @@
+<ion-view  id="provider-map-view" nav-direction="foward" cache-view="false">
+<ion-nav-title>
+      Fleek
+</ion-nav-title>
+<ion-content class="has-header padding">
+<div class="bar bar-header item-input-inset">
+<label class="item-input-wrapper">
+<i class="icon ion-ios-search placeholder-icon"></i>
+<input type="search" placeholder='{{"fleek_service_list_search" | translate}}' ng-model="providerMap.query"  autocomplete="off">
+</label>
+<button class="button button-light" ng-click="cleanLocation(true)">
+      <i class="icon ion-close-circled"></i>
+    </button>
+</div>
+   
+     <ion-list class="glogal-google-results">                                   
+<ion-item ng-repeat="location in providerMap.locations" type="item-text-wrap" ng-click="selectLocation(location)" >
+                                        {{location.formatted_address}}
+                                    </ion-item>
+                                </ion-list>
+       
+<ion-content>
+    <div id="map" data-tap-disabled="true"></div>
+    
+</ion-content>
+ <div class="bar bar-footer" style="background:transparent; position:absolute; z-index:1" ng-show="providerMap.selectedLocation">
+  <div class="row row-center" >
+        <div class="col col-33">
+        </div>
+        <div class="col col-33">
+            <button  class="button button-block button-royal" type="submit"  ng-click="createProvider()"  >
+            {{"create_user_next" | translate}}
+            </button>        
+        </div>
+        <div class="col col-33">
+                
+        </div>
+    </div> 
+</div>
+</ion-content>        
+</ion-view>   

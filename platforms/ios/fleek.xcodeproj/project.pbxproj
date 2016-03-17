@@ -54,6 +54,12 @@
 		DC05334308F04174B74F5B0D /* UIImage+CropScaleOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = AB19656B6B4148EABFB6C6D1 /* UIImage+CropScaleOrientation.m */; };
 		F2CD65CB99EB4B1198AF143C /* CDVLocalFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 39ED9B8F5DD14CA8A28B69B8 /* CDVLocalFilesystem.m */; };
 		15CD9754C4E34AB099217A37 /* CDVBattery.m in Sources */ = {isa = PBXBuildFile; fileRef = A52114B880124476A4C10680 /* CDVBattery.m */; };
+		B1841A9752F049E390D38596 /* FacebookConnectPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = CE904FDEB54A4E7985AF7BD4 /* FacebookConnectPlugin.m */; };
+		9C4867D36D6642109E3A4477 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA5150982F441ECA5146EF1 /* FacebookSDK.framework */; };
+		D2A45CC37B844B3F8328BD77 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CC95ECEC10B34DD4A03124A3 /* libsqlite3.dylib */; };
+		E57F678E5DB14641A1CE431C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD676432132344FE9516A5BC /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		6F08A7A972DD4BB795682871 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F251D7129964468A94EDC13 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		4D47DCC5A44E4DACBC204029 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB6935AE9A34317B1AC866A /* Security.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +152,13 @@
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = fleek/config.xml; sourceTree = "<group>"; };
 		A52114B880124476A4C10680 /* CDVBattery.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVBattery.m"; path = "cordova-plugin-battery-status/CDVBattery.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		BB7B5E15375E42EF97EF229E /* CDVBattery.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVBattery.h"; path = "cordova-plugin-battery-status/CDVBattery.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		CE904FDEB54A4E7985AF7BD4 /* FacebookConnectPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "FacebookConnectPlugin.m"; path = "phonegap-facebook-plugin/FacebookConnectPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		2E29468B3AED410F83C8A1B8 /* FacebookConnectPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FacebookConnectPlugin.h"; path = "phonegap-facebook-plugin/FacebookConnectPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		FFA5150982F441ECA5146EF1 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "FacebookSDK.framework"; path = "build/emulator/fleek.app/Plugins/phonegap-facebook-plugin/FacebookSDK.framework"; sourceTree = "<group>"; };
+		CC95ECEC10B34DD4A03124A3 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsqlite3.dylib"; path = "usr/lib/libsqlite3.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
+		FD676432132344FE9516A5BC /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Social.framework"; path = "System/Library/Frameworks/Social.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		6F251D7129964468A94EDC13 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Accounts.framework"; path = "System/Library/Frameworks/Accounts.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		DFB6935AE9A34317B1AC866A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Security.framework"; path = "System/Library/Frameworks/Security.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +172,11 @@
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
 				1ABDC432EE4C4185998FB377 /* ImageIO.framework in Frameworks */,
 				A9041BD8881E4C02BD97BD26 /* CoreLocation.framework in Frameworks */,
+				9C4867D36D6642109E3A4477 /* FacebookSDK.framework in Frameworks */,
+				D2A45CC37B844B3F8328BD77 /* libsqlite3.dylib in Frameworks */,
+				E57F678E5DB14641A1CE431C /* Social.framework in Frameworks */,
+				6F08A7A972DD4BB795682871 /* Accounts.framework in Frameworks */,
+				4D47DCC5A44E4DACBC204029 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +251,11 @@
 				305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */,
 				4D280B794A294D038BE65485 /* ImageIO.framework */,
 				396E2091EEE44CE4908304E7 /* CoreLocation.framework */,
+				FFA5150982F441ECA5146EF1 /* FacebookSDK.framework */,
+				CC95ECEC10B34DD4A03124A3 /* libsqlite3.dylib */,
+				FD676432132344FE9516A5BC /* Social.framework */,
+				6F251D7129964468A94EDC13 /* Accounts.framework */,
+				DFB6935AE9A34317B1AC866A /* Security.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -275,6 +298,8 @@
 				D0DF4AD0A62142C48D28059B /* CDVGlobalization.h */,
 				A52114B880124476A4C10680 /* CDVBattery.m */,
 				BB7B5E15375E42EF97EF229E /* CDVBattery.h */,
+				CE904FDEB54A4E7985AF7BD4 /* FacebookConnectPlugin.m */,
+				2E29468B3AED410F83C8A1B8 /* FacebookConnectPlugin.h */,
 			);
 			name = Plugins;
 			path = fleek/Plugins;
@@ -477,6 +502,7 @@
 				1C57A07F2E2D418B983EFA12 /* CDVFileTransfer.m in Sources */,
 				49CF4B6DEE9A45EFB3613D63 /* CDVGlobalization.m in Sources */,
 				15CD9754C4E34AB099217A37 /* CDVBattery.m in Sources */,
+				B1841A9752F049E390D38596 /* FacebookConnectPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,6 +548,10 @@
 				PRODUCT_NAME = fleek;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"build/emulator/fleek.app/Plugins/phonegap-facebook-plugin\"",
+				);
 			};
 			name = Debug;
 		};
@@ -554,6 +584,10 @@
 				PRODUCT_NAME = fleek;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"build/emulator/fleek.app/Plugins/phonegap-facebook-plugin\"",
+				);
 			};
 			name = Release;
 		};

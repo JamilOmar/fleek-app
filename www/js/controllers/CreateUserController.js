@@ -25,7 +25,6 @@ mainApp.controller('CreateUserController', function($scope,$state,$ionicSlideBox
        {
         
          AuthenticationService.getUserByUserName(user.username).then(function (result) {   
-            console.log(result);
           if(result.data.id == undefined)
             {
                $ionicSlideBoxDelegate.next();

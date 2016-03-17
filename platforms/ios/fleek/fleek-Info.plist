@@ -178,5 +178,18 @@
     </dict>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string></string>
+    <key>FacebookAppID</key>
+    <string>1667420520161039</string>
+    <key>FacebookDisplayName</key>
+    <string>Fleek</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>fb1667420520161039</string>
+        </array>
+      </dict>
+    </array>
   </dict>
 </plist>
