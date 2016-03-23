@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var mainApp = angular.module('app', ['ngIntlTelInput','ionic','ngCordova','pascalprecht.translate','ionic.rating','base64', 'ion-google-place'])
+var mainApp = angular.module('app', ['ngIntlTelInput','ionic','ngCordova','pascalprecht.translate','ionic.rating','base64'])
 
 .run(function($ionicPlatform,$rootScope,$ionicLoading) {
   $ionicPlatform.ready(function() {
@@ -90,7 +90,101 @@ var mainApp = angular.module('app', ['ngIntlTelInput','ionic','ngCordova','pasca
     templateUrl: 'views/createProvider.html'
        }
    }
-  })  
+  })
+   //Provider map tab   
+.state('tabs.providermap', {
+    url: '/providerMap',
+    params: {
+        provider: null
+        },   
+       views:{
+           'services-tab' :
+           {
+           
+    controller :'ProviderMapController',
+    templateUrl: 'views/providerMap.html'
+       }
+   }
+  })
+      //Provider map tab   
+.state('tabs.providersettings', {
+    url: '/providerSettings',
+    params: {
+        provider: null
+        },   
+       views:{
+           'services-tab' :
+           {
+           
+    controller :'ProviderSettingsController',
+    templateUrl: 'views/providerSettings.html'
+       }
+   }
+  })
+.state('tabs.providersetttingsservicecategory', {
+    url: '/providerSettingsServiceCategory',
+       views:{
+           'services-tab' :
+           {
+           
+    controller :'ProviderSettingsServiceCategoryController',
+    templateUrl: 'views/providerSettingsServiceCategory.html'
+       }
+   }
+  })
+   .state('tabs.providersettingsservicelist', {
+    url: '/providerSettingsServicelist/:serviceListId',
+      
+    views:{
+   'services-tab' :
+   {
+    controller :'ProviderSettingsServiceListController',
+    templateUrl: 'views/providerSettingsServiceList.html',
+    resolve: {
+      serviceListId: function($stateParams) {
+        return $stateParams.serviceListId;
+      }}   
+       
+   }
+        }
+   
+  })
+.state('tabs.providersettingsschedule', {
+    url: '/providerSettingsSchedule',
+       views:{
+           'services-tab' :
+           {
+           
+    controller :'ProviderSettingsScheduleController',
+    templateUrl: 'views/providerSettingsSchedule.html'
+       }
+   }
+  })
+   .state('tabs.providersettingsscheduledetail', {
+    url: '/providerSettingsScheduleDetail',
+    params: {
+        scheduleDay: null
+        },
+       views:{
+           'services-tab' :
+           {
+           
+    controller :'ProviderSettingsScheduleDetailController',
+    templateUrl: 'views/providerSettingsScheduleDetail.html'
+       }
+   }
+  })
+.state('tabs.providersettingsscheduleexception', {
+    url: '/providerSettingsScheduleException',
+       views:{
+           'services-tab' :
+           {
+           
+    controller :'ProviderSettingsScheduleExceptionController',
+    templateUrl: 'views/providerSettingsScheduleException.html'
+       }
+   }
+  })   
 .state('review', {
     url: '/review',
     controller :'ReviewController',

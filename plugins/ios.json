@@ -67,6 +67,10 @@
                         {
                             "xml": "<access origin=\"https://*.akamaihd.net\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"DatePicker\"><param name=\"ios-package\" value=\"DatePicker\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -139,7 +143,7 @@
                     ],
                     "FacebookAppID": [
                         {
-                            "xml": "<string>1667420520161039</string>",
+                            "xml": "<string>123456789</string>",
                             "count": 1
                         }
                     ],
@@ -151,7 +155,13 @@
                     ],
                     "CFBundleURLTypes": [
                         {
-                            "xml": "<array><dict><key>CFBundleURLSchemes</key><array><string>fb1667420520161039</string></array></dict></array>",
+                            "xml": "<array><dict><key>CFBundleURLSchemes</key><array><string>fb123456789</string></array></dict></array>",
+                            "count": 1
+                        }
+                    ],
+                    "LSApplicationQueriesSchemes": [
+                        {
+                            "xml": "<array><string>fbapi</string><string>fbapi20130214</string><string>fbapi20130410</string><string>fbapi20130702</string><string>fbapi20131010</string><string>fbapi20131219</string><string>fbapi20140410</string><string>fbapi20140116</string><string>fbapi20150313</string><string>fbapi20150629</string><string>fbauth</string><string>fbauth2</string><string>fb-messenger-api20140430</string></array>",
                             "count": 1
                         }
                     ]
@@ -181,9 +191,12 @@
         "cordova-plugin-battery-status": {
             "PACKAGE_NAME": "com.ionicframework.fleek595519"
         },
-        "phonegap-facebook-plugin": {
-            "APP_ID": "1667420520161039",
+        "com.phonegap.plugins.facebookconnect": {
+            "APP_ID": "123456789",
             "APP_NAME": "Fleek",
+            "PACKAGE_NAME": "com.ionicframework.fleek595519"
+        },
+        "cordova-plugin-datepicker": {
             "PACKAGE_NAME": "com.ionicframework.fleek595519"
         }
     },

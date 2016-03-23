@@ -1,13 +1,8 @@
-<ion-view view-title="login" hide-nav-bar="true" id="create-provider-view" nav-direction="foward" cache-view="false">
+<ion-view  id="create-provider-view" nav-direction="foward" >
+<ion-nav-title>
+      Fleek
+</ion-nav-title>
 <ion-content>
-   
-    <div class="row">
-        <div class="col">
-            <h1>
-                Fleek    
-            </h1>
-        </div>         
-    </div>
     <div class="row">
         <div class="col">
             <p>
@@ -15,26 +10,16 @@
             </p>
         </div>         
     </div>
-   
-        <form name="createProviderForm" novalidate ng-submit="nextSlide(provider)">
+    <ion-slide-box show-pager="false">
+     <ion-slide>
+    <form name="createProviderTelephoneForm" novalidate ng-submit="nextSlide(provider)">
     <div class="row row-center">
         <div class="col col-10">
         </div>
         <div class="col col-80">
             <label class="item item-input"  >
-            <input type="tel"  ng-model="provider.telephone"  ng-intl-tel-input name ='telephone' required />
+            <input type="tel"  ng-model="provider.telephone" data-default-country="us"  ng-intl-tel-input name ='telephone' required/>
             </label>
-           <ion-toggle 
-                    ng-model="provider.isForMale" 
-                                                    >
-               1
-            </ion-toggle>
-              <ion-toggle 
-                    ng-model="provider.isForFemale" 
-                                                    >
-                2
-            </ion-toggle>
-
             
            
         </div>
@@ -45,18 +30,42 @@
         <div class="col col-33">
         </div>
         <div class="col col-33">
-            <button  class="button button-block button-royal" type="submit"  ng-disabled="createProviderForm.$invalid"  >
+            <button  class="button button-block button-royal" type="submit"  ng-disabled="createProviderTelephoneForm.$invalid"  >
             {{"create_user_next" | translate}}
-            </button>
-              
-            
+            </button>            
         </div>
         <div class="col col-33">
         </div>
     </div>
-         </form>  
-       
-   
+    </form>  
+     </ion-slide>    
+    <ion-slide>  
+    <form name="createProviderTelephoneConfirmForm" novalidate ng-submit="confirmCode(provider)">
+    <div class="row row-center">
+        <div class="col col-10">
+        </div>
+        <div class="col col-80">
+            <label class="item item-input"  >
+            <input type="text"  ng-model="provider.code"  placeholder="{{'create_user_lastname' | translate}}" required />
+            </label>
+        </div>
+        <div class="col col-10">
+        </div>
+    </div>
+          <div class="row row-center">
+        <div class="col col-33">
+        </div>
+        <div class="col col-33">
+            <button  class="button button-block button-royal" type="submit"  ng-disabled="createProviderTelephoneConfirmForm.$invalid"  >
+            {{"create_user_next" | translate}}
+            </button>            
+        </div>
+        <div class="col col-33">
+        </div>
+    </div>
+    </form>  
+    </ion-slide>    
+    </ion-slide-box>
       
 </ion-content>
 </ion-view>   

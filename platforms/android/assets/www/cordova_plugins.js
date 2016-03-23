@@ -8,10 +8,17 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/phonegap-facebook-plugin/facebookConnectPlugin.js",
-        "id": "phonegap-facebook-plugin.FacebookConnectPlugin",
+        "file": "plugins/com.phonegap.plugins.facebookconnect/facebookConnectPlugin.js",
+        "id": "com.phonegap.plugins.facebookconnect.FacebookConnectPlugin",
         "clobbers": [
             "facebookConnectPlugin"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-datepicker/www/android/DatePicker.js",
+        "id": "cordova-plugin-datepicker.DatePicker",
+        "clobbers": [
+            "datePicker"
         ]
     }
 ];
@@ -19,7 +26,8 @@ module.exports.metadata =
 // TOP OF METADATA
 {
     "cordova-plugin-battery-status": "1.1.1",
-    "phonegap-facebook-plugin": "0.12.0"
+    "com.phonegap.plugins.facebookconnect": "1.0.1.1",
+    "cordova-plugin-datepicker": "0.9.2"
 }
 // BOTTOM OF METADATA
 });
