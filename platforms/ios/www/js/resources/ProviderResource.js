@@ -41,7 +41,7 @@ function getProviderById(providerId) {
    return $q(function(resolve, reject) {    
     $http({
         method : "GET",
-        url :baseUrl+ "/v1/authenticationService/getProviderById/"+providerId
+        url :baseUrl+ "/v1/providerService/getProviderById/"+providerId
         }).then(function (result) {
             return resolve(result);
     }, function (error) {

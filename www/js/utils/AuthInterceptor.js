@@ -21,9 +21,14 @@ function request(config) {
 function response(response) {
     $rootScope.$broadcast('loading:hide');
     return response;
+}
+function responseError (err) {
+      $rootScope.$broadcast('loading:hide');
+      return $q.reject(err);
 }    
     return {
     request: request,
-    response:response    
+    response:response,
+    responseError:responseError
   };
 });

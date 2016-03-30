@@ -1,5 +1,5 @@
  
-mainApp.controller('ProviderSettingsScheduleDetailController', function($scope,$state, $stateParams,$ionicModal,$cordovaDatePicker) {
+mainApp.controller('ProviderSettingsScheduleDetailController', function($scope,$state, $stateParams,$ionicModal,$cordovaDatePicker,$filter,ProviderScheduleDayService,UserService,$ionicPopup,Constants,ErrorHelper) {
     $scope.scheduleDay =$stateParams.scheduleDay;
 
    
@@ -8,7 +8,13 @@ mainApp.controller('ProviderSettingsScheduleDetailController', function($scope,$
 //*******************************************************************************************       
     $scope.loadData = function()
     {
-      
+      ProviderScheduleDayService.getProviderScheduleDayByProviderScheduleIdDayOfWeek( $scope.scheduleDay.schedule.id,$scope.scheduleDay.day.day).then(function (result) {
+           $scope.scheduleList  = result;
+        }, function (error) {
+           $scope.scheduleList = {};
+            if(!error)
+            ErrorHelper.showError(error);
+        });   
     }
     
     
@@ -25,17 +31,112 @@ mainApp.controller('ProviderSettingsScheduleDetailController', function($scope,$
 //open the modal
 //*******************************************************************************************         
     $scope.openModal = function(schedule) {
-        $scope.modal.scheduleDay =$scope.scheduleDay; 
-        $scope.modal.schedule = schedule || { startTime: moment().format('LT') , endTime: moment().format('LT') ,providerScheduleId:$scope.scheduleDay.schedule.id , dayOfWeek: $scope.scheduleDay.day.day};
-        $scope.modal.show()
+      
+     
+   
+          if(schedule) // exists
+            {
+     
+                $scope.modal.isNew = false;   
+                $scope.modal.schedule = schedule;
+                
+               
+            }
+            else //is new
+            {
+                $scope.modal.isNew = true;
+                $scope.modal.schedule = 
+                 { startTime: moment().format('LT') , endTime: moment().add("hours",2).format('LT') ,providerScheduleId:$scope.scheduleDay.schedule.id , dayOfWeek: $scope.scheduleDay.day.day
+                 };       
+            }
+         $scope.modal.show();        
     }
 //*******************************************************************************************
-//save Service
+//save the schedule
 //*******************************************************************************************     
     $scope.saveSchedule = function(schedule) {
-            console.log( schedule);
-          $scope.closeModal();
-    };    
+  
+        //ready to save or update
+        if(!$scope.modal.isNew) // update
+        {
+            $scope.updateSchedule(schedule);
+        }
+        else
+        {
+           $scope.addSchedule(schedule); 
+        }
+    };
+//*******************************************************************************************
+//add new Schedule
+//*******************************************************************************************     
+    $scope.addSchedule = function(schedule) {
+      ProviderScheduleDayService.addProviderScheduleDay(schedule).then(function (result) {  
+          if(result)
+            {
+                $scope.closeModal();
+                $scope.loadData();
+            }
+    }, function (error) {
+             ErrorHelper.showError(error);
+    });
+    }; 
+//*******************************************************************************************
+//update Schedule
+//*******************************************************************************************     
+    $scope.updateSchedule = function(schedule) {
+       ProviderScheduleDayService.updateProviderScheduleDay(schedule).then(function (result) {  
+          if(result)
+            {
+                $scope.closeModal();
+                $scope.loadData();
+            }
+           
+    }, function (error) {
+             if(!error)
+            ErrorHelper.showError(error);
+    });
+    };
+//*******************************************************************************************
+//delete Schedule
+//*******************************************************************************************     
+    $scope.deleteSchedule = function(schedule) {
+        
+         ProviderScheduleDayService.getProviderScheduleDayById( schedule.id).then(function (result) {  
+          if(result.id) // exists
+            {
+                
+                ProviderScheduleDayService.deactivateProviderScheduleDay(result).then(function (result) {  
+                   
+                        $scope.loadData();
+                    
+                }, 
+                function (error) {
+                    if(!error)
+                    ErrorHelper.showError(error);
+                });
+            }
+            else //is new
+            {
+                $scope.loadData();
+            }
+
+    })};
+    
+//*******************************************************************************************
+//action to delete the Schedule
+//*******************************************************************************************  
+ $scope.showDeleteConfirm = function(shedule) {
+   var deletePopup = $ionicPopup.confirm({
+     title: $filter('translate')('providerSettingsServicePrice_title'),
+     template: '{{"providerSettingsServicePrice_delete_message" | translate}}'
+   });
+   deletePopup.then(function(res) {
+     if(res) 
+        {
+            $scope.deleteSchedule(shedule);
+        } 
+   });
+ };        
 //*******************************************************************************************
 //close the modal
 //*******************************************************************************************     
@@ -55,7 +156,7 @@ mainApp.controller('ProviderSettingsScheduleDetailController', function($scope,$
 //Method to show the date picker
 //*******************************************************************************************     
 $scope.showDatePicker = function ( type) {
-    var currentDate =  (type=='from')? moment($scope.modal.schedule.startTime,'HH:mm'): moment($scope.modal.schedule.endTime,'hh:mm A');
+    var currentDate =  (type=='from')? moment($scope.modal.schedule.startTime,'hh:mm A'): moment($scope.modal.schedule.endTime,'hh:mm A');
 	var options = {
 		date: currentDate.toDate(),
 		mode: 'time'
@@ -72,7 +173,13 @@ $cordovaDatePicker.show(options).then(function(date){
             $scope.modal.schedule.endTime = moment(date).format('LT');     
          }
         $scope.$apply();
-	})};    
+	})};
+//*******************************************************************************************
+//format time
+//*******************************************************************************************     
+    $scope.formatTime = function(date) {
+       return  moment(date ,'HH:mm:ss').format('hh:mm A');
+    };     
 //*******************************************************************************************
 //Go to other form
 //*******************************************************************************************     

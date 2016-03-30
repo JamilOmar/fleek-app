@@ -1,15 +1,15 @@
-mainApp.factory('ProviderServiceResource', function($http,$q,$base64) {
+mainApp.factory('ProviderScheduleExceptionResource', function($http,$q,$base64) {
   
  var baseUrl = 'http://localhost:3000';
 //*******************************************************************************************
-//create a new provider service method
+//create a new provider schedule exception method
 //******************************************************************************************* 
-  function addProviderService(data) {
+  function addProviderScheduleException(data) {
     return $q(function(resolve, reject) {
      $http({
         method : "POST",
         data:data,
-        url :baseUrl+ "/v1/providerServiceService/addProviderService"
+        url :baseUrl+ "/v1/providerScheduleExceptionService/addProviderScheduleException"
         }).then(function (result) {
             return resolve(result);
     }, function (error) {
@@ -18,14 +18,14 @@ mainApp.factory('ProviderServiceResource', function($http,$q,$base64) {
        });
   };
 //*******************************************************************************************
-//update a provider service method
+//update a provider schedule exception method
 //*******************************************************************************************    
-  function updateProviderService(data) {
+  function updateProviderScheduleException(data) {
     return $q(function(resolve, reject) {
      $http({
         method : "PUT",
         data:data,
-        url :baseUrl+  "/v1/providerServiceService/updateProviderService"
+        url :baseUrl+  "/v1/providerScheduleExceptionService/updateProviderScheduleException"
         }).then(function (result) {
             return resolve(result);
     }, function (error) {
@@ -34,14 +34,14 @@ mainApp.factory('ProviderServiceResource', function($http,$q,$base64) {
        });
   };
 //*******************************************************************************************
-//deactivate a provider service method
+//deactivate a provider schedule exception method
 //*******************************************************************************************    
-  function deactivateProviderService(data) {
+  function deactivateProviderScheduleException(data) {
     return $q(function(resolve, reject) {
      $http({
         method : "PUT",
         data:data,
-        url :baseUrl+  "/v1/providerServiceService/deactivateProviderService"
+        url :baseUrl+  "/v1/providerScheduleExceptionService/deactivateProviderScheduleException"
         }).then(function (result) {
             return resolve(result);
     }, function (error) {
@@ -50,14 +50,14 @@ mainApp.factory('ProviderServiceResource', function($http,$q,$base64) {
        });
   };      
 //*******************************************************************************************
-//method to get the provider service by Provider Id
+//method to get the provider schedule exception
 //*******************************************************************************************      
-function getProviderServiceByProviderId(providerId) {
+function getProviderScheduleExceptionyById(providerScheduleExceptionId) {
 
    return $q(function(resolve, reject) {    
     $http({
         method : "GET",
-        url :baseUrl+ "/v1/providerServiceService/getProviderServiceByProviderId/"+providerId
+        url :baseUrl+ "/v1/providerScheduleExceptionService/getProviderScheduleExceptionyById/"+providerScheduleExceptionId
         }).then(function (result) {
             return resolve(result);
     }, function (error) {
@@ -66,14 +66,14 @@ function getProviderServiceByProviderId(providerId) {
    });
   };
 //*******************************************************************************************
-//method to get the provider service by Provider Id and Service Id
+//method to get the provider schedule by provider schedule Id
 //*******************************************************************************************      
-function getProviderServiceByProviderIdServiceId(providerId, serviceId) {
+function getProviderScheduleExceptionByProviderScheduleId(providerScheduleId) {
 
    return $q(function(resolve, reject) {    
     $http({
         method : "GET",
-        url :baseUrl+ "/v1/providerServiceService/getProviderServiceByProviderIdServiceId/"+providerId + "/" + serviceId
+        url :baseUrl+ "/v1/providerScheduleExceptionService/getProviderScheduleExceptionByProviderScheduleId/"+providerScheduleId
         }).then(function (result) {
             return resolve(result);
     }, function (error) {
@@ -81,28 +81,11 @@ function getProviderServiceByProviderIdServiceId(providerId, serviceId) {
     });
    });
   };
-//*******************************************************************************************
-//method to get the provider service by Provider Id Type and culture
-//*******************************************************************************************      
-function getProviderServiceByProviderIdTypeId(providerId, type,culture) {
-
-   return $q(function(resolve, reject) {    
-    $http({
-        method : "GET",
-        url :baseUrl+ "/v1/providerServiceService/getProviderServiceByProviderIdTypeId/"+providerId + "/" + type +"/"+culture
-         }).then(function (result) {
-            return resolve(result);
-    }, function (error) {
-            return reject(error);
-    });
-   });
-  };    
   return {
-    addProviderService: addProviderService,
-    updateProviderService: updateProviderService,
-    deactivateProviderService:deactivateProviderService,
-    getProviderServiceByProviderId:getProviderServiceByProviderId, 
-    getProviderServiceByProviderIdServiceId:getProviderServiceByProviderIdServiceId,
-    getProviderServiceByProviderIdTypeId:getProviderServiceByProviderIdTypeId  
+    addProviderScheduleException: addProviderScheduleException,
+    updateProviderScheduleException: updateProviderScheduleException,
+    deactivateProviderScheduleException:deactivateProviderScheduleException,
+    getProviderScheduleExceptionyById:getProviderScheduleExceptionyById, 
+    getProviderScheduleExceptionByProviderScheduleId:getProviderScheduleExceptionByProviderScheduleId
   }
 });

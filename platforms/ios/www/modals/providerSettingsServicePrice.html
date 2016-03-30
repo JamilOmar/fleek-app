@@ -7,9 +7,9 @@
             <form name="enterPriceForm" novalidate ng-submit="saveService(modal.service)">
        <div class="row">
         <div class="col">
-            <p>
+            <span>
                 {{"providerSettingsServicePrice_message" | translate}}
-            </p>
+            </span>
         </div>         
     </div>
    <div class="row row-center">
@@ -23,6 +23,14 @@
                 <label class="item item-input" ng-class="{ 'has-errors' : enterPriceForm.price.$invalid && !enterPriceForm.price.$pristine, 'no-errors' : enterPriceForm.price.$valid}" >
                 <input type="number"  ng-model="modal.service.price" name ='price' required  ng-minlength="3" ng-maxlength="10"  placeholder="{{'providerSettingsServicePrice_price' | translate}}">
                 </label>
+                
+                <label class="item item-input item-select">
+                <div class="input-label">
+                     {{"providerSettingsServicePrice_averageTime" | translate}}
+                </div>
+                    <select ng-options="minutes.text for minutes in  modal.time" ng-model="modal.selectedTime"></select>
+                </label>
+            
             </div>
         </div>
         <div class="col col-10">

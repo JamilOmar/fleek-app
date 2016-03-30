@@ -1,13 +1,20 @@
  
-mainApp.controller('ProviderSettingsScheduleExceptionController', function($scope,$state, $stateParams,$ionicModal,$cordovaDatePicker) {
-     $scope.schedule =$stateParams.schedule;
+mainApp.controller('ProviderSettingsScheduleExceptionController', function($scope,$state, $stateParams,$ionicModal,$cordovaDatePicker,$filter,ProviderScheduleExceptionService,UserService,$ionicPopup,Constants,ErrorHelper) {
+     $scope.schedule = {id : "5b8b1e88-e0d2-4e0d-bccc-0283d0159b35"};
+     var usr =UserService.getUserLocal();    
     
 //*******************************************************************************************
-//get service list
+//get exception list
 //*******************************************************************************************       
     $scope.loadData = function()
     {
-      
+        ProviderScheduleExceptionService.getProviderScheduleExceptionByProviderScheduleId(  "5b8b1e88-e0d2-4e0d-bccc-0283d0159b35").then(function (result) {
+           $scope.scheduleExceptionList  = result;
+        }, function (error) {
+            if(!error)
+            ErrorHelper.showError(error);
+        }); 
+        $scope.$broadcast('scroll.refreshComplete');
     }
     
     
@@ -24,17 +31,108 @@ mainApp.controller('ProviderSettingsScheduleExceptionController', function($scop
 //open the modal
 //*******************************************************************************************         
     $scope.openModal = function(scheduleException) {
-        $scope.modal.scheduleException = scheduleException || { date: moment().format('L') , providerScheduleId:"$scope.schedule.id" , description:""};
+        if(scheduleException) //is not new
+        {
+
+            $scope.modal.isNew = false;
+            scheduleException.date =  $scope.formatDate( scheduleException.date);
+        }
+        else
+        {
+            $scope.modal.isNew = true;
+            scheduleException = { date: moment().add(1,"days").format('L'), providerScheduleId:$scope.schedule.id};
+        }
+        $scope.modal.scheduleException =scheduleException;
         $scope.modal.show()
     }
 //*******************************************************************************************
-//save Service
+//save shedule exception
 //*******************************************************************************************     
     $scope.saveScheduleException = function(scheduleException) {
-          
-        console.log(scheduleException);
-        $scope.closeModal();
-    };    
+   
+        
+        if(!$scope.modal.isNew) // update
+        {
+            $scope.updateScheduleException(scheduleException);
+        }
+        else
+        {
+           $scope.addScheduleException(scheduleException); 
+        }
+    };
+//*******************************************************************************************
+//add a new schedule exception
+//*******************************************************************************************     
+    $scope.addScheduleException = function(scheduleException) {
+      ProviderScheduleExceptionService.addProviderScheduleException(scheduleException).then(function (result) {  
+          if(result)
+            {
+                $scope.closeModal();
+                $scope.loadData();
+            }
+    }, function (error) {
+            if(!error)
+            ErrorHelper.showError(error);
+    });
+    }; 
+//*******************************************************************************************
+//update the schedule exception
+//*******************************************************************************************     
+    $scope.updateScheduleException = function(scheduleException) {
+       ProviderScheduleExceptionService.updateProviderScheduleException(scheduleException).then(function (result) {  
+          if(result)
+            {
+                $scope.closeModal();
+                $scope.loadData();
+            }
+           
+    }, function (error) {
+             if(!error)
+            ErrorHelper.showError(error);
+    });
+    };
+//*******************************************************************************************
+//delete the schedule exception
+//*******************************************************************************************     
+    $scope.deleteScheduleException = function(scheduleException) {
+        
+         ProviderScheduleExceptionService.getProviderScheduleExceptionyById(scheduleException.id).then(function (result) {  
+          if(result.id) // exists
+            {
+                
+                ProviderScheduleExceptionService.deactivateProviderScheduleException(result).then(function (result) {  
+                    if(result)
+                    {
+                        $scope.loadData();
+                    }
+                }, 
+                function (error) {
+                    if(!error)
+                    ErrorHelper.showError(error);
+                });
+            }
+            else //is new
+            {
+                $scope.loadData();
+            }
+
+    })};
+    
+//*******************************************************************************************
+//action to delete the Service
+//*******************************************************************************************  
+ $scope.showDeleteConfirm = function(scheduleException) {
+   var deletePopup = $ionicPopup.confirm({
+     title: $filter('translate')('providerSettingsScheduleException_title'),
+     template: '{{"providerSettingsScheduleException_delete_message" | translate}}'
+   });
+   deletePopup.then(function(res) {
+     if(res) 
+        {
+            $scope.deleteScheduleException(scheduleException);
+        } 
+   });
+ };        
 //*******************************************************************************************
 //close the modal
 //*******************************************************************************************     
@@ -53,17 +151,23 @@ mainApp.controller('ProviderSettingsScheduleExceptionController', function($scop
 //*******************************************************************************************
 //Method to show the date picker
 //*******************************************************************************************     
-$scope.showDatePicker = function ( scheduleExceptionDate) {
+$scope.showDatePicker = function (exceptionDate) {
   
 	var options = {
-		date: moment(scheduleExceptionDate,'L'),
+		date: exceptionDate,
 		mode: 'date'
 	};
 
     $cordovaDatePicker.show(options).then(function(date){
     $scope.modal.scheduleException.date = moment(date).format('L');     
     $scope.$apply();
-	})};      
+	})};
+//*******************************************************************************************
+//format date
+//*******************************************************************************************     
+    $scope.formatDate = function(date) {
+       return moment(date).format('MM/DD/YYYY');
+    };    
 //*******************************************************************************************
 //Go to other form
 //*******************************************************************************************     

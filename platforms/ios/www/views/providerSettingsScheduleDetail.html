@@ -1,4 +1,4 @@
-<ion-view id="provider-setttings-service-list-view"  >
+<ion-view id="provider-setttings-service-list-view"  cache-view="false">
 <ion-nav-title>
       Fleek
 </ion-nav-title>
@@ -9,12 +9,10 @@
 <ion-content class="has-header">
  <ion-list      can-swipe="true">
      
-<ion-item  ng-repeat="service in serviceList" ng-click="openModal(service);">
-  <i>{{service.name}}</i>
-    <span class="item-note">
-     {{service.id}}
-    </span>          
-    <ion-option-button class="button-assertive">
+<ion-item  ng-repeat="schedule in scheduleList" ng-click="openModal(schedule);">
+  <i>  {{formatTime(schedule.startTime)}} - {{formatTime(schedule.endTime)}}</i>
+       
+    <ion-option-button class="button-assertive" ng-click="showDeleteConfirm(schedule)">
         {{"providerSettingsServiceList_deactivate" | translate}}
     </ion-option-button>
 </ion-item>

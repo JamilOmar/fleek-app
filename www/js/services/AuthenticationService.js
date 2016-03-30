@@ -1,4 +1,4 @@
-mainApp.service('AuthenticationService', function($q,AuthenticationResource,LocalStorage,Constants) {
+mainApp.service('AuthenticationService', function($q,AuthenticationResource,LocalStorage,Constants,UserService) {
   
 //*******************************************************************************************
 //authenticated the user
@@ -13,7 +13,7 @@ mainApp.service('AuthenticationService', function($q,AuthenticationResource,Loca
                 //the token is store
                 LocalStorage.set(Constants.TOKEN,result.data.token);
                 //the user is store 
-                LocalStorage.setObject(Constants.USER,result.data.user);
+                UserService.storeUserLocal(result.data.user); 
                 return resolve(true);
             }
         else
@@ -22,7 +22,7 @@ mainApp.service('AuthenticationService', function($q,AuthenticationResource,Loca
             }
            
     }, function (error) {
-            return reject(false);
+            return reject(null);
   });
   })
   };
@@ -39,12 +39,12 @@ mainApp.service('AuthenticationService', function($q,AuthenticationResource,Loca
                 //the token is store
                 LocalStorage.set(Constants.TOKEN,result.data.token);
                 //the user is store 
-                LocalStorage.setObject(Constants.USER,result.data.user);  
+                UserService.storeUserLocal(result.data.user); 
                 return resolve(result);
             }
         else
             {
-                return resolve(null);
+                return reject(result);
             }
            
     }, function (error) {
@@ -63,11 +63,11 @@ mainApp.service('AuthenticationService', function($q,AuthenticationResource,Loca
             {
                  
                
-                return resolve(result);
+                return resolve(result.data);
             }
         else
             {
-                return resolve(null);
+                return resolve({});
             }
            
     }, function (error) {

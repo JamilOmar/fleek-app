@@ -7,9 +7,20 @@
         
       </button>
    </ion-nav-buttons>
-<ion-content >
- <ion-list>
-      
-    </ion-list>
-</ion-content>
+<ion-content class="has-header">
+<ion-refresher
+    pulling-text= '{{"global_pull_refresh" | translate}}'
+    on-refresh="loadData()">
+</ion-refresher>
+ <ion-list      can-swipe="true">
+     
+<ion-item class="item item-icon-right"  ng-repeat="exception in scheduleExceptionList" ng-click="openModal(exception);">
+  <i>{{exception.description}}</i> -
+    <i>  {{formatDate(exception.date)}}</i>
+    <ion-option-button class="button-assertive"   ng-click="showDeleteConfirm(exception)">
+        {{"providerSettingsServiceList_deactivate" | translate}}
+    </ion-option-button>
+</ion-item>
+</ion-list>
+</ion-content>       
 </ion-view>   

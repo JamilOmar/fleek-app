@@ -3,14 +3,16 @@
       Fleek
 </ion-nav-title>
 <ion-content class="has-header">
+<ion-refresher
+    pulling-text= '{{"global_pull_refresh" | translate}}'
+    on-refresh="loadData()">
+</ion-refresher>
  <ion-list      can-swipe="true">
      
-<ion-item  ng-repeat="service in serviceList" ng-click="openModal(service);">
+<ion-item class="item item-icon-right"  ng-repeat="service in serviceList" ng-click="openModal(service);">
   <i>{{service.name}}</i>
-    <span class="item-note">
-     {{service.id}}
-    </span>          
-    <ion-option-button class="button-assertive">
+    <i class="icon ion-ios-circle-filled" ng-class="{balanced: service.exist == 1, assertive: service.exist != 1}" ></i>   
+    <ion-option-button class="button-assertive" ng-show="service.exist"   ng-click="showDeleteConfirm(service)">
         {{"providerSettingsServiceList_deactivate" | translate}}
     </ion-option-button>
 </ion-item>

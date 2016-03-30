@@ -1,15 +1,15 @@
-mainApp.factory('ProviderServiceResource', function($http,$q,$base64) {
+mainApp.factory('ProviderScheduleResource', function($http,$q,$base64) {
   
  var baseUrl = 'http://localhost:3000';
 //*******************************************************************************************
-//create a new provider service method
+//create a new Provider Schedule method
 //******************************************************************************************* 
-  function addProviderService(data) {
+  function addProviderSchedule(data) {
     return $q(function(resolve, reject) {
      $http({
         method : "POST",
         data:data,
-        url :baseUrl+ "/v1/providerServiceService/addProviderService"
+        url :baseUrl+ "/v1/providerScheduleService/addProviderSchedule"
         }).then(function (result) {
             return resolve(result);
     }, function (error) {
@@ -18,14 +18,14 @@ mainApp.factory('ProviderServiceResource', function($http,$q,$base64) {
        });
   };
 //*******************************************************************************************
-//update a provider service method
+//update a provider schedule method
 //*******************************************************************************************    
-  function updateProviderService(data) {
+  function updateProviderSchedule(data) {
     return $q(function(resolve, reject) {
      $http({
         method : "PUT",
         data:data,
-        url :baseUrl+  "/v1/providerServiceService/updateProviderService"
+        url :baseUrl+  "/v1/providerScheduleService/updateProviderSchedule"
         }).then(function (result) {
             return resolve(result);
     }, function (error) {
@@ -34,14 +34,14 @@ mainApp.factory('ProviderServiceResource', function($http,$q,$base64) {
        });
   };
 //*******************************************************************************************
-//deactivate a provider service method
+//deactivate a provider schedule method
 //*******************************************************************************************    
-  function deactivateProviderService(data) {
+  function deactivateProviderSchedule(data) {
     return $q(function(resolve, reject) {
      $http({
         method : "PUT",
         data:data,
-        url :baseUrl+  "/v1/providerServiceService/deactivateProviderService"
+        url :baseUrl+  "/v1/providerScheduleService/deactivateProviderSchedule"
         }).then(function (result) {
             return resolve(result);
     }, function (error) {
@@ -50,14 +50,14 @@ mainApp.factory('ProviderServiceResource', function($http,$q,$base64) {
        });
   };      
 //*******************************************************************************************
-//method to get the provider service by Provider Id
+//method to get the provider schedule
 //*******************************************************************************************      
-function getProviderServiceByProviderId(providerId) {
+function getProviderScheduleById(providerScheduleId) {
 
    return $q(function(resolve, reject) {    
     $http({
         method : "GET",
-        url :baseUrl+ "/v1/providerServiceService/getProviderServiceByProviderId/"+providerId
+        url :baseUrl+ "/v1/providerScheduleService/getProviderScheduleById/"+providerScheduleId
         }).then(function (result) {
             return resolve(result);
     }, function (error) {
@@ -66,14 +66,14 @@ function getProviderServiceByProviderId(providerId) {
    });
   };
 //*******************************************************************************************
-//method to get the provider service by Provider Id and Service Id
+//method to get the provider schedule by provider Id
 //*******************************************************************************************      
-function getProviderServiceByProviderIdServiceId(providerId, serviceId) {
+function getProviderScheduleByProviderId(providerId) {
 
    return $q(function(resolve, reject) {    
     $http({
         method : "GET",
-        url :baseUrl+ "/v1/providerServiceService/getProviderServiceByProviderIdServiceId/"+providerId + "/" + serviceId
+        url :baseUrl+ "/v1/providerScheduleService/getProviderScheduleByProviderId/"+providerId
         }).then(function (result) {
             return resolve(result);
     }, function (error) {
@@ -82,15 +82,15 @@ function getProviderServiceByProviderIdServiceId(providerId, serviceId) {
    });
   };
 //*******************************************************************************************
-//method to get the provider service by Provider Id Type and culture
+//method to get the provider schedule by provider Id and that is default
 //*******************************************************************************************      
-function getProviderServiceByProviderIdTypeId(providerId, type,culture) {
+function getProviderScheduleByProviderIdAndDefault(providerId) {
 
    return $q(function(resolve, reject) {    
     $http({
         method : "GET",
-        url :baseUrl+ "/v1/providerServiceService/getProviderServiceByProviderIdTypeId/"+providerId + "/" + type +"/"+culture
-         }).then(function (result) {
+        url :baseUrl+ "/v1/providerScheduleService/getProviderScheduleByProviderIdAndDefault/"+providerId
+        }).then(function (result) {
             return resolve(result);
     }, function (error) {
             return reject(error);
@@ -98,11 +98,10 @@ function getProviderServiceByProviderIdTypeId(providerId, type,culture) {
    });
   };    
   return {
-    addProviderService: addProviderService,
-    updateProviderService: updateProviderService,
-    deactivateProviderService:deactivateProviderService,
-    getProviderServiceByProviderId:getProviderServiceByProviderId, 
-    getProviderServiceByProviderIdServiceId:getProviderServiceByProviderIdServiceId,
-    getProviderServiceByProviderIdTypeId:getProviderServiceByProviderIdTypeId  
+    addProviderSchedule: addProvider,
+    updateProviderSchedule: updateProvider,
+    deactivateProviderSchedule:deactivateProviderSchedule,
+    getProviderScheduleById:getProviderScheduleById, 
+    getProviderScheduleByProviderId:getProviderScheduleByProviderId
   }
 });

@@ -1,24 +1,21 @@
  
-mainApp.controller('ProviderSettingsController', function($scope,$state,$ionicSlideBoxDelegate,ProviderService) {
+mainApp.controller('ProviderSettingsController', function($scope,$state,ProviderService,UserService) {
  
 //*******************************************************************************************
-//next slide
-//*******************************************************************************************   
-  $scope.nextSlide = function(provider) {
-       
-       if($ionicSlideBoxDelegate.currentIndex() < 2)
-       { 
-           $ionicSlideBoxDelegate.next();
-          
-       }
-  }
- //*******************************************************************************************
-//validate provider telephone code
-//*******************************************************************************************   
-    $scope.confirmCode = function(provider) {
-   
-       $state.go('tabs.providermap',{provider:provider});
-  }
+//load provider
+//*******************************************************************************************     
+    $scope.loadData = function()
+    {
+       var usr = UserService.getUserLocal(); ProviderService.getProviderById(usr.id).then(function (result) {   
+       $scope.serviceCategoryList  = result;   
+        }, function (error) {
+           if(error)
+           {
+             console.log(error);        
+           }
+        });   
+    }
+     $scope.loadData();
  
   
 }); 

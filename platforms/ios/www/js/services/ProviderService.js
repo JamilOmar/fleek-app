@@ -9,11 +9,12 @@ mainApp.service('ProviderService', function($q,ProviderResource,LocalStorage,Con
         var result = response.data;
         if(((result.responseCode != undefined && result.responseCode == Constants.RESPONSE_SUCCESS )))
             {
-                return resolve(data);
+                storeProviderLocal(result.data);
+                return resolve(result.data);
             }
         else
             {
-                return resolve(null);
+                return reject(result.data);
             }
            
     }, function (error) {
@@ -30,11 +31,12 @@ mainApp.service('ProviderService', function($q,ProviderResource,LocalStorage,Con
        var result = response.data;
         if(((result.responseCode != undefined && result.responseCode == Constants.RESPONSE_SUCCESS )))
             {
-                return resolve(data);
+                storeProviderLocal(result.data);
+                return resolve(result.data);
             }
         else
             {
-                return resolve(null);
+                return reject(result.data);
             }
            
     }, function (error) {
@@ -52,12 +54,13 @@ mainApp.service('ProviderService', function($q,ProviderResource,LocalStorage,Con
         if(((result.responseCode != undefined && result.responseCode == Constants.RESPONSE_SUCCESS )))
             {
                  
-               
-                return resolve(result);
+                storeProviderLocal(result.data);
+                return resolve(result.data);
             }
         else
             {
-                return resolve(null);
+                
+                return reject(result.data);
             }
            
     }, function (error) {
@@ -65,11 +68,41 @@ mainApp.service('ProviderService', function($q,ProviderResource,LocalStorage,Con
   });
   })
   };
+//*******************************************************************************************
+//method to get the local provider
+//*******************************************************************************************        
+  function getProviderLocal(){
+  try
+      {
+          return LocalStorage.getObject(Constants.PROVIDER);
+          
+      }
+      catch(err)
+     {
+         return {};
+     }
+  };    
+//*******************************************************************************************
+//method to store the local provider
+//*******************************************************************************************        
+  function storeProviderLocal(provider){
+  try
+      {
+          LocalStorage.setObject(Constants.PROVIDER,provider);
+          return true;
+      }
+      catch(err)
+     {
+         return false;
+     }
+  };
+     
  
   return {
     addProvider: addProvider,
     updateProvider: updateProvider,
-    getProviderById:getProviderById
+    getProviderById:getProviderById,
+    getProviderLocal:getProviderLocal  
   }
 });
 
