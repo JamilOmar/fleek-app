@@ -55,7 +55,9 @@ mainApp.controller('ProviderSettingsScheduleDetailController', function($scope,$
 //save the schedule
 //*******************************************************************************************     
     $scope.saveSchedule = function(schedule) {
-  
+        schedule.startTime =   moment( schedule.startTime,"LT").format("HH:mm:ss");
+        schedule.endTime =  moment(schedule.endTime,"LT").format("HH:mm:ss");
+        
         //ready to save or update
         if(!$scope.modal.isNew) // update
         {
@@ -163,22 +165,24 @@ $scope.showDatePicker = function ( type) {
 	};
 
 $cordovaDatePicker.show(options).then(function(date){
-    
+    console.log(date);
+    console.log( moment(date).format('LT'));
          if(type == 'from')
          {
-		      $scope.modal.schedule.startTime = moment(date).format('LT');
+		      $scope.modal.schedule.startTime = moment(date);
+             
          }
          else
          {
-            $scope.modal.schedule.endTime = moment(date).format('LT');     
+            $scope.modal.schedule.endTime = moment(date);   
          }
-        $scope.$apply();
+        //$scope.$apply();
 	})};
 //*******************************************************************************************
-//format time
+//format time for grid
 //*******************************************************************************************     
     $scope.formatTime = function(date) {
-       return  moment(date ,'HH:mm:ss').format('hh:mm A');
+       return  moment(date,"HH:mm:ss").format('LT');
     };     
 //*******************************************************************************************
 //Go to other form

@@ -160,7 +160,7 @@ $scope.showDatePicker = function (exceptionDate) {
 
     $cordovaDatePicker.show(options).then(function(date){
     $scope.modal.scheduleException.date = moment(date).format('L');     
-    $scope.$apply();
+
 	})};
 //*******************************************************************************************
 //format date
