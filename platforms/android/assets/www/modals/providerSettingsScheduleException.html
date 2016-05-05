@@ -1,0 +1,44 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-dark">
+      <h1 class="title">   {{"providerSettingsScheduleException_title" | translate}}</h1>
+        <button class="button button-icon icon ion-close-circled" ng-click="closeModal();"></button>
+    </ion-header-bar>
+    <ion-content>
+                <form name="enterScheduleExceptionForm" novalidate ng-submit="saveService(modal.scheduleException)">  
+       <div class="row">
+        <div class="col">
+            <p>
+               {{modal.scheduleDay.day.name}}
+            </p>
+        </div>         
+    </div>
+   <div class="row row-center">
+       
+        <div class="col">
+            <div >
+                 <label class="item item-input" ng-class="{ 'has-errors' : enterScheduleExceptionForm.detail.$invalid && !enterScheduleExceptionForm.detail.$pristine, 'no-errors' : enterScheduleExceptionForm.detail.$valid}" >
+                <input type="text"  ng-model="modal.scheduleException.description" name ='detail' required  ng-minlength="5" ng-maxlength="125"  placeholder="{{'providerSettingsScheduleException_detail' | translate}}">
+                </label>
+                <label class="item item-input" ng-click="showDatePicker(modal.scheduleException.date);">
+                    <span class="input-label"> {{"providerSettingsScheduleException_date" | translate}}</span>
+                  {{modal.scheduleException.date}}
+                </label>
+                
+            </div>
+        </div>
+       
+    </div>
+    <div class="row row-center">
+        <div class="col col-33">
+        </div>
+        <div class="col col-33">
+            <button  class="button button-block button-royal" type="submit"  ng-click="saveScheduleException(modal.scheduleException)" >
+            {{"providerSettingsScheduleException_save" | translate}}
+            </button>   
+        </div>
+        <div class="col col-33">
+        </div>
+    </div>
+        </form>
+    </ion-content>
+</ion-modal-view>

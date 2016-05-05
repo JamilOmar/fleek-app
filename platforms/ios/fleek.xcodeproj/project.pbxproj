@@ -58,10 +58,10 @@
 		CFFF38F90F714356A1E07EB2 /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9BEF5D7754D2B9C07F854 /* CDVFileTransfer.m */; };
 		4D91E71781D24329BC7FF67F /* CDVGlobalization.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE0119F81434C2F8C1077D8 /* CDVGlobalization.m */; };
 		FD3F03B726BF4DF2845CAB29 /* CDVBattery.m in Sources */ = {isa = PBXBuildFile; fileRef = 44751C4B76114F06AA5A9A37 /* CDVBattery.m */; };
-		485F4E815DC74D9DB9730CC0 /* FacebookConnectPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1533BDDA144B40AEC50282 /* FacebookConnectPlugin.m */; };
-		948EB55F996747E6A27C8957 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9129F58269354B44AD0B17CD /* FacebookSDK.framework */; };
 		12262665E97945399B4FDEBE /* DatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5493835963364F43AA9DA37E /* DatePicker.m */; };
 		83F25571AC7B4EBABADB14E3 /* DatePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = B372C5C5344449FE89633037 /* DatePicker.xib */; };
+		1746BD39CAE740AF927D9A20 /* FacebookConnectPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 37843989D1C745BAADB81D83 /* FacebookConnectPlugin.m */; };
+		D37D49D455734F6898A43E37 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5417BEE92AD422E92D372B2 /* FacebookSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,12 +158,12 @@
 		AC39CC2606B747CC886CA8E0 /* CDVGlobalization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVGlobalization.h"; path = "org.apache.cordova.globalization/CDVGlobalization.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		44751C4B76114F06AA5A9A37 /* CDVBattery.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVBattery.m"; path = "cordova-plugin-battery-status/CDVBattery.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		FF7CFFF5EC214A47AD7426D9 /* CDVBattery.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVBattery.h"; path = "cordova-plugin-battery-status/CDVBattery.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		DD1533BDDA144B40AEC50282 /* FacebookConnectPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "FacebookConnectPlugin.m"; path = "com.phonegap.plugins.facebookconnect/FacebookConnectPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		5B5A3EE90DE24D469A8853A5 /* FacebookConnectPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FacebookConnectPlugin.h"; path = "com.phonegap.plugins.facebookconnect/FacebookConnectPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		9129F58269354B44AD0B17CD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "FacebookSDK.framework"; path = "fleek/Plugins/com.phonegap.plugins.facebookconnect/FacebookSDK.framework"; sourceTree = "<group>"; };
 		5493835963364F43AA9DA37E /* DatePicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "DatePicker.m"; path = "cordova-plugin-datepicker/DatePicker.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		D72D9445700040998D47795C /* DatePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "DatePicker.h"; path = "cordova-plugin-datepicker/DatePicker.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		B372C5C5344449FE89633037 /* DatePicker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "DatePicker.xib"; path = "DatePicker.xib"; sourceTree = "<group>"; fileEncoding = 4; };
+		37843989D1C745BAADB81D83 /* FacebookConnectPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "FacebookConnectPlugin.m"; path = "phonegap-facebook-plugin/FacebookConnectPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		B1EFBA53463945238FE79186 /* FacebookConnectPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FacebookConnectPlugin.h"; path = "phonegap-facebook-plugin/FacebookConnectPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		A5417BEE92AD422E92D372B2 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "FacebookSDK.framework"; path = "fleek/Plugins/phonegap-facebook-plugin/FacebookSDK.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,7 +181,7 @@
 				075142E52BB943E3B18CC32A /* Social.framework in Frameworks */,
 				35F23DCBEC4A409A8749E5DB /* Accounts.framework in Frameworks */,
 				9D52F5E783734DF4B58D5D95 /* Security.framework in Frameworks */,
-				948EB55F996747E6A27C8957 /* FacebookSDK.framework in Frameworks */,
+				D37D49D455734F6898A43E37 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +261,7 @@
 				8366D59D3D264D6BBEABD069 /* Social.framework */,
 				256A56C212A3496C80B25F18 /* Accounts.framework */,
 				26FBC10594CC44E8AE9503C7 /* Security.framework */,
-				9129F58269354B44AD0B17CD /* FacebookSDK.framework */,
+				A5417BEE92AD422E92D372B2 /* FacebookSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -304,10 +304,10 @@
 				AC39CC2606B747CC886CA8E0 /* CDVGlobalization.h */,
 				44751C4B76114F06AA5A9A37 /* CDVBattery.m */,
 				FF7CFFF5EC214A47AD7426D9 /* CDVBattery.h */,
-				DD1533BDDA144B40AEC50282 /* FacebookConnectPlugin.m */,
-				5B5A3EE90DE24D469A8853A5 /* FacebookConnectPlugin.h */,
 				5493835963364F43AA9DA37E /* DatePicker.m */,
 				D72D9445700040998D47795C /* DatePicker.h */,
+				37843989D1C745BAADB81D83 /* FacebookConnectPlugin.m */,
+				B1EFBA53463945238FE79186 /* FacebookConnectPlugin.h */,
 			);
 			name = Plugins;
 			path = fleek/Plugins;
@@ -512,8 +512,8 @@
 				CFFF38F90F714356A1E07EB2 /* CDVFileTransfer.m in Sources */,
 				4D91E71781D24329BC7FF67F /* CDVGlobalization.m in Sources */,
 				FD3F03B726BF4DF2845CAB29 /* CDVBattery.m in Sources */,
-				485F4E815DC74D9DB9730CC0 /* FacebookConnectPlugin.m in Sources */,
 				12262665E97945399B4FDEBE /* DatePicker.m in Sources */,
+				1746BD39CAE740AF927D9A20 /* FacebookConnectPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,6 +542,7 @@
 					"\"build/emulator/fleek.app/Plugins/phonegap-facebook-plugin\"",
 					"\"build/emulator/fleek.app/Plugins/com.phonegap.plugins.facebookconnect\"",
 					"\"fleek/Plugins/com.phonegap.plugins.facebookconnect\"",
+					"\"fleek/Plugins/phonegap-facebook-plugin\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -583,6 +584,7 @@
 					"\"build/emulator/fleek.app/Plugins/phonegap-facebook-plugin\"",
 					"\"build/emulator/fleek.app/Plugins/com.phonegap.plugins.facebookconnect\"",
 					"\"fleek/Plugins/com.phonegap.plugins.facebookconnect\"",
+					"\"fleek/Plugins/phonegap-facebook-plugin\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fleek/fleek-Prefix.pch";

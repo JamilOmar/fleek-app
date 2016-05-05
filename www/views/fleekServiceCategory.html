@@ -7,7 +7,7 @@
 <ion-content class="has-header" >
 
  <ion-list>
-       <ion-item id ="item" ng-repeat="serviceCategory in serviceCategoryList" ui-sref="tabs.fleekservicelist({serviceListId :serviceCategory.id })"  >
+       <ion-item id ="item" ng-style="{'background-image': 'url({{ getImage(serviceCategory.pictureUrl) }})'}" ng-repeat="serviceCategory in serviceCategoryList" ui-sref="tabs.fleekservicelist({serviceListId :serviceCategory.id })"  >
         {{serviceCategory.name}}
      </ion-item>
     </ion-list>

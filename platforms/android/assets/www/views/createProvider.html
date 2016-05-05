@@ -1,0 +1,71 @@
+<ion-view  id="create-provider-view" nav-direction="foward" >
+<ion-nav-title>
+      Fleek
+</ion-nav-title>
+<ion-content>
+    <div class="row">
+        <div class="col">
+            <p>
+                {{"create_provider_message" | translate}}
+            </p>
+        </div>         
+    </div>
+    <ion-slide-box show-pager="false">
+     <ion-slide>
+    <form name="createProviderTelephoneForm" novalidate ng-submit="nextSlide(provider)">
+    <div class="row row-center">
+        <div class="col col-10">
+        </div>
+        <div class="col col-80">
+            <label class="item item-input"  >
+            <input type="number"  ng-minlength="5" ng-maxlength="25"  ng-model="provider.telephone"  placeholder="{{'create_provider_telephone' | translate}}" required />
+            </label>
+            
+           
+        </div>
+        <div class="col col-10">
+        </div>
+    </div>
+          <div class="row row-center">
+        <div class="col col-33">
+        </div>
+        <div class="col col-33">
+            <button  class="button button-block button-royal" type="submit"  ng-disabled="createProviderTelephoneForm.$invalid"  >
+            {{"create_provider_next" | translate}}
+            </button>            
+        </div>
+        <div class="col col-33">
+        </div>
+    </div>
+    </form>  
+     </ion-slide>    
+    <ion-slide>  
+    <form name="createProviderTelephoneConfirmForm" novalidate ng-submit="confirmCode(provider)">
+    <div class="row row-center">
+        <div class="col col-10">
+        </div>
+        <div class="col col-80">
+            <label class="item item-input"  >
+            <input type="text"  ng-model="provider.code"  ng-minlength="3" ng-maxlength="5" placeholder="{{'create_provider_code' | translate}}" required />
+            </label>
+        </div>
+        <div class="col col-10">
+        </div>
+    </div>
+          <div class="row row-center">
+        <div class="col col-33">
+        </div>
+        <div class="col col-33">
+            <button  class="button button-block button-royal" type="submit"  ng-disabled="createProviderTelephoneConfirmForm.$invalid"  >
+            {{"create_provider_next" | translate}}
+            </button>            
+        </div>
+        <div class="col col-33">
+        </div>
+    </div>
+    </form>  
+    </ion-slide>    
+    </ion-slide-box>
+      
+</ion-content>
+</ion-view>   

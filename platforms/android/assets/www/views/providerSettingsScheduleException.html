@@ -1,0 +1,26 @@
+<ion-view id="provider-schedule-exception-view" >
+<ion-nav-title>
+      Fleek
+</ion-nav-title>
+     <ion-nav-buttons side="right">
+      <button class="button  icon ion-ios-plus-outline" ng-click="openModal()">
+        
+      </button>
+   </ion-nav-buttons>
+<ion-content class="has-header">
+<ion-refresher
+    pulling-text= '{{"global_pull_refresh" | translate}}'
+    on-refresh="loadData()">
+</ion-refresher>
+ <ion-list      can-swipe="true">
+     
+<ion-item class="item item-icon-right"  ng-repeat="exception in scheduleExceptionList" ng-click="openModal(exception);">
+  <i>{{exception.description}}</i> -
+    <i>  {{formatDate(exception.date)}}</i>
+    <ion-option-button class="button-assertive"   ng-click="showDeleteConfirm(exception)">
+        {{"providerSettingsServiceList_deactivate" | translate}}
+    </ion-option-button>
+</ion-item>
+</ion-list>
+</ion-content>       
+</ion-view>   

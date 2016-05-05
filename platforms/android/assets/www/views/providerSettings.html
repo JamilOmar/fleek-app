@@ -1,0 +1,41 @@
+<ion-view  id="provider-settings-view" nav-direction="foward" >
+<ion-nav-title>
+      Fleek
+</ion-nav-title>
+<ion-content>
+  
+    <div class="list">
+          <div class="item item-divider">
+    {{"providerSettings_title" | translate}}
+  </div>
+    <a class="item item-icon-left" href="#">
+    <i class="icon ion-person"></i>
+    {{"providerSettings_basic" | translate}}
+  </a>
+  <div class="item item-divider">
+  {{"providerSettings_work_schedule" | translate}}
+  </div>
+  <a class="item item-icon-left" ui-sref="tabs.providersettingsschedule">
+    <i class="icon ion-calendar"></i>
+   {{"providerSettings_schedule" | translate}}
+         
+  </a>
+  <a class="item item-icon-left" ui-sref="tabs.providersettingsscheduleexception">
+    <i class="icon ion-calendar"></i>
+    {{"providerSettings_schedule_exceptions" | translate}}
+        
+  </a>
+  <a class="item item-icon-left" ui-sref="tabs.providersetttingsservicecategory">
+    <i class="icon ion-pricetag"></i>
+      {{"providerSettings_services" | translate}}
+  
+  </a>
+
+  <a class="item item-icon-left" href="#">
+    <i class="icon ion-location"></i>
+    {{"providerSettings_location" | translate}}
+  </a>
+</div>
+      
+</ion-content>
+</ion-view>   

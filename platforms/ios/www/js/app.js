@@ -44,7 +44,14 @@ var mainApp = angular.module('app', ['ngIntlTelInput','ionic','ngCordova','pasca
     }
   });
 })
-.config(function ($stateProvider,$urlRouterProvider,$translateProvider,$httpProvider) {
+.config(function ($stateProvider,$urlRouterProvider,$translateProvider,$httpProvider,$cordovaFacebookProvider) {
+
+//*******************************************************************************************
+//Facebook Integration
+var appID = 1667420520161039;
+var version = "v2.3"; // or leave blank and default is v2.0
+$cordovaFacebookProvider.browserInit(appID, version);    
+    
     
 //*******************************************************************************************
 //Interceptor for request and response

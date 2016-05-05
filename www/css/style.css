@@ -306,13 +306,18 @@ padding: initial;
 Service Category view
 
 **************************************************************************/
-
+/*** Main item ****/
 #fleek-service-category-view #item{
     min-height: 150px;
     background-repeat: no-repeat;
-    color: black;
+    color: white;
     background-size: 100% 100%;
     padding: 10px;
+    background-color: black;
+}
+/****** Inner item ****/
+#fleek-service-category-view #item a{
+background: transparent;   
 }
 
 /**********************************************/

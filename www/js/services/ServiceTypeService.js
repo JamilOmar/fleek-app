@@ -19,9 +19,13 @@ mainApp.service('ServiceTypeService', function($q,ServiceTypeResource,Constants)
   });
   })
   };
+  function getImage(picture) {
+    return ServiceTypeResource.getImage(picture);
+  };    
  
   return {
-    getServiceType: getServiceType
+    getServiceType: getServiceType,
+    getImage:getImage  
   }
 });
 

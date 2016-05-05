@@ -1,8 +1,30 @@
+/**************************************************************************
 
+google maps component
+
+**************************************************************************/
+.scroll {
+    height: 100%;
+}
+ 
+#map {
+    width: 100%;
+    height: 100%;
+}
+/**************************************************************************
+
+Border box for corner styles
+
+**************************************************************************/
 .border-box {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
+/**************************************************************************
+
+Calendar Component
+
+**************************************************************************/
 calendar {
   float: left;
   display: block;
@@ -104,8 +126,12 @@ calendar >div.week.names>span {
   color: purple;
   font-weight: bold;
 }
-/****************************************/
 
+/**************************************************************************
+
+login view css
+
+**************************************************************************/
 
 #login-view{
     background: url("../img/app/background.jpg") no-repeat center center fixed; 
@@ -137,43 +163,58 @@ calendar >div.week.names>span {
     font-family: inherit;
 }
 
-#review-view{
+/**************************************************************************
+//
+//Review window
+//
+//**************************************************************************/
+/*#review-view{
     background: url("../img/app/background.jpg") no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
 }
-
+*/
 
 
 #review-view h1 {
-    font-size: -webkit-xxx-large;
-    color: white;
+  font-size: -webkit-xxx-large;
+    color: black;
     font-family: inherit;
 }
+/*
 #review-view p {
     font-size: medium;
     color: white;
     font-family: inherit;
 }
-
+*/
+/*
 #review .card, .list-inset
 {
     background: transparent;
 }
+*/
+/*
 #review-view .list .item {
     
     color: white;
     background: transparent;
     font-family: inherit;
-}
-
+}*/
+/*
 #review-view .card .item.item-input input, .list-inset .item.item-input input, .padding > .list .item.item-input input, .padding-horizontal > .list .item.item-input input  {
     
-    color: white;
+    color: black;
     background: transparent;
     font-family: inherit;
 }
+*/
+/**************************************************************************
+
+Review profile
+
+**************************************************************************/
 
 #review-view-profile-placeholder
 {
@@ -181,7 +222,11 @@ calendar >div.week.names>span {
 
     height: 100px;
 }
+/**************************************************************************
 
+Choose profiel view
+
+**************************************************************************/
 
 #choose-profile-view{
     background: url("../img/app/background.jpg") no-repeat center center fixed; 
@@ -204,6 +249,11 @@ calendar >div.week.names>span {
     color: white;
     font-family: inherit;
 }
+/**************************************************************************
+
+Home view
+
+**************************************************************************/
 #home-view .scroll{
   height: 100% !important;
   background:gray;
@@ -251,19 +301,19 @@ padding: initial;
   position:relative;
 }
 
+/**************************************************************************
 
+Service Category view
+
+**************************************************************************/
 
 #fleek-service-category-view #item{
     min-height: 150px;
     background-repeat: no-repeat;
-    color: white;
+    color: black;
     background-size: 100% 100%;
     padding: 10px;
 }
-/**********************************************/
-
-
-
 
 /**********************************************/
 
@@ -339,8 +389,15 @@ select-provider-view */
     padding: 0;
 }
 
+.glogal-google-results{
+    position: absolute;
+    width: 100%;
+}
+/**************************************************************************
 
-/*Rating Stars*/
+Rating
+
+/**************************************************************************/
 ul.rating li {
   display: inline;
   border: 0px;
@@ -352,3 +409,28 @@ ul.rating li i {
     color: purple;
     
 }
+
+/**************************************************************************
+
+validation
+
+**************************************************************************/
+.has-errors {
+   
+    border-left: 3px solid #cc2511;
+    border-right: 3px solid #cc2511;
+}
+.no-errors {
+    border-left: 3px solid #3d8b3d;
+    border-right: 3px solid #3d8b3d;
+}
+
+/**************************************************************************
+
+Overflow list
+
+**************************************************************************/
+
+
+
+

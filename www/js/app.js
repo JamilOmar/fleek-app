@@ -7,6 +7,13 @@ var mainApp = angular.module('app', ['ngIntlTelInput','ionic','ngCordova','pasca
 
 .run(function($ionicPlatform,$rootScope,$ionicLoading) {
   $ionicPlatform.ready(function() {
+
+//*******************************************************************************************
+//Facebook Integration
+var appID = 1667420520161039;
+var version = "v2.3"; // or leave blank and default is v2.0
+facebookConnectPlugin.browserInit(appID,version);
+          
 //*******************************************************************************************
 //loading show
 //*******************************************************************************************  
@@ -36,15 +43,18 @@ var mainApp = angular.module('app', ['ngIntlTelInput','ionic','ngCordova','pasca
       
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+      /*
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
+    */
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
   });
 })
-.config(function ($stateProvider,$urlRouterProvider,$translateProvider,$httpProvider) {
+.config(function ($stateProvider,$urlRouterProvider,$translateProvider,$httpProvider,$cordovaFacebookProvider) {
+
     
 //*******************************************************************************************
 //Interceptor for request and response

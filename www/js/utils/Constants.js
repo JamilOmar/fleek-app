@@ -21,6 +21,8 @@ mainApp.constant('Constants', {
             {value:90 , text:'01:30'},
             {value:105 , text:'01:45'},
             {value:120 , text:'02:00'}
-        ]
+        ],
+FACEBOOK_LOGIN_PERMISSIONS:
+   ['user_photos','user_birthday','user_likes','user_status','email','user_location','user_hometown','user_about_me','user_religion_politics',]
     
 })

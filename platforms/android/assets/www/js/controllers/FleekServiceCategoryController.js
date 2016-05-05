@@ -1,42 +1,17 @@
  
-mainApp.controller('FleekServiceCategoryController', function($scope,$state) {
-   $scope.serviceList = [
+mainApp.controller('FleekServiceCategoryController', function($scope,$state, ServiceTypeService) {
    
-   {
-   title:"Haircut",
-       image:"img/app/home/neworder.jpg"
-   
-   
-   },
-    {
-   title:"Tattoo & Piercing",
-       image:"img/app/home/neworder.jpg"
-   
-   },
-    {
-   title:"Nail",
-       image:"img/app/home/neworder.jpg"
-   
-   
-   },
-   {
-   title:"Make up",
-       image:"img/app/home/neworder.jpg"
-   
-   
-   },
-       {
-   title:"Sports & Trainning",
-       image:"img/app/home/neworder.jpg"
-   
-   },
-       
-    {
-   title:"Cleanning",
-       image:"img/app/home/neworder.jpg"
-   
-   },
-   ];
     
-  
+//*******************************************************************************************
+//get categories
+//*******************************************************************************************     
+    $scope.loadData = function()
+    {
+       ServiceTypeService.getServiceType().then(function (result) {   
+       $scope.serviceCategoryList  = result;   
+        }, function (error) {
+            console.log('error');
+        });   
+    }
+     $scope.loadData();
 }); 

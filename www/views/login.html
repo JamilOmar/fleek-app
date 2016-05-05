@@ -1,6 +1,6 @@
 <ion-view view-title="login" hide-nav-bar="true" id="login-view" nav-direction="foward">
 <ion-content padding="true">
-    <form name="loginForm" novalidate ng-submit="login(user)">
+    <form name="loginForm" novalidate ng-submit="loginFacebook()">
     <div class="row">
         <div class="col">
             <h1>
@@ -38,6 +38,19 @@
         <div class="col col-33">
             <button  class="button button-block button-royal" type="submit"  ng-disabled="loginForm.$invalid" >
             {{"login_login" | translate}}
+            </button>
+              
+            
+        </div>
+        <div class="col col-33">
+        </div>
+    </div>
+        <div class="row row-center">
+        <div class="col col-33">
+        </div>
+        <div class="col col-33">
+            <button  class="button button-block button-royal"  type="submit"  >
+           Facebook
             </button>
               
             

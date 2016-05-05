@@ -9,7 +9,6 @@ mainApp.directive("calendar", function() {
         },
 //***************************************************************        
        link: function(scope) {
-           console.log(scope.selected.date);
             scope.selected.date = _removeTime(scope.selected.date || moment());
             scope.month = scope.selected.date.clone();
 

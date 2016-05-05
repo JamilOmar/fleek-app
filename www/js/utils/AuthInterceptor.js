@@ -11,8 +11,8 @@ function request(config) {
      
         if(strongRegex.test(config.url))
         {
-         
             config.headers.Authorization = "Bearer "+ LocalStorage.get(Constants.TOKEN);
+            
             return config;
         }
     }

@@ -25,6 +25,7 @@
     <script src="lib/intl-tel-input/lib/libphonenumber/build/utils.js"></script>
     <script src="lib/intl-tel-input/build/js/intlTelInput.min.js"></script>
     <script src="lib/ng-intl-tel-input/dist/ng-intl-tel-input.js"></script>
+  
     <!-- Fleek js -->
     <script src="js/app.js"></script>
     <!-- utils -->
@@ -95,11 +96,16 @@
 
 
   </head>
-  <body ng-app="app" id="main-body" class="platform-ios platform-cordova platform-webview">
+  <body ng-app="app" id="main-body">
+     
  <ion-nav-bar animation="nav-title-slide-ios7" class="bar-dark bar-stable">
       <ion-nav-back-button>
       </ion-nav-back-button>
     </ion-nav-bar>
        <ion-nav-view animation="slide-left-right"></ion-nav-view>
+  
     </body>
+      <div id='fb-root'></div>
+      <script src="lib/facebook/facebookConnectPlugin.js"></script>  
+    
 </html>
