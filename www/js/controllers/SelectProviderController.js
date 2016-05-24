@@ -1,90 +1,46 @@
+ var test=null;
+mainApp.controller('SelectProviderController', function($scope,$state,ProviderService,serviceId,FacebookService,UserUtils,ErrorHelper) {
  
-mainApp.controller('SelectProviderController', function($scope,$state) {
-   $scope.items = [
-   {
-     
-       provider_image:"img/app/review-view-profile-placeholder.jpg",
-       provider_name:"Jamil Falconi",
-       provider_title:"Entrenador",
-       provider_clients :12,
-       provider_rate: 2,
-       provider_client_image: "img/app/home/neworder.jpg",
-       provider_distance: "6km",
-       provider_zone: "La Luz"       
-   
-   
-   },
-       {
-     
-       provider_image:"img/app/review-view-profile-placeholder.jpg",
-       provider_name:"Jamil Falconi",
-       provider_title:"Entrenador",
-       provider_clients :12,
-       provider_rate: 5,
-       provider_client_image: "img/app/home/neworder.jpg",
-       provider_distance: "6km",
-       provider_zone: "La Luz"       
-   
-   
-   },
-       {
-     
-       provider_image:"img/app/review-view-profile-placeholder.jpg",
-       provider_name:"Jamil Falconi",
-       provider_title:"Entrenador",
-       provider_clients :12,
-       provider_rate: 2,
-       provider_client_image: "img/app/home/neworder.jpg",
-       provider_distance: "6km",
-       provider_zone: "La Luz"       
-   
-   
-   },
-       {
-     
-       provider_image:"img/app/review-view-profile-placeholder.jpg",
-       provider_name:"Jamil Falconi",
-       provider_title:"Entrenador",
-       provider_clients :12,
-       provider_rate: 2,
-       provider_client_image: "img/app/home/neworder.jpg",
-       provider_distance: "6km",
-       provider_zone: "La Luz"       
-   
-   
-   },
-       {
-     
-       provider_image:"img/app/review-view-profile-placeholder.jpg",
-       provider_name:"Jamil Falconi",
-       provider_title:"Entrenador",
-       provider_clients :12,
-       provider_rate: 2,
-       provider_client_image: "img/app/home/neworder.jpg",
-       provider_distance: "6km",
-       provider_zone: "La Luz"       
-   
-   
-   },
-       {
-     
-       provider_image:"img/app/review-view-profile-placeholder.jpg",
-       provider_name:"Jamil Falconi",
-       provider_title:"Entrenador",
-       provider_clients :12,
-       provider_rate: 2,
-       provider_client_image: "img/app/home/neworder.jpg",
-       provider_distance: "6km",
-       provider_zone: "La Luz"       
-   
-   
-   }
-       
-   ];    
-    $scope.max = 5;
+//*******************************************************************************************
+//get the providers list
+//*******************************************************************************************       
+    $scope.loadData = function()
+    {
+       ProviderService.getProviderByLocationForSearch(38.905016, -77.02907270000003,serviceId).then(function (result) {
+         $scope.providers  = result;   
+        },function (error) {
+          if(error.managed)
+            {
+                ErrorHelper.showError('TODO: MANAGED');
+            }
+          else
+              {
+                ErrorHelper.showError(error);  
+              }
+       });   
+    }
+//*******************************************************************************************
+//round number
+//*******************************************************************************************       
+    $scope.roundNumber = function(number,type)
+    {
+        if(number!= undefined)
+        return UserUtils.formatNumber(number) +" "+  type;
+        else
+            return 0 +" "+ type;
+    }    
+//*******************************************************************************************
+//go to other page
+//*******************************************************************************************       
     $scope.goTo = function(path,item)
     {
         $state.go(path,item);
     }
+ 
+//*******************************************************************************************
+//load the data
+//*******************************************************************************************   
+
+$scope.loadData(); 
 
 }); 

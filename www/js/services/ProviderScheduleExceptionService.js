@@ -1,4 +1,4 @@
-mainApp.service('ProviderScheduleExceptionService', function($q,ProviderScheduleExceptionResource,LocalStorage,Constants) {
+mainApp.service('ProviderScheduleExceptionService', function($q,ProviderScheduleExceptionResource,Constants) {
   
 //*******************************************************************************************
 //create a new provider schedule exception method
@@ -13,11 +13,11 @@ mainApp.service('ProviderScheduleExceptionService', function($q,ProviderSchedule
             }
         else
             {
-                return reject(result.data);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -34,11 +34,11 @@ mainApp.service('ProviderScheduleExceptionService', function($q,ProviderSchedule
             }
         else
             {
-                return reject(result.data);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -55,11 +55,11 @@ mainApp.service('ProviderScheduleExceptionService', function($q,ProviderSchedule
             }
         else
             {
-                return reject(result.data);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };    
@@ -78,11 +78,11 @@ mainApp.service('ProviderScheduleExceptionService', function($q,ProviderSchedule
             }
         else
             {
-                return resolve({});
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -101,11 +101,11 @@ mainApp.service('ProviderScheduleExceptionService', function($q,ProviderSchedule
             }
         else
             {
-                return resolve({});
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };

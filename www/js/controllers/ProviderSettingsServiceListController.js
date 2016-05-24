@@ -95,6 +95,7 @@ var usr =UserService.getUserLocal();
                 $scope.loadData();
             }
     }, function (error) {
+              if(!error)
              ErrorHelper.showError(error);
     });
     }; 

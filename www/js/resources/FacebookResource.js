@@ -41,16 +41,17 @@ mainApp.factory('FacebookResource', function($q,Constants) {
 //*******************************************************************************************
 //method to call the api
 //*******************************************************************************************      
-  function apiCall(obj, permissions) {
+  function apiCall(obj) {
     return $q(function(resolve, reject) {
-    facebookConnectPlugin.api(obj,permissions,function (response) {
+    facebookConnectPlugin.api(obj,Constants.FACEBOOK_LOGIN_PERMISSIONS,function (response) {
        return resolve(response);
            
     }, function (error) {
              return reject(error);
   });
   })
-  };        
+  };
+    
 //*******************************************************************************************
 //method to logout
 //*******************************************************************************************      

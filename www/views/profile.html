@@ -5,21 +5,21 @@
         <div class="global-profile-background">
         <div class="row global-row-profile-height-title">
             <div class="col">
-            <img  src="img/app/home/neworder.jpg" class="global-profile-avatar" />
+                 <img ng-src="{{loadProfileImage();}}" class="global-profile-avatar">
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <div class="row global-row-center">
             <div class="col">
-        <rating ng-model="rate"  max="max"></rating>
+        <rating ng-model="rate" rate="data.rating" max="5" readonly="true"></rating>
             </div>
         </div><div class="row global-row-center">
             <div class="col">
                   <p class="global-profile-black-panel">
-        "Esta es mi historia"
+        {{data.name +" " +data.lastname }}
                 </p>
-                El inca
+                {{data.username}}
             </div>
         </div>
         
@@ -36,17 +36,7 @@
            <p>Clientes Atendidos</p>
             </div>
         </div>
-         <div class="row global-row-center global-row-content-black-white">
-            <div class="col">
-             <button class="button button-block button-royal" ui-sref="tabs.createprovider">
-               Create Profile
-        </button>
-            </div>
-        </div>
-        <div class="row" style="text-align:center;">
-            <div class="col">
-           <p>Mapa</p>
-            </div>
-        </div>
+    
+       
      </ion-content>
 </ion-view>

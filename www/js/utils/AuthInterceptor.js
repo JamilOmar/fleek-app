@@ -1,4 +1,4 @@
-mainApp.factory('AuthInterceptor', function($rootScope,$q,LocalStorage,Constants) {
+mainApp.factory('AuthInterceptor', function($rootScope,$q,LocalStorage,UserUtils) {
 //*******************************************************************************************
 //Interceptor for request and response
 //*******************************************************************************************  
@@ -11,7 +11,7 @@ function request(config) {
      
         if(strongRegex.test(config.url))
         {
-            config.headers.Authorization = "Bearer "+ LocalStorage.get(Constants.TOKEN);
+            config.headers.Authorization = "Bearer "+ UserUtils.getToken();
             
             return config;
         }

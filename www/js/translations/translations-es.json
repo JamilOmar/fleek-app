@@ -41,6 +41,8 @@
     "calendar_go" : "Ir",
     "select_provider_clients":"Clientes",
     "select_provider_search":"Buscar",
+    "select_provider_price": "Precio",
+    "select_provider_duration": "Duración",
     "global_gender_male" :"Masculino",
     "global_gender_female" :"Femenino",
     "global_gender_none" :"Otro",

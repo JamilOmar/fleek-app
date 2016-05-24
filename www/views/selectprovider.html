@@ -9,28 +9,28 @@ Fleek
 <input type="search" placeholder='{{"select_provider_search" | translate}}'>
 </label><button class="button icon ion-map" ng-click="goTo('tabs.searchmap')"></button>
 </div>
-<a class="item" ng-repeat="item in items" ui-sref="tabs.provider" class="global-paddin-zero">
+<a class="item" ng-repeat="provider in providers" ui-sref="tabs.provider" class="global-paddin-zero">
 <div class="row">
 <div class="col">
-<img  ng-src="{{item.provider_image}}"  class="global-provider-avatar"  />
+<img  facebook-usr-src="{{provider.user.facebookId}}"  class="global-provider-avatar"  />
 </div>
 <div class="col col-50">
-<h2>{{item.provider_name}}</h2>
-<p>{{item.provider_title}}</p>
-<rating ng-model="item.provider_rate"  max="max"></rating>
-<p>{{item.provider_clients}} {{"select_provider_clients" | translate}}</p>
+<h2>{{provider.user.name + " " + provider.user.lastname }}</h2>
+<p>{{provider.user.username}}</p>
+<rating ng-model="provider.rating"  max="max"></rating>
+<p>{{"select_provider_price" | translate}} {{"$ "+provider.Metadata.price +" "+provider.Metadata.currencyCode }}</p>
+<p>{{"select_provider_duration" | translate}} {{provider.Metadata.averageTimePerSession }} </p>
 </div>
 <div class="col">
-<img  ng-src="{{item.provider_client_image}}"  class="global-provider-work" />
+<img  ng-src="{{provider.provider_client_image}}"  class="global-provider-work" />
 </div>
 </div>
-</br>
 <div class="row global-row-content-black-white">
 <div class="col global-col-center">
-{{item.provider_distance}}
+{{roundNumber(provider.Metadata.distance,provider.Metadata.distanceType)}}
   </div>
   <div class="col col-75">
-     <p>{{item.provider_zone}}</p>
+     <p>{{provider.provider_zone}}</p>
   </div>
 </div>         
 </a>   

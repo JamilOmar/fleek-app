@@ -13,11 +13,11 @@ mainApp.service('ProviderScheduleService', function($q,ProviderScheduleResource,
             }
         else
             {
-                return reject(result.data);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -34,11 +34,11 @@ mainApp.service('ProviderScheduleService', function($q,ProviderScheduleResource,
             }
         else
             {
-                return reject(result.data);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -55,11 +55,11 @@ mainApp.service('ProviderScheduleService', function($q,ProviderScheduleResource,
             }
         else
             {
-                return reject(result.data);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };    
@@ -78,11 +78,11 @@ mainApp.service('ProviderScheduleService', function($q,ProviderScheduleResource,
             }
         else
             {
-                return resolve({});
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -101,11 +101,11 @@ mainApp.service('ProviderScheduleService', function($q,ProviderScheduleResource,
             }
         else
             {
-                return resolve({});
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -124,11 +124,11 @@ mainApp.service('ProviderScheduleService', function($q,ProviderScheduleResource,
             }
         else
             {
-                return resolve({});
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };    

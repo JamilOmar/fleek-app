@@ -12,7 +12,7 @@
 
 </div>
  <ion-list>
-       <a ui-sref="tabs.selectprovider"  class="item item-icon-left" ng-repeat="service in serviceList">
+       <a ui-sref="tabs.selectprovider({serviceId :service.id })"   class="item item-icon-left" ng-repeat="service in serviceList">
    <i class="icon ion-chevron-right"></i>
            <p>{{service.name}}</p>
   </a>

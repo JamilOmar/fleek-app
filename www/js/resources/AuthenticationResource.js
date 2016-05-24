@@ -49,10 +49,26 @@ mainApp.factory('AuthenticationResource', function($http,$q,$base64) {
     });
    });
   };
- 
+ //*******************************************************************************************
+//get user by FacebookId method
+//*******************************************************************************************    
+  function getUserByFacebookId(facebookId) {
+
+   return $q(function(resolve, reject) {    
+    $http({
+        method : "GET",
+        url :baseUrl+ "/v1/authenticationService/getUserByFacebookId/"+facebookId
+        }).then(function (result) {
+            return resolve(result);
+    }, function (error) {
+            return reject(error);
+    });
+   });
+  };
   return {
     authenticate: authenticate,
     signup: signup,
-    getUserByUserName:getUserByUserName
+    getUserByUserName:getUserByUserName,
+    getUserByFacebookId:getUserByFacebookId  
   }
 });

@@ -39,6 +39,8 @@
     "calendar_go" : "Go",
     "select_provider_clients":"Clientes",
     "select_provider_search":"Search",
+    "select_provider_price": "Price",
+    "select_provider_duration": "Duration",
     "global_gender_male" :"Male",
     "global_gender_female" :"Female",
     "global_gender_none" :"Other",

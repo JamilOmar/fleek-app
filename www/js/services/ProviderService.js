@@ -14,11 +14,11 @@ mainApp.service('ProviderService', function($q,ProviderResource,LocalStorage,Con
             }
         else
             {
-                return reject(result.data);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -36,11 +36,11 @@ mainApp.service('ProviderService', function($q,ProviderResource,LocalStorage,Con
             }
         else
             {
-                return reject(result.data);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -60,14 +60,38 @@ mainApp.service('ProviderService', function($q,ProviderResource,LocalStorage,Con
         else
             {
                 
-                return reject(result.data);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
+//*******************************************************************************************
+//method for get providers by coordinates and service id
+//*******************************************************************************************        
+  function getProviderByLocationForSearch(latitude, longitude,serviceId){
+  return $q(function(resolve, reject) {
+    ProviderResource.getProviderByLocationForSearch(latitude, longitude,serviceId).then(function (response) {
+        var result = response.data;
+        if(((result.responseCode != undefined && result.responseCode == Constants.RESPONSE_SUCCESS )))
+            {
+                 
+            
+                return resolve(result.data);
+            }
+        else
+            {
+                
+                return reject({data: result.data, managed:true});
+            }
+           
+    }, function (error) {
+            return reject({data: error, managed:false});
+  });
+  })
+  };    
 //*******************************************************************************************
 //method to get the local provider
 //*******************************************************************************************        
@@ -86,7 +110,7 @@ mainApp.service('ProviderService', function($q,ProviderResource,LocalStorage,Con
 //method to store the local provider
 //*******************************************************************************************        
   function storeProviderLocal(provider){
-  try
+    try
       {
           LocalStorage.setObject(Constants.PROVIDER,provider);
           return true;
@@ -96,13 +120,16 @@ mainApp.service('ProviderService', function($q,ProviderResource,LocalStorage,Con
          return false;
      }
   };
-     
+//*******************************************************************************************
+//public methods 
+//*******************************************************************************************          
  
   return {
     addProvider: addProvider,
     updateProvider: updateProvider,
     getProviderById:getProviderById,
-    getProviderLocal:getProviderLocal  
+    getProviderLocal:getProviderLocal,
+    getProviderByLocationForSearch:getProviderByLocationForSearch
   }
 });
 

@@ -267,12 +267,16 @@ facebookConnectPlugin.browserInit(appID,version);
         }
   })
 .state('tabs.selectprovider', {
-    url: '/selectprovider',
+    url: '/selectprovider/:serviceId',
         views:{
            'services-tab' :
            {
     controller :'SelectProviderController',
-    templateUrl: 'views/selectprovider.html'
+    templateUrl: 'views/selectprovider.html',
+     resolve: {
+      serviceId: function($stateParams) {
+        return $stateParams.serviceId;
+      }}              
            }
         }
   }) .state('tabs.searchmap', {
@@ -340,7 +344,7 @@ facebookConnectPlugin.browserInit(appID,version);
         views:{
            'profile-tab' :
            {
-  
+    controller :'ProfileController',
     templateUrl: 'views/profile.html'
            }
         }
