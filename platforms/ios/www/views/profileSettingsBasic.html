@@ -1,0 +1,73 @@
+<ion-view view-title="Fleek" id="profile-settings-basic-view" nav-direction="foward" >
+<ion-header>    
+</ion-header>    
+    <ion-content>
+  <form name="profileSettingsBasicForm" novalidate ng-submit="updateUser(user)">        
+    <div class="list">
+        <div class= "item item-divider">   {{"profileSettingsBasic_title" | translate}}</div>
+       
+        <label class="item item-input"  ng-class="{ 'has-errors' : profileSettingsBasicForm.username.$invalid && !profileSettingsBasicForm.username.$pristine, 'no-errors' : profileSettingsBasicForm.username.$valid}">
+        <input type="text" placeholder="{{'profileSettingsBasic_username' | translate}}" ng-model="user.username" name ='username' required  ng-minlength="3" ng-maxlength="20" />
+        </label>
+          <label class="item item-input"  ng-class="{ 'has-errors' : profileSettingsBasicForm.email.$invalid && !profileSettingsBasicForm.email.$pristine, 'no-errors' : profileSettingsBasicForm.email.$valid}">
+        <input type="email" placeholder="{{'profileSettingsBasic_email' | translate}}"  ng-model="user.email" name ='email' required  ng-minlength="4" ng-maxlength="254"/>
+        </label>          
+        <label class="item item-input" ng-class="{ 'has-errors' : profileSettingsBasicForm.name.$invalid && !profileSettingsBasicForm.name.$pristine, 'no-errors' : profileSettingsBasicForm.name.$valid}">
+        <input type="text" placeholder="{{'profileSettingsBasic_name' | translate}}"  ng-model="user.name" name ='name' required  ng-minlength="0" ng-maxlength="60"/>
+        </label>
+        <label class="item item-input" ng-class="{ 'has-errors' : profileSettingsBasicForm.lastname.$invalid && !profileSettingsBasicForm.lastname.$pristine, 'no-errors' : profileSettingsBasicForm.lastname.$valid}">
+        <input type="text" placeholder="{{'profileSettingsBasic_lastname' | translate}}" ng-model="user.lastname" name ='lastname' required  ng-minlength="0" ng-maxlength="60" />
+        </label>
+        <label class="item item-input">
+        <input type="text" placeholder="{{'profileSettingsBasic_birthday' | translate}}"/>
+        </label>
+        <label class="item item-input item-select">
+        <div class="input-label">
+                      {{"profileSettingsBasic_gender" | translate}}
+        </div>
+                <select>
+                  <option value=0 selected > {{"global_gender_none" | translate}}</option>
+                  <option value=1> {{"global_gender_male" | translate}}</option>
+                  <option value=2 > {{"global_gender_female" | translate}}</option>
+               
+                </select>
+            </label>
+        <label class="item item-input item-select">
+        <div class="input-label">
+                     {{"profileSettingsBasic_country" | translate}}
+        </div>
+                <select>
+                  <option value=0 selected > {{"global_gender_none" | translate}}</option>
+                  <option value=1> {{"global_gender_male" | translate}}</option>
+                  <option value=2 > {{"global_gender_female" | translate}}</option>
+               
+                </select>
+            </label>
+ <li class="item item-toggle">
+   {{"profileSettingsBasic_openFriendship" | translate}}
+     <label class="toggle toggle-balanced">
+       <input type="checkbox" ng-model="user.isOpenForFriendship">
+       <div class="track">
+         <div class="handle"></div>
+       </div>
+     </label>
+  </li>
+        
+        </div>
+        <div class="row" >
+             <div class="col col-33">
+          
+            </div>
+              <div class="col col-33">
+          <button class="button button-block button-royal" type="submit" ng-disabled="profileSettingsBasicForm.$invalid" >
+              {{"profileSettingsBasic_save" | translate}}
+            </button>
+            </div>
+              <div class="col col-33">
+          
+            </div>
+        </div>
+        </form> 
+       
+     </ion-content>
+</ion-view>

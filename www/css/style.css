@@ -116,6 +116,10 @@ calendar >div.week >span.day.selected {
   background: purple;
   color: white;
 }
+calendar >div.week >span.day.not-enabled {
+  background: lightgray;
+  color: white;
+}
 
 calendar >div.week >span.day.customerDate {
   background: green;

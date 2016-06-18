@@ -104,7 +104,6 @@ function getProviderServiceByProviderIdTypeId(providerId, type,culture) {
     deactivateProviderService:deactivateProviderService,
     getProviderServiceByProviderId:getProviderServiceByProviderId, 
     getProviderServiceByProviderIdServiceId:getProviderServiceByProviderIdServiceId,
-    getProviderServiceByProviderIdTypeId:getProviderServiceByProviderIdTypeId,
-    getProviderByLocationForSearch:getProviderByLocationForSearch  
+    getProviderServiceByProviderIdTypeId:getProviderServiceByProviderIdTypeId
   }
 });

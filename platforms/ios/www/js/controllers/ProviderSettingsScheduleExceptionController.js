@@ -1,14 +1,38 @@
  
-mainApp.controller('ProviderSettingsScheduleExceptionController', function($scope,$state, $stateParams,$ionicModal,$cordovaDatePicker,$filter,ProviderScheduleExceptionService,UserService,$ionicPopup,Constants,ErrorHelper) {
-     $scope.schedule = {id : "5b8b1e88-e0d2-4e0d-bccc-0283d0159b35"};
-     var usr =UserService.getUserLocal();    
-    
+mainApp.controller('ProviderSettingsScheduleExceptionController', function($scope,$state, $stateParams,$ionicModal,$cordovaDatePicker,$filter,ProviderScheduleService,ProviderScheduleExceptionService,UserUtils,$ionicPopup,Constants,ErrorHelper) {
+     
+//*******************************************************************************************
+//get the basic data
+//*******************************************************************************************        
+ $scope.loadData = function()
+    {
+        
+       var usr = UserUtils.getUserLocal();  ProviderScheduleService.getProviderScheduleByProviderIdAndDefault(usr.id).then(function (result) {   
+      
+           if(result)
+            {
+                 $scope.schedule =result; $scope.loadProviderScheduleExceptionData($scope.schedule.id);
+            }
+        }, function (error) {
+           if(error)
+           {
+            if(error.managed)
+            {
+                ErrorHelper.showError('TODO: MANAGED');
+            }
+          else
+              {
+                ErrorHelper.showError(error);  
+              }       
+           }
+        });   
+    }    
 //*******************************************************************************************
 //get exception list
 //*******************************************************************************************       
-    $scope.loadData = function()
+    $scope.loadProviderScheduleExceptionData = function(id)
     {
-        ProviderScheduleExceptionService.getProviderScheduleExceptionByProviderScheduleId(  "5b8b1e88-e0d2-4e0d-bccc-0283d0159b35").then(function (result) {
+        ProviderScheduleExceptionService.getProviderScheduleExceptionByProviderScheduleId(  id).then(function (result) {
            $scope.scheduleExceptionList  = result;
         }, function (error) {
             if(!error)

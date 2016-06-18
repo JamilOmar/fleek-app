@@ -1,4 +1,4 @@
-mainApp.service('AuthenticationService', function($q,AuthenticationResource,LocalStorage,Constants,UserService) {
+mainApp.service('AuthenticationService', function($q,AuthenticationResource,LocalStorage,Constants,UserUtils) {
   
 //*******************************************************************************************
 //authenticated the user
@@ -9,11 +9,8 @@ mainApp.service('AuthenticationService', function($q,AuthenticationResource,Loca
         var result = response.data;
         if(((result.responseCode != undefined && result.responseCode == Constants.RESPONSE_SUCCESS ))&& result.data.authenticated)
             {
-                 
-                //the token is store
-                LocalStorage.set(Constants.TOKEN,result.data.token);
                 //the user is store 
-                UserService.storeUserLocal(result.data.user); 
+                UserUtils.storeUserLocal(result.data.user); 
                 return resolve(true);
             }
         else
@@ -22,7 +19,7 @@ mainApp.service('AuthenticationService', function($q,AuthenticationResource,Loca
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data:error, managed:false});
   });
   })
   };
@@ -36,19 +33,17 @@ mainApp.service('AuthenticationService', function($q,AuthenticationResource,Loca
         if(((result.responseCode != undefined && result.responseCode == Constants.RESPONSE_SUCCESS )))
             {
                  
-                //the token is store
-                LocalStorage.set(Constants.TOKEN,result.data.token);
                 //the user is store 
-                UserService.storeUserLocal(result.data.user); 
+                UserUtils.storeUserLocal(result.data.user); 
                 return resolve(result);
             }
         else
             {
-                return reject(result);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -67,18 +62,41 @@ mainApp.service('AuthenticationService', function($q,AuthenticationResource,Loca
             }
         else
             {
-                return resolve({});
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
- 
+//*******************************************************************************************
+//retreive the user by facebook id
+//*******************************************************************************************        
+  function getUserByFacebookId(facebookId) {
+  return $q(function(resolve, reject) {
+    AuthenticationResource.getUserByFacebookId(facebookId).then(function (response) {
+        var result = response.data;
+        if(((result.responseCode != undefined && result.responseCode == Constants.RESPONSE_SUCCESS )))
+            {
+                 
+               
+                return resolve(result.data);
+            }
+        else
+            {
+                return reject({data: result.data, managed:true});
+            }
+           
+    }, function (error) {
+            return reject({data: error, managed:false});
+  });
+  })
+  }; 
   return {
     authenticate: authenticate,
     signup: signup,
-    getUserByUserName:getUserByUserName
+    getUserByUserName:getUserByUserName,
+    getUserByFacebookId:getUserByFacebookId
   }
 });

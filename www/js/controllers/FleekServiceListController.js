@@ -1,5 +1,5 @@
  
-mainApp.controller('FleekServiceListController', function($scope,$state, $stateParams,ServiceService,serviceListId) {
+mainApp.controller('FleekServiceListController', function($scope,$state, $stateParams,ServiceService,serviceListId,ErrorHelper) {
    
     
 //*******************************************************************************************
@@ -10,7 +10,14 @@ mainApp.controller('FleekServiceListController', function($scope,$state, $stateP
        ServiceService.getServiceByTypeId(serviceListId).then(function (result) {
        $scope.serviceList  = result;   
         }, function (error) {
-            console.log('error');
+            if(error.managed)
+            {
+                ErrorHelper.showError('TODO: MANAGED');
+            }
+          else
+              {
+                ErrorHelper.showError(error);  
+              }
         });   
     }  
 

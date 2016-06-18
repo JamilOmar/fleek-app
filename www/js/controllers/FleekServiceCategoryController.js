@@ -1,5 +1,5 @@
  
-mainApp.controller('FleekServiceCategoryController', function($scope,$state, ServiceTypeService) {
+mainApp.controller('FleekServiceCategoryController', function($scope,$state, ServiceTypeService,ErrorHelper) {
    
     
 //*******************************************************************************************
@@ -11,7 +11,14 @@ mainApp.controller('FleekServiceCategoryController', function($scope,$state, Ser
            console.log(result);
        $scope.serviceCategoryList  = result;   
         }, function (error) {
-            console.log('error');
+           if(error.managed)
+            {
+                ErrorHelper.showError('TODO: MANAGED');
+            }
+          else
+              {
+                ErrorHelper.showError(error);  
+              }
         });   
     }
    

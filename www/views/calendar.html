@@ -7,13 +7,13 @@
 <ion-header-bar class="bar-dark">
 </ion-header-bar>
   <ion-content>
-       <calendar on-press="press(dayClass)" selected="dayClass"  ></calendar>
+       <calendar on-press="press(calendarClass)" calendar-info="calendarClass"  ></calendar>
    <div class="row">
        <div class="col">
        <ion-scroll direction="y" style="height:160px; min-height: 160px;  white-space: nowrap;">
         <a href="#" class="item " ng-repeat="item in items">
-          <button class="button button-block button-royal" ui-sref="tabs.providerselection" ui-sref-opts="dayClass">
-        9:{{item.id}}
+          <button class="button button-block button-royal" ng-click="goTo('tabs.providerselection',item)"  >
+       {{item.from + " " +  item.to  }}
       </button>        
         </a>
     </ion-scroll>

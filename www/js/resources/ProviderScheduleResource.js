@@ -96,12 +96,30 @@ function getProviderScheduleByProviderIdAndDefault(providerId) {
             return reject(error);
     });
    });
-  };    
+  };
+//*******************************************************************************************
+//method to get the provider schedule complete by provider Id and that is default
+//*******************************************************************************************      
+function getProviderScheduleCompleteByProviderIdAndDefault(providerId) {
+
+   return $q(function(resolve, reject) {    
+    $http({
+        method : "GET",
+        url :baseUrl+ "/v1/providerScheduleService/getProviderScheduleCompleteByProviderIdAndDefault/"+providerId
+        }).then(function (result) {
+            return resolve(result);
+    }, function (error) {
+            return reject(error);
+    });
+   });
+  };       
   return {
-    addProviderSchedule: addProvider,
-    updateProviderSchedule: updateProvider,
+    addProviderSchedule: addProviderSchedule,
+    updateProviderSchedule: updateProviderSchedule,
     deactivateProviderSchedule:deactivateProviderSchedule,
     getProviderScheduleById:getProviderScheduleById, 
-    getProviderScheduleByProviderId:getProviderScheduleByProviderId
+    getProviderScheduleByProviderId:getProviderScheduleByProviderId,
+    getProviderScheduleByProviderIdAndDefault:getProviderScheduleByProviderIdAndDefault,  
+    getProviderScheduleCompleteByProviderIdAndDefault:getProviderScheduleCompleteByProviderIdAndDefault
   }
 });

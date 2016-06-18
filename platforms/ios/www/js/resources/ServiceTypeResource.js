@@ -19,8 +19,15 @@ mainApp.factory('ServiceTypeResource', function($http,$q,$base64,LocalStorage,Co
     });
    });
   };
+//*******************************************************************************************
+//get service Type    
+//*******************************************************************************************    
+  function getImage(picture) {
+   return baseUrl+ "/v1/serviceTypeService/getServiceTypePicture/" + picture +"?access_token="+ LocalStorage.get(Constants.TOKEN);      
+  };    
  
   return {
-    getServiceType: getServiceType
+    getServiceType: getServiceType,
+      getImage:getImage
   }
 });

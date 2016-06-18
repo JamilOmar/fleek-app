@@ -1,6 +1,8 @@
-<ion-view view-title="Fleek" id="profile-view">
-<ion-header>    
-</ion-header>    
+<ion-view view-title="Fleek" id="profile-view" nav-direction="foward" >
+ <ion-nav-buttons side="right">
+  <button class="icon ion-calendar" ui-sref="tabs.profilesettings">
+  </button>
+</ion-nav-buttons> 
     <ion-content>     
         <div class="global-profile-background">
         <div class="row global-row-profile-height-title">
@@ -19,21 +21,85 @@
                   <p class="global-profile-black-panel">
         {{data.name +" " +data.lastname }}
                 </p>
-                {{data.username}}
+        {{data.username}}
             </div>
         </div>
         
             </div>
         </div>
         </div>
-         <div class="row" >
-            <div class="col">
-           <p>Telefono</p>
-            </div>
+      
+    <div class="list">
+        <div class= "item item-divider">Info</div>
+                <label class="item ">
+                {{"profile_email" | translate}}
+                    <span class="item-note">   {{data.username}}</span>
+                </label>
+          <label class="item item-input item-stacked-label">
+                <span class="input-label">Telefono</span>
+                     <p>  {{data.username}}</p>
+                </label>
+
+        <label class="item item-input item-stacked-label">
+                <span class="input-label">{{"profile_country" | translate}}</span>
+                     <p>  {{data.username}}</p>
+                </label>
+          <label class="item item-input item-stacked-label">
+                <span class="input-label">{{"profile_appointments" | translate}}</span>
+                     <p>  {{data.username}}</p>
+                </label>
+          <label class="item item-input item-stacked-label">
+                <span class="input-label">{{"profile_gender" | translate}}</span>
+                     <p>  {{data.username}}</p>
+                </label>
+          
+          <label class="item item-input item-stacked-label">
+                <span class="input-label">{{"profile_birthday" | translate}}</span>
+                     <p>  {{data.username}}</p>
+                </label>
+        
         </div>
+     <div class="list">
+        <div class= "item item-divider">Proveedor</div>
+                <label class="item ">
+                {{"profile_email" | translate}}
+                    <span class="item-note">   {{data.username}}</span>
+                </label>
+          <label class="item item-input item-stacked-label">
+                <span class="input-label">Telefono</span>
+                     <p>  {{data.username}}</p>
+                </label>
+
+        <label class="item item-input item-stacked-label">
+                <span class="input-label">{{"profile_country" | translate}}</span>
+                     <p>  {{data.username}}</p>
+                </label>
+          <label class="item item-input item-stacked-label">
+                <span class="input-label">{{"profile_appointments" | translate}}</span>
+                     <p>  {{data.username}}</p>
+                </label>
+          <label class="item item-input item-stacked-label">
+                <span class="input-label">{{"profile_gender" | translate}}</span>
+                     <p>  {{data.username}}</p>
+                </label>
+          
+          <label class="item item-input item-stacked-label">
+                <span class="input-label">{{"profile_birthday" | translate}}</span>
+                     <p>  {{data.username}}</p>
+                </label>
+        
+        </div>    
         <div class="row" >
-            <div class="col">
-           <p>Clientes Atendidos</p>
+             <div class="col col-33">
+          
+            </div>
+              <div class="col col-33">
+          <button class="button button-block button-royal" ui-sref='tabs.profilesettings'>
+             Listo
+            </button>
+            </div>
+              <div class="col col-33">
+          
             </div>
         </div>
     

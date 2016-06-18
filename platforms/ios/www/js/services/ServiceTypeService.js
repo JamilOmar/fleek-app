@@ -11,17 +11,21 @@ mainApp.service('ServiceTypeService', function($q,ServiceTypeResource,Constants)
             }
         else
             {
-                return resolve({});
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject({});
+            return reject({data: error, managed:false});
   });
   })
   };
+  function getImage(picture) {
+    return ServiceTypeResource.getImage(picture);
+  };    
  
   return {
-    getServiceType: getServiceType
+    getServiceType: getServiceType,
+    getImage:getImage  
   }
 });
 

@@ -1,6 +1,6 @@
  
-mainApp.controller('ProviderSettingsServiceListController', function($scope,$state, $stateParams,$ionicModal,$filter,ProviderServiceService,UserService,serviceListId,$ionicPopup,Constants,ErrorHelper) {
-var usr =UserService.getUserLocal();           
+mainApp.controller('ProviderSettingsServiceListController', function($scope,$state, $stateParams,$ionicModal,$filter,ProviderServiceService,UserUtils,serviceListId,$ionicPopup,Constants,ErrorHelper) {
+var usr =UserUtils.getUserLocal();           
 //*******************************************************************************************
 //get service list
 //*******************************************************************************************       

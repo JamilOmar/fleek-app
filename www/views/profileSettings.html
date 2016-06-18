@@ -1,0 +1,34 @@
+<ion-view  id="profile-settings-view" nav-direction="backward" >
+<ion-nav-title>
+      Fleek
+</ion-nav-title>
+<ion-content>
+  
+    <div class="list">
+      <div class="item item-divider">
+    {{"profileSettings_title" | translate}}
+  </div>
+    <a class="item item-icon-left" ui-sref="tabs.profilesettingsbasic">
+    <i class="icon ion-person"></i>
+    {{"profileSettings_basic" | translate}}
+  </a>    
+    <a class="item item-icon-left" ui-sref="tabs.providersettings">
+    <i class="icon ion-person"></i>
+    {{"profileSettings_provider" | translate}}
+  </a>
+</div>
+       <div class="row" >
+             <div class="col col-33">
+          
+            </div>
+              <div class="col col-33">
+      <button class="button button-block button-royal" type="submit" ng-click="logoutFacebook()" >
+         {{"profileSettings_logout" | translate}}
+            </button>
+            </div>
+              <div class="col col-33">
+          
+            </div>
+        </div>   
+</ion-content>
+</ion-view>   

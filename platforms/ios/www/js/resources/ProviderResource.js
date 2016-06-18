@@ -23,7 +23,7 @@ mainApp.factory('ProviderResource', function($http,$q,$base64) {
   function updateProvider(data) {
     return $q(function(resolve, reject) {
      $http({
-        method : "POST",
+        method : "PUT",
         data:data,
         url :baseUrl+ "/v1/providerService/updateProvider"
         }).then(function (result) {
@@ -49,10 +49,26 @@ function getProviderById(providerId) {
     });
    });
   };
- 
+ //*******************************************************************************************
+//method for get providers by coordinates and service id
+//*******************************************************************************************      
+function getProviderByLocationForSearch(latitude, longitude,serviceId) {
+
+   return $q(function(resolve, reject) {    
+    $http({
+        method : "GET",
+        url :baseUrl+ "/v1/providerService/getProviderByLocationForSearch/"+latitude + "/" + longitude+ "/" + serviceId
+         }).then(function (result) {
+            return resolve(result);
+    }, function (error) {
+            return reject(error);
+    });
+   });
+  };  
   return {
     addProvider: addProvider,
     updateProvider: updateProvider,
-    getProviderById:getProviderById
+    getProviderById:getProviderById,
+    getProviderByLocationForSearch:getProviderByLocationForSearch
   }
 });

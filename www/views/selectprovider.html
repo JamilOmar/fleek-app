@@ -9,7 +9,7 @@ Fleek
 <input type="search" placeholder='{{"select_provider_search" | translate}}'>
 </label><button class="button icon ion-map" ng-click="goTo('tabs.searchmap')"></button>
 </div>
-<a class="item" ng-repeat="provider in providers" ui-sref="tabs.provider" class="global-paddin-zero">
+<a class="item" ng-repeat="provider in providers"  ng-click="goTo('tabs.provider',provider)"  class="global-paddin-zero">
 <div class="row">
 <div class="col">
 <img  facebook-usr-src="{{provider.user.facebookId}}"  class="global-provider-avatar"  />
@@ -17,9 +17,8 @@ Fleek
 <div class="col col-50">
 <h2>{{provider.user.name + " " + provider.user.lastname }}</h2>
 <p>{{provider.user.username}}</p>
-<rating ng-model="provider.rating"  max="max"></rating>
-<p>{{"select_provider_price" | translate}} {{"$ "+provider.Metadata.price +" "+provider.Metadata.currencyCode }}</p>
-<p>{{"select_provider_duration" | translate}} {{provider.Metadata.averageTimePerSession }} </p>
+    <p> {{roundNumber(provider.Metadata.distance,provider.Metadata.distanceType)}}</p>
+<rating ng-model="provider.rating"  max="5"></rating>
 </div>
 <div class="col">
 <img  ng-src="{{provider.provider_client_image}}"  class="global-provider-work" />
@@ -27,7 +26,7 @@ Fleek
 </div>
 <div class="row global-row-content-black-white">
 <div class="col global-col-center">
-{{roundNumber(provider.Metadata.distance,provider.Metadata.distanceType)}}
+
   </div>
   <div class="col col-75">
      <p>{{provider.provider_zone}}</p>

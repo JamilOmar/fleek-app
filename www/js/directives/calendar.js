@@ -3,25 +3,30 @@ mainApp.directive("calendar", function() {
         restrict: "AEC",
         templateUrl: "templates/calendar.html",
         scope: {
-            selected: "=selected",
+            calendarInfo: "=calendarInfo",
             press :"&onPress"
            
         },
 //***************************************************************        
        link: function(scope) {
-            scope.selected.date = _removeTime(scope.selected.date || moment());
-            scope.month = scope.selected.date.clone();
-
-            var start = scope.selected.date.clone();
+     
+           scope.$watch('calendarInfo.providerInformation', function (providerInformation) {
+             if(scope.calendarInfo.providerInformation)
+              scope.createCalendar();
+           });
+           scope.createCalendar = function()
+           {
+            scope.calendarInfo.date = _removeTime(scope.calendarInfo.date || moment());
+            scope.month = scope.calendarInfo.date.clone();
+            var start = scope.calendarInfo.date.clone();
             start.date(1);
             _removeTime(start.day(0));
-
             _buildMonth(scope, start, scope.month);
-
+           }
             scope.select = function(day) {
-                scope.selected.date = day.date;
+                scope.calendarInfo.selectedDate = day;
                 //method to call the parent method
-                scope.press( scope.selected.date);
+                scope.press( scope.calendarInfo.selectedDate);
               
             };
 
@@ -62,25 +67,36 @@ mainApp.directive("calendar", function() {
         scope.weeks = [];
         var done = false, date = start.clone(), monthIndex = date.month(), count = 0;
         while (!done) {
-            scope.weeks.push({ days: _buildWeek(date.clone(), month) });
+            scope.weeks.push({ days: _buildWeek(date.clone(), month,scope) });
             date.add(1, "w");
             done = count++ > 2 && monthIndex !== date.month();
             monthIndex = date.month();
         }
     }
 //***************************************************************
-    function _buildWeek(date, month) {
+    function _buildWeek(date, month,scope) {
         var days = [];
+        var exd =null;
+        var ed  =scope.calendarInfo.providerInformation.enabledDays;
         for (var i = 0; i < 7; i++) {
+            if(scope.calendarInfo.providerInformation.exceptionDays)
+            {
+                exd  = scope.calendarInfo.providerInformation.exceptionDays.first(function(d){ return date.isSame(new Date(d.date)) });
+            
+                
+            }
             days.push({
                 name: date.format("dd").substring(0, 1),
                 number: date.date(),
                 isCurrentMonth: date.month() === month.month(),
+                isEnabled : (ed.first(function(d){ return d.dayOfWeek == i }) != undefined ) && !exd ,
                 isToday: date.isSame(new Date(), "day"),
                 date: date
+               
             });
             date = date.clone();
             date.add(1, "d");
+            exd =null;
         }
         return days;
     }

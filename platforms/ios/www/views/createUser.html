@@ -1,11 +1,15 @@
 <ion-view view-title="login" hide-nav-bar="true" id="create-user-view" nav-direction="foward" cache-view="false">
 <ion-content>
-   
     <div class="row">
         <div class="col">
             <h1>
                 Fleek    
             </h1>
+        </div>         
+    </div>
+        <div class="row">
+        <div class="col">
+           <img ng-src="{{user.pictureUrl}}" class="global-profile-img">
         </div>         
     </div>
     <div class="row">
@@ -18,61 +22,31 @@
     <ion-slide-box show-pager="false">
      <ion-slide>
         <form name="createUserFormUsername" novalidate ng-submit="nextSlide(user)">
+        <div class="row row-center">
+        <div class="col col-10">
+        </div>
+        <div class="col col-80">   
+        </div>
+        <div class="col col-10">
+        </div>
+    </div>        
     <div class="row row-center">
         <div class="col col-10">
         </div>
         <div class="col col-80">
-
-          
-            <label class="item item-input" ng-class="{ 'has-errors' : createUserFormUsername.email.$invalid && !createUserFormUsername.email.$pristine, 'no-errors' : createUserFormUsername.email.$valid}" >
+<!--            <label class="item item-input" ng-class="{ 'has-errors' : createUserFormUsername.email.$invalid && !createUserFormUsername.email.$pristine, 'no-errors' : createUserFormUsername.email.$valid}" >
             <input type="email"  ng-model="user.email" name ='email' required  ng-minlength="0" ng-maxlength="254"  placeholder="{{'create_user_email' | translate}}"/>
-            </label>
+            </label>-->
             <label class="item item-input" ng-class="{ 'has-errors' : createUserFormUsername.username.$invalid && !createUserFormUsername.username.$pristine, 'no-errors' : createUserFormUsername.username.$valid}" >
             <input type="text"  ng-model="user.username" name ='username' required  ng-minlength="3" ng-maxlength="20"  placeholder="{{'create_user_username' | translate}}"/>
             </label>
-
-            <label class="item item-input" ng-class="{ 'has-errors' : createUserFormUsername.password.$invalid && !createUserFormUsername.password.$pristine, 'no-errors' : createUserFormUsername.password.$valid}">
-            <input type="password" ng-model="user.password"  name='password' ng-minlength="3" ng-maxlength="64" required placeholder="{{'create_user_password' | translate}}"/>
-            </label>
-
-            
-           
-        </div>
-        <div class="col col-10">
-        </div>
-    </div>
-          <div class="row row-center">
-        <div class="col col-33">
-        </div>
-        <div class="col col-33">
-            <button  class="button button-block button-royal" type="submit"  ng-disabled="createUserFormUsername.$invalid"  >
-            {{"create_user_next" | translate}}
-            </button>
-              
-            
-        </div>
-        <div class="col col-33">
-        </div>
-    </div>
-         </form>  
-        </ion-slide>
-        
-        <ion-slide>
-        <form name="createUserForm" novalidate ng-submit="createUser(user)">    
-    <div class="row row-center">
-        <div class="col col-10">
-        </div>
-        <div class="col col-80">
-             
-             <label class="item item-input" ng-class="{ 'has-errors' : createUserForm.name.$invalid && !createUserForm.name.$pristine, 'no-errors' : createUserForm.name.$valid}" >
-                <input type="text"  ng-model="user.name" name ='name' required  ng-minlength="0" ng-maxlength="60"  placeholder="{{'create_user_name' | translate}}"/>
+            <label class="item item-input" ng-class="{ 'has-errors' : createUserFormUsername.name.$invalid && !createUserFormUsername.name.$pristine, 'no-errors' : createUserFormUsername.name.$valid}" >
+            <input type="text"  ng-model="user.name" name ='name' required  ng-minlength="0" ng-maxlength="60"  placeholder="{{'create_user_name' | translate}}"/>
            </label>
-            <label class="item item-input" ng-class="{ 'has-errors' : createUserForm.lastname.$invalid && !createUserForm.lastname.$pristine, 'no-errors' : createUserForm.lastname.$valid}" >
+            <label class="item item-input" ng-class="{ 'has-errors' : createUserFormUsername.lastname.$invalid && !createUserFormUsername.lastname.$pristine, 'no-errors' : createUserFormUsername.lastname.$valid}" >
                 <input type="text"  ng-model="user.lastname" name ='lastname' required  ng-minlength="0" ng-maxlength="60"  placeholder="{{'create_user_lastname' | translate}}"/>
-           </label>    
-            
-              
-          <label class="item item-input item-select">
+           </label>
+              <label class="item item-input item-select">
                 <div class="input-label">
                       {{"create_user_gender" | translate}}
                 </div>
@@ -83,34 +57,37 @@
                
                 </select>
             </label>
-         
         </div>
         <div class="col col-10">
         </div>
     </div>
           <div class="row row-center">
-        <div class="col col-33">
+        <div class="col col-10">
         </div>
-        <div class="col col-33">
-            <button  class="button button-block button-royal" type="submit" ng-disabled="createUserForm.$invalid" >
-            {{"create_user_save" | translate}}
+        <div class="col col-80">
+            <button  class="button button-block button-royal" type="submit"  ng-disabled="createUserFormUsername.$invalid"  >
+            {{"create_user_next" | translate}}
             </button>
               
             
         </div>
-        <div class="col col-33">
+        <div class="col col-10">
         </div>
     </div>
-        </form>  
+         </form>  
+        </ion-slide>
+        
+        <ion-slide>
+     
         </ion-slide>    
         </ion-slide-box>
    
       
 </ion-content>
-    <ion-footer-bar class="bar-dark">
+   <!-- <ion-footer-bar class="bar-dark">
         <button class="button button-block button-royal" ui-sref="login">
                 {{"create_user_back" | translate}}
             </button>
        
-    </ion-footer-bar>  
+    </ion-footer-bar>  -->
 </ion-view>   

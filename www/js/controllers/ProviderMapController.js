@@ -1,11 +1,28 @@
  
-mainApp.controller('ProviderMapController', function($scope,$state,$stateParams,$timeout,$q,ProviderService,GoogleService) {
-
+mainApp.controller('ProviderMapController', function($scope,$state,$stateParams,$timeout,$q,ProviderService,GoogleService,ErrorHelper) {
 var searchEventTimeout = undefined;
 $scope.marker= undefined;    
 $scope.providerMap = {};
 $scope.providerMap.locations=[];
-$scope.providerMap.provider =$stateParams.provider;    
+//*******************************************************************************************
+//method to go to other pages
+//*******************************************************************************************      
+  $scope.goTo = function(path,obj)
+    {
+        $state.go(path,obj);
+    }     
+
+//*******************************************************************************************
+//load the provider's data
+//*******************************************************************************************        
+ $scope.loadData = function()
+    {
+    
+     $scope.isNew =$stateParams.providerInformation.new;
+     $scope.providerMap.provider =$stateParams.providerInformation.provider;
+     $scope.map = GoogleService.createMap(document.getElementById("map"));
+     $scope.providerMap.query=$stateParams.providerInformation.provider.address;
+    }     
 //*******************************************************************************************
 //watch when the user inputs information
 //*******************************************************************************************  
@@ -38,27 +55,51 @@ $scope.createProvider = function()
     $scope.providerMap.provider.latitute =  $scope.providerMap.selectedLocation.geometry.location.lat();
     $scope.providerMap.provider.longitude =  $scope.providerMap.selectedLocation.geometry.location.lng();
     $scope.providerMap.provider.address =  $scope.providerMap.selectedLocation.formatted_address;
+    if($scope.isNew)
+    {
+        
+    
     $state.go('tabs.providersettings',{provider:$scope.providerMap.provider});
-        /*
-      ProviderService.provider(provider).then(function (result) {   
-          if(result)
-            {
-                $state.go('tabs.home');
-            }
-            else
-            {        
-                alert('error');
-            }
+    
+      ProviderService.addProvider( $scope.providerMap.provider).then(function (result) {   
+
+        $state.goTo('tabs.profilesettings',{provider:$scope.providerMap.provider});
+ 
     }, function (error) {
-            console.log('error');
+           if(error.managed)
+            {
+                ErrorHelper.showError('TODO: MANAGED');
+            }
+          else
+              {
+                ErrorHelper.showError(error);  
+              }
            
-  });   */
+  });
+    }
+    else
+        ProviderService.updateProvider( $scope.providerMap.provider).then(function (result) {
+          
+          $scope.goTo('tabs.profilesettings',null);
+               
+    }, function (error) {
+          if(error.managed)
+            {
+                ErrorHelper.showError('TODO: MANAGED');
+            }
+          else
+              {
+                ErrorHelper.showError(error);  
+              }
+         
+  });  
 }
 //*******************************************************************************************
 //select the location
 //*******************************************************************************************  
 $scope.selectLocation= function(location)
 {
+    
       $scope.cleanLocation(false); 
       $scope.marker = GoogleService.createMarker($scope.map, location.geometry.location,true);
       $scope.marker.addListener('dragend', $scope.selectLocationByLatLng );
@@ -95,9 +136,9 @@ $scope.cleanLocation= function(clearSelectedLocation)
         }
 }
 //*******************************************************************************************
-//get the map
+//load data and create the map
 //*******************************************************************************************  
-  $scope.map = GoogleService.createMap(document.getElementById("map"));
+   $scope.loadData();
     
  });  
   

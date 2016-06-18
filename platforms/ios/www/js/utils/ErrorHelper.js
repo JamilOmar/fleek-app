@@ -1,9 +1,10 @@
 mainApp.factory('ErrorHelper', function($ionicPopup) {
 //*******************************************************************************************
-//set value on local storage
+//Show popup with error
 //*******************************************************************************************  
  
     function showError(error) {
+        log(error);
         var errorPopup = $ionicPopup.alert({
             title: 'Error',
             template: 'There it was an unexpected error.'
@@ -11,8 +12,14 @@ mainApp.factory('ErrorHelper', function($ionicPopup) {
         errorPopup.then(function(res) {
         });
     }
-    
+//*******************************************************************************************
+//log error
+//*******************************************************************************************      
+   function log(error) {
+        console.log(error);
+    }    
     return {
-    showError: showError
+    showError: showError,
+    log:log    
   }
 });

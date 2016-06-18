@@ -3,45 +3,56 @@
         <div style="background-image:url('../img/app/background.jpg');text-align:center;color:white;">
         <div class="row" style="height:150px">
             <div class="col">
-            <img  ng-src="img/app/home/neworder.jpg" style="position: static;
-   border-radius: 50%;
-    max-width: 120px;
-    height: 120px;"  />
+              <img  facebook-usr-src="{{reservation.provider.user.facebookId}}"  class="global-profile-avatar"  />
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <div class="row global-row-center">
             <div class="col">
-        <rating ng-model="rate"  max="max"></rating>
+         <rating ng-model="reservation.provider.rating"  max="max"></rating>
             </div>
         </div><div class="row global-row-center">
             <div class="col">
               <p style="background:black;">
-        "Maria Fernanda Colina"
+         {{reservation.provider.user.name + " " + reservation.provider.user.lastname }}
                 </p>
-                El inca
+                {{reservation.provider.user.username}}
             </div>
         </div>
             </div>
         </div>
         </div>    
- <ion-slide-box show-pager="false">
+ <ion-slide-box show-pager="false" ng-init="lockSlide()">
      <ion-slide>
     <div class="row  global-row-center">
         <div class="col">
+            
+                <h4>
+              {{"providerSelection_title" | translate}}</h4>
+            
             <p>
-               Confirmas tu cita
+            <b> {{"providerSelection_price" | translate}}</b>
+            
+              {{"$"+reservation.selectedService.price + " " + reservation.selectedService.currencyCode }}
             </p>
             <p>
-               Hora: 930
+            <b>{{"providerSelection_date" | translate}}</b>
+           
+               {{formatDate(reservation.selectedDate.day.date)}}
             </p>
             <p>
-               El inca
+            <b>{{"providerSelection_time" | translate}}</b>
+            
+             {{reservation.selectedDate.time.from}}
+            </p>
+            <p>
+            <b>{{"providerSelection_place" | translate}}
+            </b>
+             {{reservation.provider.address}}
             </p>
               <div class="button-bar bar-dark">
-  <a class="button" ng-click="nextSlide()">Aceptar</a>
-  <a class="button" ui-sref='tabs.providerinformation'>Cancelar</a>
+  <a class="button" ng-click="nextSlide()">{{"providerSelection_save" | translate}}</a>
 
 </div>
         </div>         
@@ -51,21 +62,18 @@
     <div class="row global-row-center">
         <div class="col">
             <p>
-             Muchas gracias por confirmar
+             {{"providerSelection_thanks" | translate}}
             </p>
             <p>
-               Hora: 930
-            </p>
-            <p>
-               Por favor si tienes una duda llama a 
+             {{"providerSelection_doubts" | translate}}
                 
             </p>
             <p>
-            23040923480293842
+             {{reservation.provider.telephone}}
             
             </p>
-             <button class="button button-block button-royal" ui-sref='tabs.fleekservicecategory'>
-             Listo
+             <button class="button button-block button-royal" ng-click="goToFirstTab()">
+             {{"providerSelection_ready" | translate}}
             </button>
         </div>         
     </div>

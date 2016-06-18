@@ -9,6 +9,8 @@
     "ion-google-place": "^0.0.1",
     "ng-intl-tel-input": "^1.4.0",
     "ionic-image-lazy-load": "ion-image-lazy-load#*",
-    "angular-img-http-src": "^0.1.0"
+    "angular-img-http-src": "^0.1.0",
+    "ion-gallery": "^0.1.14",
+    "ionic-datepicker": "^1.1.0"
   }
 }

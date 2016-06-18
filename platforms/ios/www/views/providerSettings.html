@@ -1,17 +1,42 @@
-<ion-view  id="provider-settings-view" nav-direction="foward" >
-<ion-nav-title>
-      Fleek
-</ion-nav-title>
-<ion-content>
-  
-    <div class="list">
-          <div class="item item-divider">
-    {{"providerSettings_title" | translate}}
-  </div>
-    <a class="item item-icon-left" href="#">
-    <i class="icon ion-person"></i>
-    {{"providerSettings_basic" | translate}}
-  </a>
+<ion-view view-title="Fleek" id="provider-settings-view" nav-direction="foward" >
+<ion-header>    
+</ion-header>     
+    <ion-content>           
+    <form name="providerSettingsForm" novalidate ng-submit="updateProvider(data)">      
+     <div class="list">
+        <div class= "item item-divider">   {{"providerSettings_title" | translate}}</div>
+       
+     
+        <label class="item item-input"  ng-class="{ 'has-errors' : providerSettingsForm.telephone.$invalid && !providerSettingsForm.telephone.$pristine, 'no-errors' : providerSettingsForm.telephone.$valid}">
+        <input type="text" placeholder="{{'providerSettings_telephone' | translate}}" ng-model="data.telephone" name ='telephone' required  ng-minlength="3" ng-maxlength="25" />
+        </label>
+ <li class="item item-toggle">
+   {{"providerSettings_isForMale" | translate}}
+     <label class="toggle toggle-balanced">
+       <input type="checkbox" ng-model="data.isForMale" >
+       <div class="track">
+         <div class="handle"></div>
+       </div>
+     </label>
+  </li>
+ <li class="item item-toggle">
+   {{"providerSettings_isForFemale" | translate}}
+     <label class="toggle toggle-balanced">
+       <input type="checkbox" ng-model="data.isForFemale">
+       <div class="track">
+         <div class="handle"></div>
+       </div>
+     </label>
+  </li>
+ <li class="item item-toggle">
+   {{"providerSettings_allowsKids" | translate}}
+     <label class="toggle toggle-balanced">
+       <input type="checkbox" ng-model="data.allowsKids">
+       <div class="track">
+         <div class="handle"></div>
+       </div>
+     </label>
+  </li>
   <div class="item item-divider">
   {{"providerSettings_work_schedule" | translate}}
   </div>
@@ -29,13 +54,26 @@
     <i class="icon ion-pricetag"></i>
       {{"providerSettings_services" | translate}}
   
-  </a>
-
-  <a class="item item-icon-left" href="#">
+  </a>         
+  <a class="item item-icon-left" ng-click='goToMap(data)'>
     <i class="icon ion-location"></i>
     {{"providerSettings_location" | translate}}
-  </a>
-</div>
-      
-</ion-content>
-</ion-view>   
+  </a>         
+        </div>    
+        <div class="row" >
+             <div class="col col-33">
+          
+            </div>
+              <div class="col col-33">
+      <button class="button button-block button-royal" type="submit" ng-disabled="providerSettingsForm.$invalid" >
+         {{"providerSettings_save" | translate}}
+            </button>
+            </div>
+              <div class="col col-33">
+          
+            </div>
+        </div>
+    
+        </form>
+     </ion-content>
+</ion-view>

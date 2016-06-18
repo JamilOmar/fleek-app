@@ -3,24 +3,21 @@
         <div style="background-image:url('../img/app/background.jpg');text-align:center;color:white;">
         <div class="row" style="height:150px">
             <div class="col">
-            <img  ng-src="img/app/home/neworder.jpg" style="position: static;
-   border-radius: 50%;
-    max-width: 120px;
-    height: 120px;"  />
+              <img  facebook-usr-src="{{reservation.provider.user.facebookId}}"  class="global-profile-avatar"  />
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <div class="row global-row-center">
             <div class="col">
-        <rating ng-model="rate"  max="max"></rating>
+         <rating ng-model="reservation.provider.rating"  max="max"></rating>
             </div>
         </div><div class="row global-row-center">
             <div class="col">
               <p style="background:black;">
-        "Maria Fernanda Colina"
+         {{reservation.provider.user.name + " " + reservation.provider.user.lastname }}
                 </p>
-                El inca
+                {{reservation.provider.user.username}}
             </div>
         </div>
             </div>
@@ -33,11 +30,17 @@
             <p>
                Confirmas tu cita
             </p>
-            <p>
-               Hora: 930
+             <p>
+               Costo:  {{reservation.provider.user.address}}
+            </p>
+               <p>
+               Fecha:  {{reservation.provider.user.address}}
             </p>
             <p>
-               El inca
+               Hora:  {{reservation.provider.user.address}}
+            </p>
+            <p>
+             Lugar: {{reservation.provider.user.address}}
             </p>
               <div class="button-bar bar-dark">
   <a class="button" ng-click="nextSlide()">Aceptar</a>
@@ -61,7 +64,7 @@
                 
             </p>
             <p>
-            23040923480293842
+             {{reservation.provider.user.telephone}}
             
             </p>
              <button class="button button-block button-royal" ui-sref='tabs.fleekservicecategory'>

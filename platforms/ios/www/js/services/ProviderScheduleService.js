@@ -13,11 +13,11 @@ mainApp.service('ProviderScheduleService', function($q,ProviderScheduleResource,
             }
         else
             {
-                return reject(result.data);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -34,11 +34,11 @@ mainApp.service('ProviderScheduleService', function($q,ProviderScheduleResource,
             }
         else
             {
-                return reject(result.data);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -55,11 +55,11 @@ mainApp.service('ProviderScheduleService', function($q,ProviderScheduleResource,
             }
         else
             {
-                return reject(result.data);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };    
@@ -78,11 +78,11 @@ mainApp.service('ProviderScheduleService', function($q,ProviderScheduleResource,
             }
         else
             {
-                return resolve({});
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -101,11 +101,11 @@ mainApp.service('ProviderScheduleService', function($q,ProviderScheduleResource,
             }
         else
             {
-                return resolve({});
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -124,21 +124,45 @@ mainApp.service('ProviderScheduleService', function($q,ProviderScheduleResource,
             }
         else
             {
-                return resolve({});
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };    
- 
+ //*******************************************************************************************
+//method to get the provider schedule complete by provider and default
+//*******************************************************************************************        
+  function getProviderScheduleCompleteByProviderIdAndDefault(providerId){
+  return $q(function(resolve, reject) {
+    ProviderScheduleResource.getProviderScheduleCompleteByProviderIdAndDefault(providerId).then(function (response) {
+        var result = response.data;
+        if(((result.responseCode != undefined && result.responseCode == Constants.RESPONSE_SUCCESS )))
+            {
+                 
+               
+                return resolve(result.data);
+            }
+        else
+            {
+                return reject({data: result.data, managed:true});
+            }
+           
+    }, function (error) {
+            return reject({data: error, managed:false});
+  });
+  })
+  };   
   return {
     addProviderSchedule: addProviderSchedule,
-    updateProviderSchedule:updateProviderSchedule,deactivateProviderSchedule:deactivateProviderSchedule,
+    updateProviderSchedule:updateProviderSchedule,
+    deactivateProviderSchedule:deactivateProviderSchedule,
     getProviderScheduleById:getProviderScheduleById,
     getProviderScheduleByProviderId:getProviderScheduleByProviderId,
-    getProviderScheduleByProviderIdAndDefault:getProviderScheduleByProviderIdAndDefault
+    getProviderScheduleByProviderIdAndDefault:getProviderScheduleByProviderIdAndDefault,
+    getProviderScheduleCompleteByProviderIdAndDefault:getProviderScheduleCompleteByProviderIdAndDefault  
   }
 });
 

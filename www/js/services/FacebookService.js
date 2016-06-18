@@ -132,9 +132,11 @@ mainApp.service('FacebookService', function($q,FacebookResource,LocalStorage,Con
   function logout() {
     return $q(function(resolve, reject) {
     FacebookResource.logout().then(function (response) {
-       return resolve(response);
+    UserUtils.deleteAllLocalInformation();
+    return resolve(response);
            
     }, function (error) {
+      UserUtils.deleteAllLocalInformation();    
              return reject(error);
   });
   })

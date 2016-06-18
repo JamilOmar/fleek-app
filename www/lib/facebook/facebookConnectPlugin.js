@@ -13,10 +13,10 @@ if (cordova.platformId == "browser") {
 
     var facebookConnectPlugin = {
 
-        getLoginStatus: function (s, f) {
+        getLoginStatus: function(s, f) {
             // Try will catch errors when SDK has not been init
             try {
-                FB.getLoginStatus(function (response) {
+                FB.getLoginStatus(function(response) {
                     s(response);
                 });
             } catch (error) {
@@ -28,7 +28,7 @@ if (cordova.platformId == "browser") {
             }
         },
 
-        showDialog: function (options, s, f) {
+        showDialog: function(options, s, f) {
 
             if (!options.name) {
                 options.name = "";
@@ -48,17 +48,17 @@ if (cordova.platformId == "browser") {
             if (!options.picture) {
                 options.picture = "";
             }
-            
+
             // Try will catch errors when SDK has not been init
             try {
                 FB.ui(options,
-                function (response) {
-                    if (response && (response.request || !response.error_code)) {
-                        s(response);
-                    } else {
-                        f(response);
-                    }
-                });
+                    function(response) {
+                        if (response && (response.request || !response.error_code)) {
+                            s(response);
+                        } else {
+                            f(response);
+                        }
+                    });
             } catch (error) {
                 if (!f) {
                     console.error(error.message);
@@ -68,14 +68,14 @@ if (cordova.platformId == "browser") {
             }
         },
         // Attach this to a UI element, this requires user interaction.
-        login: function (permissions, s, f) {
+        login: function(permissions, s, f) {
             // JS SDK takes an object here but the native SDKs use array.
             var permissionObj = {};
             if (permissions && permissions.length > 0) {
                 permissionObj.scope = permissions.toString();
             }
-            
-            FB.login(function (response) {
+
+            FB.login(function(response) {
                 if (response.authResponse) {
                     s(response);
                 } else {
@@ -84,7 +84,7 @@ if (cordova.platformId == "browser") {
             }, permissionObj);
         },
 
-        getAccessToken: function (s, f) {
+        getAccessToken: function(s, f) {
             var response = FB.getAccessToken();
             if (!response) {
                 if (!f) {
@@ -97,20 +97,20 @@ if (cordova.platformId == "browser") {
             }
         },
 
-        logEvent: function (eventName, params, valueToSum, s, f) {
+        logEvent: function(eventName, params, valueToSum, s, f) {
             // AppEvents are not avaliable in JS.
             s();
         },
 
-        logPurchase: function (value, currency, s, f) {
+        logPurchase: function(value, currency, s, f) {
             // AppEvents are not avaliable in JS.
             s();
         },
 
-        logout: function (s, f) {
+        logout: function(s, f) {
             // Try will catch errors when SDK has not been init
             try {
-                FB.logout( function (response) {
+                FB.logout(function(response) {
                     s(response);
                 });
             } catch (error) {
@@ -122,12 +122,12 @@ if (cordova.platformId == "browser") {
             }
         },
 
-        api: function (graphPath, permissions, s, f) {
+        api: function(graphPath, permissions, s, f) {
             // JS API does not take additional permissions
-            
+
             // Try will catch errors when SDK has not been init
             try {
-                FB.api(graphPath, function (response) {
+                FB.api(graphPath, function(response) {
                     if (response.error) {
                         f(response);
                     } else {
@@ -144,21 +144,21 @@ if (cordova.platformId == "browser") {
         },
 
         // Browser wrapper API ONLY
-        browserInit: function (appId, version) {
+        browserInit: function(appId, version) {
             if (!version) {
                 version = "v2.0";
             }
             FB.init({
-                appId      : appId,
-                cookie     : true,
-                xfbml      : true,
-                version    : version
+                appId: appId,
+                cookie: true,
+                xfbml: true,
+                version: version
             });
         }
     };
-    
+
     // Bake in the JS SDK
-    (function () {
+    (function() {
         if (!window.FB) {
             console.log("launching FB SDK");
             var e = document.createElement('script');
@@ -174,7 +174,7 @@ if (cordova.platformId == "browser") {
         }
     }());
 
-   // module.exports = facebookConnectPlugin;
+    // module.exports = facebookConnectPlugin;
 
 } else {
 
@@ -182,15 +182,15 @@ if (cordova.platformId == "browser") {
 
     var facebookConnectPlugin = {
 
-        getLoginStatus: function (s, f) {
+        getLoginStatus: function(s, f) {
             exec(s, f, "FacebookConnectPlugin", "getLoginStatus", []);
         },
 
-        showDialog: function (options, s, f) {
+        showDialog: function(options, s, f) {
             exec(s, f, "FacebookConnectPlugin", "showDialog", [options]);
         },
 
-        login: function (permissions, s, f) {
+        login: function(permissions, s, f) {
             exec(s, f, "FacebookConnectPlugin", "login", permissions);
         },
 
@@ -215,15 +215,17 @@ if (cordova.platformId == "browser") {
             exec(s, f, "FacebookConnectPlugin", "getAccessToken", []);
         },
 
-        logout: function (s, f) {
+        logout: function(s, f) {
             exec(s, f, "FacebookConnectPlugin", "logout", []);
         },
 
-        api: function (graphPath, permissions, s, f) {
-            if (!permissions) { permissions = []; }
+        api: function(graphPath, permissions, s, f) {
+            if (!permissions) {
+                permissions = [];
+            }
             exec(s, f, "FacebookConnectPlugin", "graphApi", [graphPath, permissions]);
         }
     };
 
-   // module.exports = facebookConnectPlugin;
+    // module.exports = facebookConnectPlugin;
 }

@@ -96,13 +96,14 @@ function getProviderServiceByProviderIdTypeId(providerId, type,culture) {
             return reject(error);
     });
    });
-  };    
+  };
+    
   return {
     addProviderService: addProviderService,
     updateProviderService: updateProviderService,
     deactivateProviderService:deactivateProviderService,
     getProviderServiceByProviderId:getProviderServiceByProviderId, 
     getProviderServiceByProviderIdServiceId:getProviderServiceByProviderIdServiceId,
-    getProviderServiceByProviderIdTypeId:getProviderServiceByProviderIdTypeId  
+    getProviderServiceByProviderIdTypeId:getProviderServiceByProviderIdTypeId
   }
 });

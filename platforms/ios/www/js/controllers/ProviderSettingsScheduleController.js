@@ -1,15 +1,32 @@
  
-mainApp.controller('ProviderSettingsScheduleController', function($scope,$state, $stateParams) {
-   $scope.schedule  = {id:'5b8b1e88-e0d2-4e0d-bccc-0283d0159b35',name:'DEFAULT'}
-    
+mainApp.controller('ProviderSettingsScheduleController', function($scope,$state, $stateParams, ProviderScheduleService,UserUtils,ErrorHelper) {
+
 //*******************************************************************************************
-//get service list
+//get the default provider schedule
 //*******************************************************************************************       
     $scope.loadData = function()
     {
+        
+       var usr = UserUtils.getUserLocal();  ProviderScheduleService.getProviderScheduleByProviderIdAndDefault(usr.id).then(function (result) {   
       
+           if(result)
+            {
+                  $scope.schedule  = {id:result.id,name:result.name};
+            }
+        }, function (error) {
+           if(error)
+           {
+            if(error.managed)
+            {
+                ErrorHelper.showError('TODO: MANAGED');
+            }
+          else
+              {
+                ErrorHelper.showError(error);  
+              }       
+           }
+        });   
     }
-    
 //*******************************************************************************************
 //Go to other form
 //*******************************************************************************************     

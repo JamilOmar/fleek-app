@@ -116,6 +116,10 @@ calendar >div.week >span.day.selected {
   background: purple;
   color: white;
 }
+calendar >div.week >span.day.not-enabled {
+  background: lightgray;
+  color: white;
+}
 
 calendar >div.week >span.day.customerDate {
   background: green;
@@ -162,7 +166,36 @@ login view css
     color: white;
     font-family: inherit;
 }
+/**************************************************************************
 
+create user view css
+
+**************************************************************************/
+
+#create-user-view{
+    background: url("../img/app/background.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+
+}
+
+
+#create-user-view ion-content .scroll {
+
+  vertical-align: middle;
+  text-align: center;
+}
+#create-user-view h1 {
+    font-size: -webkit-xxx-large;
+    color: white;
+    font-family: inherit;
+}
+#create-user-view p {
+    font-size: medium;
+    color: white;
+    font-family: inherit;
+}
 /**************************************************************************
 //
 //Review window
@@ -306,13 +339,18 @@ padding: initial;
 Service Category view
 
 **************************************************************************/
-
+/*** Main item ****/
 #fleek-service-category-view #item{
     min-height: 150px;
     background-repeat: no-repeat;
-    color: black;
+    color: white;
     background-size: 100% 100%;
     padding: 10px;
+    background-color: black;
+}
+/****** Inner item ****/
+#fleek-service-category-view #item a{
+background: transparent;   
 }
 
 /**********************************************/
@@ -361,7 +399,21 @@ Service Category view
     max-width: 120px;
     height: 120px;
 }
+/**************************************************************************
 
+Profile image
+
+/**************************************************************************/
+.global-profile-img
+{
+   border-radius: 50%;
+   width: 25%;
+}
+/**************************************************************************
+
+Profile Background
+
+/**************************************************************************/
 .global-profile-black-panel
 {
     background:black;
@@ -372,11 +424,9 @@ Service Category view
 select-provider-view */
 .global-provider-avatar
 {
-    position: fixed;
+    
     border-radius: 50%;
-    width: 80px;
-    height: 100px;
-    padding: 0;
+    max-height: 100px;
 }
 /* Global for the provider Work
 select-provider-view */

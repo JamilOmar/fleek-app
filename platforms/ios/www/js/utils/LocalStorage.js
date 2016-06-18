@@ -20,6 +20,12 @@ mainApp.factory('LocalStorage', ['$window', function($window) {
 //*******************************************************************************************
 //set object in local storage
 //*******************************************************************************************      
+    function removeObject(key) {
+      $window.localStorage.removeItem(key);
+    }    
+//*******************************************************************************************
+//set object in local storage
+//*******************************************************************************************      
     function getObject(key) {
       return JSON.parse($window.localStorage[key] || '{}');
     }
@@ -28,6 +34,7 @@ mainApp.factory('LocalStorage', ['$window', function($window) {
     set: set,
     get: get,
     setObject: setObject,
-    getObject: getObject
+    getObject: getObject,
+    removeObject:removeObject    
   }
 }]);

@@ -1,26 +1,69 @@
+
 //Main Controller that makes the calendar
 //***************************************************************
-mainApp.controller('CalendarController', function($scope,$state) {
-    $scope.dayClass ={
-        date : moment(),
-        selectedDays : []};
-//Method to create the days
-//***************************************************************    
-    $scope.setCustomerDays = function(selectedDate) {
-         $state.go("tabs.providerselection",selectedDate);
+mainApp.controller('CalendarController', function($scope,$state,$stateParams,ProviderScheduleService,ReservationService) {
+    $scope.calendarClass ={
+    date : moment(),
+    providerInformation : null,
     };
+//*******************************************************************************************
+//get the provider's basic information
+//*******************************************************************************************     
+$scope.providerService = $stateParams.providerService;    
+//*******************************************************************************************
+//go to method
+//*******************************************************************************************  
+    $scope.goTo = function(path,parameters)
+    {
+        var data = {
+            
+            provider : $scope.providerService.provider,
+            selectedDate : {day :$scope.calendarClass.selectedDate , time:  parameters},
+            selectedService: $scope.providerService.selectedService
+        };
+        $state.go(path,{reservation:data});
+    }    
+
+//*******************************************************************************************
+//get provider's info
+//*******************************************************************************************     
+    $scope.loadData = function()
+    {
+       var providerInformation ={}; ProviderScheduleService.getProviderScheduleCompleteByProviderIdAndDefault($scope.providerService.provider.id).then(function (result) {
+           if(result.providerScheduleDay)
+               {
+                 providerInformation.enabledDays = result.providerScheduleDay.distinct(function(a, b){ return a.dayOfWeek == b.dayOfWeek });
+               }
+            if(result.providerScheduleException)
+               {
+                providerInformation.exceptionDays = result.providerScheduleException.distinct(function(a, b){ return a.dayOfWeek == b.dayOfWeek });
+               }
+           $scope.calendarClass.providerInformation = providerInformation;
+       
+        }, function (error) {
+            console.log('error');
+        });   
+    } 
 //Method to communicate the controler with the view for retreive the selected date
 //***************************************************************
     $scope.press = function(data) {
-        console.log(data);
-         $scope.items = [   
-    { id: 39 },
-    { id: 40 },
-    { id: 41 },
-    { id: 42 },
-    { id: 43 },
-    { id: 44 }
-  ];
+        if( data.selectedDate.isEnabled)
+        {
+          
+             ReservationService.generateAvailableTimes({providerId:$scope.providerService.provider.id,serviceId:$scope.providerService.selectedService.id , averageTimePerSession : $scope.providerService.selectedService.averageTimePerSession ,date :data.selectedDate.date.toDate()}).then(function (result) {
+           
+        $scope.items = result;
+        }, function (error) {
+            console.log('error');
+        }); 
+        }
+        else
+            {
+                 $scope.items = null;
+            }
     };
+//***************************************************************
+//calling the method to load data    
+  $scope.loadData();     
 //***************************************************************  
 }); 

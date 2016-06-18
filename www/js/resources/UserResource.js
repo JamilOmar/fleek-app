@@ -34,11 +34,28 @@ mainApp.factory('UserResource', function($http,$q,$base64) {
     });
    });
   };    
+ //*******************************************************************************************
+//update the actual user
+//*******************************************************************************************    
+  function updateUser(data){
+    return $q(function(resolve, reject) {
+     $http({
+        method : "PUT",
+        data:data,
+        url :baseUrl+ "/v1/userService/updateUser"
+        }).then(function (result) {
+            return resolve(result);
+    }, function (error) {
+            return reject(error);
+  });
+       });
+  };  
  
   return {
 
 
     getUserByUserName:getUserByUserName,
-    getActualUser:getActualUser
+    getActualUser:getActualUser,
+    updateUser:updateUser  
   }
 });

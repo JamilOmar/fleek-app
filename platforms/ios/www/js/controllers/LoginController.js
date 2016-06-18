@@ -1,5 +1,5 @@
  
-mainApp.controller('LoginController', function($scope,$state,AuthenticationService) {
+mainApp.controller('LoginController', function($scope,$state,AuthenticationService,FacebookService,ErrorHelper) {
    
 //*******************************************************************************************
 //login
@@ -12,15 +12,34 @@ mainApp.controller('LoginController', function($scope,$state,AuthenticationServi
                 $state.go('tabs.profile');
             }
             else
-                {
+            {
 
-                    alert('error');
-                }
+                   ErrorHelper.showError('TODO:ERROR');
+            }
     }, function (error) {
-            console.log('error');
+             ErrorHelper.showError(error);
     });
-        
+   
     
     
   }
+//*******************************************************************************************
+//login with Facebook
+//*******************************************************************************************       
+     $scope.loginFacebook = function()
+    {
+        FacebookService.authenticate().then(function(result){  
+            if(result.exists)
+            {
+                $state.go('tabs.profile');
+            }
+            else
+            {
+
+                 $state.go('createUser');
+            }
+        },function(error){
+              ErrorHelper.showError(error);
+        });
+    }
 }); 

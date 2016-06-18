@@ -23,7 +23,7 @@ mainApp.factory('ProviderResource', function($http,$q,$base64) {
   function updateProvider(data) {
     return $q(function(resolve, reject) {
      $http({
-        method : "POST",
+        method : "PUT",
         data:data,
         url :baseUrl+ "/v1/providerService/updateProvider"
         }).then(function (result) {

@@ -17,7 +17,7 @@ mainApp.controller('CreateProviderController', function($scope,$state,$ionicSlid
 //*******************************************************************************************   
     $scope.confirmCode = function(provider) {
    
-       $state.go('tabs.providermap',{provider:provider});
+       $state.go('tabs.providermap',{providerInformation:{provider:provider, new:true}});
   }
  
   

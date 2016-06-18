@@ -1,4 +1,4 @@
- var test=null;
+
 mainApp.controller('SelectProviderController', function($scope,$state,ProviderService,serviceId,FacebookService,UserUtils,ErrorHelper) {
  
 //*******************************************************************************************
@@ -6,7 +6,7 @@ mainApp.controller('SelectProviderController', function($scope,$state,ProviderSe
 //*******************************************************************************************       
     $scope.loadData = function()
     {
-       ProviderService.getProviderByLocationForSearch(38.905016, -77.02907270000003,serviceId).then(function (result) {
+       ProviderService.getProviderByLocationForSearch(-0.180653,-77.0291,serviceId).then(function (result) {
          $scope.providers  = result;   
         },function (error) {
           if(error.managed)
@@ -34,7 +34,7 @@ mainApp.controller('SelectProviderController', function($scope,$state,ProviderSe
 //*******************************************************************************************       
     $scope.goTo = function(path,item)
     {
-        $state.go(path,item);
+        $state.go(path,{provider:item});
     }
  
 //*******************************************************************************************

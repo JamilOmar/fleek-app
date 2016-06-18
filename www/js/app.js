@@ -3,10 +3,11 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var mainApp = angular.module('app', ['ngIntlTelInput','ionic','ngCordova','pascalprecht.translate','ionic.rating','base64'])
+var mainApp = angular.module('app', ['ngIntlTelInput','ionic','ngCordova','pascalprecht.translate','ionic.rating','ionic-datepicker','base64'])
 
 .run(function($ionicPlatform,$rootScope,$ionicLoading) {
   $ionicPlatform.ready(function() {
+
 
 //*******************************************************************************************
 //Facebook Integration
@@ -105,7 +106,7 @@ facebookConnectPlugin.browserInit(appID,version);
 .state('tabs.providermap', {
     url: '/providerMap',
     params: {
-        provider: null
+        providerInformation: null
         },   
        views:{
            'services-tab' :
@@ -116,25 +117,43 @@ facebookConnectPlugin.browserInit(appID,version);
        }
    }
   })
-      //Provider map tab   
-.state('tabs.providersettings', {
-    url: '/providerSettings',
-    params: {
-        provider: null
-        },   
+.state('tabs.profilesettings', {
+    url: '/profilesettings',
        views:{
-           'services-tab' :
+           'profile-tab' :
+           {
+           
+    controller :'ProfileSettingsController',
+    templateUrl: 'views/profileSettings.html'
+       }
+   }
+  })
+.state('tabs.profilesettingsbasic', {
+    url: '/profileSettingsBasic',
+       views:{
+           'profile-tab' :
+           {
+           
+    controller :'ProfileSettingsBasicController',
+    templateUrl: 'views/profileSettingsBasic.html'
+       }
+   }
+  })
+.state('tabs.providersettings', {
+    url: '/providersettings',
+       views:{
+           'profile-tab' :
            {
            
     controller :'ProviderSettingsController',
     templateUrl: 'views/providerSettings.html'
        }
    }
-  })
+  })      
 .state('tabs.providersetttingsservicecategory', {
     url: '/providerSettingsServiceCategory',
        views:{
-           'services-tab' :
+           'profile-tab' :
            {
            
     controller :'ProviderSettingsServiceCategoryController',
@@ -146,7 +165,7 @@ facebookConnectPlugin.browserInit(appID,version);
     url: '/providerSettingsServicelist/:serviceListId',
       
     views:{
-   'services-tab' :
+   'profile-tab' :
    {
     controller :'ProviderSettingsServiceListController',
     templateUrl: 'views/providerSettingsServiceList.html',
@@ -162,7 +181,7 @@ facebookConnectPlugin.browserInit(appID,version);
 .state('tabs.providersettingsschedule', {
     url: '/providerSettingsSchedule',
        views:{
-           'services-tab' :
+           'profile-tab' :
            {
            
     controller :'ProviderSettingsScheduleController',
@@ -176,7 +195,7 @@ facebookConnectPlugin.browserInit(appID,version);
         scheduleDay: null
         },
        views:{
-           'services-tab' :
+           'profile-tab' :
            {
            
     controller :'ProviderSettingsScheduleDetailController',
@@ -187,7 +206,7 @@ facebookConnectPlugin.browserInit(appID,version);
 .state('tabs.providersettingsscheduleexception', {
     url: '/providerSettingsScheduleException',
        views:{
-           'services-tab' :
+           'profile-tab' :
            {
            
     controller :'ProviderSettingsScheduleExceptionController',
@@ -258,6 +277,9 @@ facebookConnectPlugin.browserInit(appID,version);
     })
 .state('tabs.calendar', {
     url: '/calendar',
+     params: {
+        providerService: null
+        },      
         views:{
            'services-tab' :
            {
@@ -291,6 +313,9 @@ facebookConnectPlugin.browserInit(appID,version);
   })  
    .state('tabs.provider', {
     url: '/provider',
+    params: {
+        provider: null
+        },   
         views:{
            'services-tab' :
            {
@@ -331,6 +356,9 @@ facebookConnectPlugin.browserInit(appID,version);
   }) 
    .state('tabs.providerselection', {
     url: '/providerselection',
+    params: {
+        reservation: null
+        },   
         views:{
            'services-tab' :
            {

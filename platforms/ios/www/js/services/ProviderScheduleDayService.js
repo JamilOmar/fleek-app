@@ -1,4 +1,4 @@
-mainApp.service('ProviderScheduleDayService', function($q,ProviderScheduleDayResource,LocalStorage,Constants) {
+mainApp.service('ProviderScheduleDayService', function($q,ProviderScheduleDayResource,Constants) {
   
 //*******************************************************************************************
 //create new provider schedule day method
@@ -13,11 +13,11 @@ mainApp.service('ProviderScheduleDayService', function($q,ProviderScheduleDayRes
             }
         else
             {
-                return reject(result.data);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -34,11 +34,11 @@ mainApp.service('ProviderScheduleDayService', function($q,ProviderScheduleDayRes
             }
         else
             {
-                return reject(result.data);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -55,11 +55,11 @@ mainApp.service('ProviderScheduleDayService', function($q,ProviderScheduleDayRes
             }
         else
             {
-                return reject(result.data);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };    
@@ -78,11 +78,11 @@ mainApp.service('ProviderScheduleDayService', function($q,ProviderScheduleDayRes
             }
         else
             {
-                return resolve({});
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -101,11 +101,11 @@ mainApp.service('ProviderScheduleDayService', function($q,ProviderScheduleDayRes
             }
         else
             {
-                return resolve({});
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -125,11 +125,11 @@ mainApp.service('ProviderScheduleDayService', function($q,ProviderScheduleDayRes
             }
         else
             {
-                return resolve({});
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };

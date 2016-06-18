@@ -3,10 +3,17 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var mainApp = angular.module('app', ['ngIntlTelInput','ionic','ngCordova','pascalprecht.translate','ionic.rating','base64'])
+var mainApp = angular.module('app', ['ngIntlTelInput','ionic','ngCordova','pascalprecht.translate','ionic.rating','ionic-datepicker','base64'])
 
 .run(function($ionicPlatform,$rootScope,$ionicLoading) {
   $ionicPlatform.ready(function() {
+
+//*******************************************************************************************
+//Facebook Integration
+var appID = 1667420520161039;
+var version = "v2.3"; // or leave blank and default is v2.0
+facebookConnectPlugin.browserInit(appID,version);
+          
 //*******************************************************************************************
 //loading show
 //*******************************************************************************************  
@@ -36,9 +43,11 @@ var mainApp = angular.module('app', ['ngIntlTelInput','ionic','ngCordova','pasca
       
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+      /*
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
+    */
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
@@ -46,12 +55,6 @@ var mainApp = angular.module('app', ['ngIntlTelInput','ionic','ngCordova','pasca
 })
 .config(function ($stateProvider,$urlRouterProvider,$translateProvider,$httpProvider,$cordovaFacebookProvider) {
 
-//*******************************************************************************************
-//Facebook Integration
-var appID = 1667420520161039;
-var version = "v2.3"; // or leave blank and default is v2.0
-$cordovaFacebookProvider.browserInit(appID, version);    
-    
     
 //*******************************************************************************************
 //Interceptor for request and response
@@ -102,7 +105,7 @@ $cordovaFacebookProvider.browserInit(appID, version);
 .state('tabs.providermap', {
     url: '/providerMap',
     params: {
-        provider: null
+        providerInformation: null
         },   
        views:{
            'services-tab' :
@@ -113,25 +116,43 @@ $cordovaFacebookProvider.browserInit(appID, version);
        }
    }
   })
-      //Provider map tab   
-.state('tabs.providersettings', {
-    url: '/providerSettings',
-    params: {
-        provider: null
-        },   
+.state('tabs.profilesettings', {
+    url: '/profilesettings',
        views:{
-           'services-tab' :
+           'profile-tab' :
+           {
+           
+    controller :'ProfileSettingsController',
+    templateUrl: 'views/profileSettings.html'
+       }
+   }
+  })
+.state('tabs.profilesettingsbasic', {
+    url: '/profileSettingsBasic',
+       views:{
+           'profile-tab' :
+           {
+           
+    controller :'ProfileSettingsBasicController',
+    templateUrl: 'views/profileSettingsBasic.html'
+       }
+   }
+  })
+.state('tabs.providersettings', {
+    url: '/providersettings',
+       views:{
+           'profile-tab' :
            {
            
     controller :'ProviderSettingsController',
     templateUrl: 'views/providerSettings.html'
        }
    }
-  })
+  })      
 .state('tabs.providersetttingsservicecategory', {
     url: '/providerSettingsServiceCategory',
        views:{
-           'services-tab' :
+           'profile-tab' :
            {
            
     controller :'ProviderSettingsServiceCategoryController',
@@ -143,7 +164,7 @@ $cordovaFacebookProvider.browserInit(appID, version);
     url: '/providerSettingsServicelist/:serviceListId',
       
     views:{
-   'services-tab' :
+   'profile-tab' :
    {
     controller :'ProviderSettingsServiceListController',
     templateUrl: 'views/providerSettingsServiceList.html',
@@ -159,7 +180,7 @@ $cordovaFacebookProvider.browserInit(appID, version);
 .state('tabs.providersettingsschedule', {
     url: '/providerSettingsSchedule',
        views:{
-           'services-tab' :
+           'profile-tab' :
            {
            
     controller :'ProviderSettingsScheduleController',
@@ -173,7 +194,7 @@ $cordovaFacebookProvider.browserInit(appID, version);
         scheduleDay: null
         },
        views:{
-           'services-tab' :
+           'profile-tab' :
            {
            
     controller :'ProviderSettingsScheduleDetailController',
@@ -184,7 +205,7 @@ $cordovaFacebookProvider.browserInit(appID, version);
 .state('tabs.providersettingsscheduleexception', {
     url: '/providerSettingsScheduleException',
        views:{
-           'services-tab' :
+           'profile-tab' :
            {
            
     controller :'ProviderSettingsScheduleExceptionController',
@@ -255,6 +276,9 @@ $cordovaFacebookProvider.browserInit(appID, version);
     })
 .state('tabs.calendar', {
     url: '/calendar',
+     params: {
+        providerService: null
+        },      
         views:{
            'services-tab' :
            {
@@ -264,12 +288,16 @@ $cordovaFacebookProvider.browserInit(appID, version);
         }
   })
 .state('tabs.selectprovider', {
-    url: '/selectprovider',
+    url: '/selectprovider/:serviceId',
         views:{
            'services-tab' :
            {
     controller :'SelectProviderController',
-    templateUrl: 'views/selectprovider.html'
+    templateUrl: 'views/selectprovider.html',
+     resolve: {
+      serviceId: function($stateParams) {
+        return $stateParams.serviceId;
+      }}              
            }
         }
   }) .state('tabs.searchmap', {
@@ -284,6 +312,9 @@ $cordovaFacebookProvider.browserInit(appID, version);
   })  
    .state('tabs.provider', {
     url: '/provider',
+    params: {
+        provider: null
+        },   
         views:{
            'services-tab' :
            {
@@ -324,6 +355,9 @@ $cordovaFacebookProvider.browserInit(appID, version);
   }) 
    .state('tabs.providerselection', {
     url: '/providerselection',
+    params: {
+        reservation: null
+        },   
         views:{
            'services-tab' :
            {
@@ -337,7 +371,7 @@ $cordovaFacebookProvider.browserInit(appID, version);
         views:{
            'profile-tab' :
            {
-  
+    controller :'ProfileController',
     templateUrl: 'views/profile.html'
            }
         }

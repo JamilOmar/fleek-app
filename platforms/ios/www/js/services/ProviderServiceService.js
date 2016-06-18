@@ -14,11 +14,11 @@ mainApp.service('ProviderServiceService', function($q,ProviderServiceResource,Lo
             }
         else
             {
-                return reject(result.data);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -35,11 +35,11 @@ mainApp.service('ProviderServiceService', function($q,ProviderServiceResource,Lo
             }
         else
             {
-                return reject(result.data);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -56,11 +56,11 @@ mainApp.service('ProviderServiceService', function($q,ProviderServiceResource,Lo
             }
         else
             {
-                return reject(result.data);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };      
@@ -79,11 +79,11 @@ mainApp.service('ProviderServiceService', function($q,ProviderServiceResource,Lo
             }
         else
             {
-                return reject(result.data);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -102,11 +102,11 @@ mainApp.service('ProviderServiceService', function($q,ProviderServiceResource,Lo
             }
         else
             {
-                return reject(result.data);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };
@@ -126,11 +126,11 @@ mainApp.service('ProviderServiceService', function($q,ProviderServiceResource,Lo
             }
         else
             {
-                return reject(result.data);
+                return reject({data: result.data, managed:true});
             }
            
     }, function (error) {
-            return reject(null);
+            return reject({data: error, managed:false});
   });
   })
   };      
