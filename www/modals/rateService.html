@@ -1,0 +1,44 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-dark">
+      <h1 class="title">   Rate Service</h1>
+        <button class="button button-icon icon ion-close-circled" ng-click="closeModal();"></button>
+    </ion-header-bar>
+    <ion-content>
+          
+       <div class="row">
+        <div class="col">
+            <p>
+               {{scheduleDay.day.name}}
+            </p>
+        </div>         
+    </div>
+   <div class="row row-center">
+       
+        <div class="col">
+            <div >
+                <label class="item item-input" ng-click="showDatePicker('from');">
+                    <span class="input-label"> {{"providerSettingsSchedule_starttime" | translate}}</span>
+                  {{ formatTime(modal.schedule.startTime)}}
+                </label>
+                  <label class="item item-input" ng-click="showDatePicker('to');">
+                      <span class="input-label"> {{"providerSettingsSchedule_endtime" | translate}}</span>  
+                 {{formatTime(modal.schedule.endTime)}}
+                </label>
+            </div>
+        </div>
+       
+    </div>
+    <div class="row row-center">
+        <div class="col col-33">
+        </div>
+        <div class="col col-33">
+            <button  class="button button-block button-royal" type="submit"  ng-click="saveSchedule(modal.schedule)" >
+            {{"providerSettingsSchedule_save" | translate}}
+            </button>   
+        </div>
+        <div class="col col-33">
+        </div>
+    </div>
+
+    </ion-content>
+</ion-modal-view>

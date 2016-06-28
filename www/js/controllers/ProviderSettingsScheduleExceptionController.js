@@ -34,11 +34,19 @@ mainApp.controller('ProviderSettingsScheduleExceptionController', function($scop
     {
         ProviderScheduleExceptionService.getProviderScheduleExceptionByProviderScheduleId(  id).then(function (result) {
            $scope.scheduleExceptionList  = result;
+            $scope.$broadcast('scroll.refreshComplete');
         }, function (error) {
-            if(!error)
-            ErrorHelper.showError(error);
+            $scope.$broadcast('scroll.refreshComplete');
+            if(error.managed)
+            {
+                ErrorHelper.showError('TODO: MANAGED');
+            }
+          else
+              {
+                ErrorHelper.showError(error);  
+              }
         }); 
-        $scope.$broadcast('scroll.refreshComplete');
+      
     }
     
     

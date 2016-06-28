@@ -52,12 +52,12 @@ function getProviderById(providerId) {
  //*******************************************************************************************
 //method for get providers by coordinates and service id
 //*******************************************************************************************      
-function getProviderByLocationForSearch(latitude, longitude,serviceId) {
+function getProviderByLocationForSearch(query,latitude, longitude,serviceId,offset,limit) {
 
    return $q(function(resolve, reject) {    
     $http({
         method : "GET",
-        url :baseUrl+ "/v1/providerService/getProviderByLocationForSearch/"+latitude + "/" + longitude+ "/" + serviceId
+        url :baseUrl+ "/v1/providerService/getProviderByLocationForSearch/?query="+query+"&latitude="+latitude + "&longitude=" + longitude+ "&serviceId=" + serviceId+"&offset="+offset+"&limit="+limit
          }).then(function (result) {
             return resolve(result);
     }, function (error) {

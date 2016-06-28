@@ -71,9 +71,9 @@ mainApp.service('ProviderService', function($q,ProviderResource,LocalStorage,Con
 //*******************************************************************************************
 //method for get providers by coordinates and service id
 //*******************************************************************************************        
-  function getProviderByLocationForSearch(latitude, longitude,serviceId){
+  function getProviderByLocationForSearch(query,latitude, longitude,serviceId,offset,limit){
   return $q(function(resolve, reject) {
-    ProviderResource.getProviderByLocationForSearch(latitude, longitude,serviceId).then(function (response) {
+    ProviderResource.getProviderByLocationForSearch(query,latitude, longitude,serviceId,offset,limit).then(function (response) {
         var result = response.data;
         if(((result.responseCode != undefined && result.responseCode == Constants.RESPONSE_SUCCESS )))
             {

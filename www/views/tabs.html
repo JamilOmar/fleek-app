@@ -4,13 +4,19 @@
           <ion-nav-view name="services-tab"></ion-nav-view>
     </ion-tab>
 
-        <ion-tab title="Reservations" icon="ion-ios-information" ui-sref="tabs.providerreservation" >
-            <ion-nav-view name="providerreservation-tab">
+        <ion-tab title="Reservations" icon="ion-ios-information" ui-sref="tabs.reservation" >
+            <ion-nav-view name="reservation-tab">
             
            
             </ion-nav-view>
         </ion-tab>
 
+     <ion-tab title="Provider Reservation" icon="ion-ios-information" ui-sref="tabs.providerreservation" ng-show="$root.isProvider" >
+            <ion-nav-view name="providerreservation-tab">
+            
+           
+            </ion-nav-view>
+        </ion-tab>
         
         <ion-tab title="Me" icon="ion-ios-person" ui-sref="tabs.profile" >
             <ion-nav-view name="profile-tab">

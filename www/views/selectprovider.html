@@ -1,13 +1,14 @@
-<ion-view id="select-provider-view" view-title="Provider">
-<ion-header-bar class="bar-dark">
-Fleek
-</ion-header-bar> 
+<ion-view id="select-provider-view" view-title="Fleek">
+<ion-nav-buttons side="right">
+  <button class="icon ion-map" ui-sref="tabs.searchmap">
+  </button>
+</ion-nav-buttons> 
 <ion-content class="has-header padding">
 <div class="bar bar-header item-input-inset">
 <label class="item-input-wrapper">
 <i class="icon ion-ios-search placeholder-icon"></i>
-<input type="search" placeholder='{{"select_provider_search" | translate}}'>
-</label><button class="button icon ion-map" ng-click="goTo('tabs.searchmap')"></button>
+<input type="search" placeholder='{{"select_provider_search" | translate}}' ng-model="queryInput">
+</label><button class="button icon ion-search" ng-click="search(queryInput)"></button>
 </div>
 <a class="item" ng-repeat="provider in providers"  ng-click="goTo('tabs.provider',provider)"  class="global-paddin-zero">
 <div class="row">
@@ -20,9 +21,9 @@ Fleek
     <p> {{roundNumber(provider.Metadata.distance,provider.Metadata.distanceType)}}</p>
 <rating ng-model="provider.rating"  max="5"></rating>
 </div>
-<div class="col">
+<!--<div class="col">
 <img  ng-src="{{provider.provider_client_image}}"  class="global-provider-work" />
-</div>
+</div>-->
 </div>
 <div class="row global-row-content-black-white">
 <div class="col global-col-center">
@@ -32,6 +33,11 @@ Fleek
      <p>{{provider.provider_zone}}</p>
   </div>
 </div>         
-</a>   
+</a>
+<ion-infinite-scroll
+    on-infinite="query()"
+    distance="10%"
+    ng-if="!stopRequest">
+</ion-infinite-scroll>    
 </ion-content>       
 </ion-view>   

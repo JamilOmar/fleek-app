@@ -1,4 +1,6 @@
 mainApp.constant('Constants', {
+  //max items per reques
+  ITEMS_PER_REQUEST:3,    
   //default profile image
   PROFILE_IMAGE:'img/app/global/avatar.png',
   //token for authentication
@@ -32,6 +34,15 @@ FACEBOOK_LOGIN_PERMISSIONS:
 //my facebook fields 
 FACEBOOK_ME_FIELDS :'me?fields=last_name,name,gender,first_name,email,birthday,picture.type(large)',
 //facebook friend's fields
-FACEBOOK_FRIEND_FIELDS :'?fields=last_name,name,gender,first_name,email,birthday,picture.type(large)'  
+FACEBOOK_FRIEND_FIELDS :'?fields=last_name,name,gender,first_name,email,birthday,picture.type(large)',
+//requests states for reservations
+    REQUEST_STATES_RESERVATION :
+    {
+        SUBMITED : 0,
+        APPROVED :1,
+        COMPLETED :2,
+        CANCELED :-1
+        
+    }
     
 })

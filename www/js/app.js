@@ -27,6 +27,7 @@ facebookConnectPlugin.browserInit(appID,version);
   $rootScope.$on('loading:hide', function() {
     $ionicLoading.hide()
   })
+  
 //*******************************************************************************************
 //Globalization and language retreival
 //*******************************************************************************************            
@@ -59,7 +60,9 @@ facebookConnectPlugin.browserInit(appID,version);
     
 //*******************************************************************************************
 //Interceptor for request and response
-//*******************************************************************************************  
+//******************************************************************************************* 
+$httpProvider.defaults.headers.common['Access-Control-Allow-Headers'] = 'Authorization, Access-Control-Allow-Headers'; 
+    
   $httpProvider.interceptors.push('AuthInterceptor');
 
 //*******************************************************************************************
@@ -117,6 +120,7 @@ facebookConnectPlugin.browserInit(appID,version);
        }
    }
   })
+   //users settings tab      
 .state('tabs.profilesettings', {
     url: '/profilesettings',
        views:{
@@ -128,6 +132,7 @@ facebookConnectPlugin.browserInit(appID,version);
        }
    }
   })
+   //profile settings tab       
 .state('tabs.profilesettingsbasic', {
     url: '/profileSettingsBasic',
        views:{
@@ -139,6 +144,7 @@ facebookConnectPlugin.browserInit(appID,version);
        }
    }
   })
+   //provider settings tab       
 .state('tabs.providersettings', {
     url: '/providersettings',
        views:{
@@ -149,7 +155,8 @@ facebookConnectPlugin.browserInit(appID,version);
     templateUrl: 'views/providerSettings.html'
        }
    }
-  })      
+  })
+   //provider services and category settings tab       
 .state('tabs.providersetttingsservicecategory', {
     url: '/providerSettingsServiceCategory',
        views:{
@@ -161,6 +168,7 @@ facebookConnectPlugin.browserInit(appID,version);
        }
    }
   })
+ //provider services list settings tab      
    .state('tabs.providersettingsservicelist', {
     url: '/providerSettingsServicelist/:serviceListId',
       
@@ -178,6 +186,7 @@ facebookConnectPlugin.browserInit(appID,version);
         }
    
   })
+ //provider schedule settings tab      
 .state('tabs.providersettingsschedule', {
     url: '/providerSettingsSchedule',
        views:{
@@ -189,6 +198,7 @@ facebookConnectPlugin.browserInit(appID,version);
        }
    }
   })
+ //provider schedule detail settings tab  
    .state('tabs.providersettingsscheduledetail', {
     url: '/providerSettingsScheduleDetail',
     params: {
@@ -203,6 +213,7 @@ facebookConnectPlugin.browserInit(appID,version);
        }
    }
   })
+ //provider schedule exception settings tab     
 .state('tabs.providersettingsscheduleexception', {
     url: '/providerSettingsScheduleException',
        views:{
@@ -257,6 +268,7 @@ facebookConnectPlugin.browserInit(appID,version);
         }
    
   })
+//provider reservations tab     
    .state('tabs.providerreservation', {
       url: "/providerreservation",
       views: {
@@ -266,8 +278,12 @@ facebookConnectPlugin.browserInit(appID,version);
         }
       }
     })
+//provider reservations information tab        
      .state('tabs.providerreservationinformation', {
       url: "/providerreservationinformation",
+       params: {
+        reservation: null
+        },   
       views: {
         'providerreservation-tab': {
                controller :'ProviderReservationInformationController',
@@ -275,6 +291,29 @@ facebookConnectPlugin.browserInit(appID,version);
         }
       }
     })
+//user reservations tab     
+   .state('tabs.reservation', {
+      url: "/reservation",
+      views: {
+        'reservation-tab': {
+               controller :'ReservationController',
+          templateUrl: "views/reservation.html"
+        }
+      }
+    })
+//user reservations information tab        
+     .state('tabs.reservationinformation', {
+      url: "/reservationinformation",
+       params: {
+        reservation: null
+        },   
+      views: {
+        'reservation-tab': {
+               controller :'ReservationInformationController',
+          templateUrl: "views/reservationinformation.html"
+        }
+      }
+    })   
 .state('tabs.calendar', {
     url: '/calendar',
      params: {

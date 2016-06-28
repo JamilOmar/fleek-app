@@ -1,0 +1,74 @@
+<ion-view view-title="Fleek" id="reservation-information-view">  
+    <ion-content>
+        <div style="background-image:url('../img/app/background.jpg');text-align:center;color:white;">
+        <div class="row" style="height:150px">
+            <div class="col">
+            <img  ng-src="img/app/home/neworder.jpg" style="position: static;
+   border-radius: 50%;
+    max-width: 120px;
+    height: 120px;"  />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row global-row-center">
+            <div class="col">
+        <rating ng-model="rate"  max="max"></rating>
+            </div>
+        </div><div class="row global-row-center">
+            <div class="col">
+              <p style="background:black;">
+        "Maria Fernanda Colina"
+                </p>
+                El inca
+            </div>
+        </div>
+            </div>
+        </div>
+        </div>    
+ <ion-slide-box show-pager="false">
+     <ion-slide>
+    <div class="row  global-row-center">
+        <div class="col">
+            <p>
+               Confirmas tu cita
+            </p>
+            <p>
+               Hora: 930
+            </p>
+            <p>
+               El inca
+            </p>
+              <div class="button-bar">
+  <a class="button button-assertive" ng-click="nextSlide()">Cancelar</a>
+</div>
+        </div>         
+    </div>
+    </ion-slide>
+       <ion-slide>
+    <div class="row global-row-center">
+        <div class="col">
+            <p>
+              Recuerda que la cancelacion es final.
+            </p>
+            <p>
+           <label class="item item-input">
+    <textarea placeholder="Comments" ng-model="reservation.cancelationReason"></textarea>
+  </label>
+                
+            </p>
+            <p>
+         Si necesitas mas informacion por favor llama a:
+            
+            </p>
+            
+        </div>         
+    </div>
+            <div class="button-bar">
+                <a class="button button-assertive" ng-click="nextSlide(reservation)">Cancelar</a></div>
+    </ion-slide>
+    </ion-slide-box>
+        
+    </ion-content>
+
+</ion-view>

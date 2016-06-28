@@ -39,10 +39,8 @@
             <p>
                El inca
             </p>
-              <div class="button-bar bar-dark">
-  <a class="button" ng-click="nextSlide()">Aceptar</a>
-  <a class="button" ui-sref="tabs.providerinformation">Cancelar</a>
-
+              <div class="button-bar">
+  <a class="button button-assertive" ng-click="nextSlide()">Cancelar</a>
 </div>
         </div>         
     </div>
@@ -51,24 +49,23 @@
     <div class="row global-row-center">
         <div class="col">
             <p>
-             Muchas gracias por confirmar
+              Recuerda que la cancelacion es final.
             </p>
             <p>
-               Hora: 930
-            </p>
-            <p>
-               Por favor si tienes una duda llama a 
+           <label class="item item-input">
+    <textarea placeholder="Comments" ng-model="reservation.cancelationReason"></textarea>
+  </label>
                 
             </p>
             <p>
-            23040923480293842
+         Si necesitas mas informacion por favor llama a:
             
             </p>
-             <button class="button button-block button-royal" ui-sref='tabs.fleekservicecategory'>
-             Listo
-            </button>
+            
         </div>         
     </div>
+            <div class="button-bar">
+                <a class="button button-assertive" ng-click="nextSlide(reservation)">Cancelar</a></div>
     </ion-slide>
     </ion-slide-box>
         

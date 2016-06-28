@@ -45,6 +45,28 @@ mainApp.service('ReservationService', function($q,ReservationResource,LocalStora
   });
   })
   };
+    //*******************************************************************************************
+//approve or cancel a Reservation method
+//*******************************************************************************************    
+  function approvalReservation(data) {
+     return $q(function(resolve, reject) {
+    ReservationResource.approvalReservation
+(data).then(function (response) {
+        var result = response.data;
+        if(((result.responseCode != undefined && result.responseCode == Constants.RESPONSE_SUCCESS )))
+            {
+                return resolve(result.data);
+            }
+        else
+            {
+                return reject({data: result.data, managed:true});
+            }
+           
+    }, function (error) {
+            return reject({data: error, managed:false});
+  });
+  })
+  };
 //*******************************************************************************************
 //deactivate a reservation method
 //*******************************************************************************************    
@@ -90,11 +112,61 @@ function generateAvailableTimes(data) {
   });
   })
   };
-
+ //*******************************************************************************************
+//method for get the reservation by customer id , state and paged
+//*******************************************************************************************       
+  function getReservationByCustomerIdStatePaged(id,state, offset,limit){
+  return $q(function(resolve, reject) {
+    ReservationResource.getReservationByCustomerIdStatePaged(id,state, offset,limit).then(function (response) {
+        var result = response.data;
+        if(((result.responseCode != undefined && result.responseCode == Constants.RESPONSE_SUCCESS )))
+            {
+                 
+            
+                return resolve(result.data);
+            }
+        else
+            {
+                
+                return reject({data: result.data, managed:true});
+            }
+           
+    }, function (error) {
+            return reject({data: error, managed:false});
+  });
+  })
+  };
+  //*******************************************************************************************
+//method for get the reservation by provider id , state and paged
+//*******************************************************************************************      
+function getReservationByProviderIdStatePaged(id,state, offset,limit){
+  return $q(function(resolve, reject) {
+    ReservationResource.getReservationByProviderIdStatePaged(id,state, offset,limit).then(function (response) {
+        var result = response.data;
+        if(((result.responseCode != undefined && result.responseCode == Constants.RESPONSE_SUCCESS )))
+            {
+                 
+            
+                return resolve(result.data);
+            }
+        else
+            {
+                
+                return reject({data: result.data, managed:true});
+            }
+           
+    }, function (error) {
+            return reject({data: error, managed:false});
+  });
+  })
+  };    
   return {
     addReservation: addReservation,
     updateReservation: updateReservation,
     deactivateReservation:deactivateReservation,
-    generateAvailableTimes:generateAvailableTimes
+    generateAvailableTimes:generateAvailableTimes,
+      getReservationByCustomerIdStatePaged:getReservationByCustomerIdStatePaged,
+      getReservationByProviderIdStatePaged:getReservationByProviderIdStatePaged,
+      approvalReservation:approvalReservation
   }
 });

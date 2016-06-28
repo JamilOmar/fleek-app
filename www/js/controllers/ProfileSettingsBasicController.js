@@ -26,7 +26,7 @@ mainApp.controller('ProfileSettingsBasicController', function($scope,$state,User
 //*******************************************************************************************     
     $scope.loadData = function()
     {
-       var usr = UserUtils.getUserLocal(); 
+       
        UserService.getActualUser().then(function (result) {   
        $scope.user  = result;
          $scope.user.isOpenForFriendship = ( $scope.user.isOpenForFriendship==1);   

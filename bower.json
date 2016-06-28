@@ -11,6 +11,14 @@
     "ionic-image-lazy-load": "ion-image-lazy-load#*",
     "angular-img-http-src": "^0.1.0",
     "ion-gallery": "^0.1.14",
-    "ionic-datepicker": "^1.1.0"
+    "ionic-datepicker": "^1.1.0",
+    "angular-chart.js": "^0.10.2",
+    "Chart.js": "^2.1.6"
+  },
+  "resolutions": {
+    "angular-animate": "1.5.3",
+    "angular": ">= 1.2.23",
+    "angular-sanitize": "1.5.3",
+    "Chart.js": "^2.1.6"
   }
 }
