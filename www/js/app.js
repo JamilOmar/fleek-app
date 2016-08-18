@@ -87,6 +87,20 @@ $httpProvider.defaults.headers.common['Access-Control-Allow-Headers'] = 'Authori
     controller :'LoginController',
     templateUrl: 'views/login.html'
   })
+//map tab   
+.state('tabs.map', {
+         url: '/map',
+       params: {
+        metadata: null
+        },   
+        views:{
+           'services-tab' :
+           {
+    controller :'MapController',
+    templateUrl: 'views/map.html'
+           }
+        } 
+  })   
 //create User tab   
 .state('createUser', {
     url: '/createUser',
@@ -230,11 +244,6 @@ $httpProvider.defaults.headers.common['Access-Control-Allow-Headers'] = 'Authori
     controller :'ReviewController',
     templateUrl: 'views/review.html'
   })
-.state('chooseProfile', {
-    url: '/chooseProfile',
-    controller :'ChooseProfileController',
-    templateUrl: 'views/chooseProfile.html'
-  })
   .state('tabs.home', {
     url: '/home',
    controller :'HomeController',
@@ -291,9 +300,25 @@ $httpProvider.defaults.headers.common['Access-Control-Allow-Headers'] = 'Authori
         }
       }
     })
+//provider reservations rate tab        
+     .state('tabs.providerrate', {
+      url: "/providerrate",
+       params: {
+        reservation: null
+        },   
+      views: {
+        'providerreservation-tab': {
+               controller :'RateUserController',
+          templateUrl: "views/RateUser.html"
+        }
+      }
+    })   
 //user reservations tab     
    .state('tabs.reservation', {
       url: "/reservation",
+        params: {
+        reservation: null
+        },  
       views: {
         'reservation-tab': {
                controller :'ReservationController',
@@ -311,6 +336,19 @@ $httpProvider.defaults.headers.common['Access-Control-Allow-Headers'] = 'Authori
         'reservation-tab': {
                controller :'ReservationInformationController',
           templateUrl: "views/reservationinformation.html"
+        }
+      }
+    })
+//user reservations rate tab        
+     .state('tabs.userrate', {
+      url: "/userrate",
+       params: {
+        reservation: null
+        },   
+      views: {
+        'reservation-tab': {
+               controller :'RateUserController',
+          templateUrl: "views/RateUser.html"
         }
       }
     })   
@@ -396,7 +434,7 @@ $httpProvider.defaults.headers.common['Access-Control-Allow-Headers'] = 'Authori
    .state('tabs.providerselection', {
     url: '/providerselection',
     params: {
-        reservation: null
+        metadata: null
         },   
         views:{
            'services-tab' :

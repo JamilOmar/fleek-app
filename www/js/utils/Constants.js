@@ -43,6 +43,15 @@ FACEBOOK_FRIEND_FIELDS :'?fields=last_name,name,gender,first_name,email,birthday
         COMPLETED :2,
         CANCELED :-1
         
-    }
+    },
+//google maps information 
+    GOOGLE_API :
+    {
+        API_KEY : "AIzaSyCgEjqQIN-grSw2w57LyHluMU0Ue0teQ_U",
+        ZOOM :"16",
+        MARKER_COLOR :"red",
+        WIDTH :"400",
+        HEIGHT :"400"
+    }    
     
 })

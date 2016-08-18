@@ -1,38 +1,32 @@
 <ion-view view-title="Fleek" id="rate-user-view">  
     <ion-content>
-        <div style="background-image:url('../img/app/background.jpg');text-align:center;color:white;">
-        <div class="row" style="height:150px">
+           <div class="global-profile-background">
+        <div class="row global-row-profile-height-title">
             <div class="col">
-            <img  ng-src="img/app/home/neworder.jpg" style="position: static;
-   border-radius: 50%;
-    max-width: 120px;
-    height: 120px;"  />
+            <img  facebook-usr-src="{{provider.user.facebookId}}"  class="global-profile-avatar"  />
             </div>
         </div>
-        <div class="row global-row-center">
+        <div class="row">
             <div class="col">
-              <p style="background:black;">
-        "Maria Fernanda Colina"
+            <div class="row global-row-center" >
+            <div class="col">
+              <p class="global-profile-black-panel">
+      {{provider.user.name + " " + provider.user.lastname }}
                 </p>
-                El inca
+                {{provider.user.username}}
             </div>
         </div>
-        </div>    
+            </div>
+        </div>
+        </div>       
  <ion-slide-box show-pager="false">
      <ion-slide>
     <div class="row  global-row-center">
         <div class="col">
-            <p>
-             <rating ng-model="rate"  max="max"></rating>
-            </p>
-            <p>
-               Hora: 930
-            </p>
-            <p>
-                  <textarea placeholder="Comments" ng-model="reservation.cancelationReason"></textarea>
-            </p>
+        <rating ng-model="rate"  max="5">
+         </rating> 
               <div class="button-bar">
-  <a class="button button-assertive" ng-click="nextSlide()">Cancelar</a>
+  <a class="button button-assertive" ng-click="nextSlide()">  {{"rateUser_continue" | translate}}</a>
 </div>
         </div>         
     </div>
@@ -41,23 +35,19 @@
     <div class="row global-row-center">
         <div class="col">
             <p>
-              Recuerda que la cancelacion es final.
+             {{"rateUser_observation" | translate}}
             </p>
             <p>
            <label class="item item-input">
-
-  </label>
-                
+<textarea placeholder="Comments" ng-model="reservation.cancelationReason"></textarea>
+  </label>    
             </p>
-            <p>
-         Si necesitas mas informacion por favor llama a:
-            
-            </p>
+         
             
         </div>         
     </div>
-            <div class="button-bar">
-                <a class="button button-assertive" ng-click="nextSlide(reservation)">Cancelar</a></div>
+    <div class="button-bar">
+    <a class="button button-assertive" ng-click="nextSlide(reservation)">  {{"rateUser_save" | translate}}</a></div>
     </ion-slide>
     </ion-slide-box>
         

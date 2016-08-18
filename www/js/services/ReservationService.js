@@ -159,7 +159,31 @@ function getReservationByProviderIdStatePaged(id,state, offset,limit){
             return reject({data: error, managed:false});
   });
   })
-  };    
+  };
+//*******************************************************************************************
+//method to get the reservation by id 
+//*******************************************************************************************      
+function getReservationById(id){
+  return $q(function(resolve, reject) {
+    ReservationResource.getReservationById(id).then(function (response) {
+        var result = response.data;
+        if(((result.responseCode != undefined && result.responseCode == Constants.RESPONSE_SUCCESS )))
+            {
+                 
+            
+                return resolve(result.data);
+            }
+        else
+            {
+                
+                return reject({data: result.data, managed:true});
+            }
+           
+    }, function (error) {
+            return reject({data: error, managed:false});
+  });
+  })
+  };      
   return {
     addReservation: addReservation,
     updateReservation: updateReservation,
@@ -167,6 +191,7 @@ function getReservationByProviderIdStatePaged(id,state, offset,limit){
     generateAvailableTimes:generateAvailableTimes,
       getReservationByCustomerIdStatePaged:getReservationByCustomerIdStatePaged,
       getReservationByProviderIdStatePaged:getReservationByProviderIdStatePaged,
-      approvalReservation:approvalReservation
+      approvalReservation:approvalReservation,
+      getReservationById:getReservationById
   }
 });

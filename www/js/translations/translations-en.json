@@ -106,8 +106,13 @@
     "providerSelection_time" : "Time",
     "providerSelection_place" : "Place",
     "providerSelection_thanks" : "Thanks!!!",
-     "providerSelection_doubts" : "If you have any doubts please call",
+    "providerSelection_doubts" : "If you have any doubts please call",
     "providerSelection_save" : "Save",
-    "providerSelection_ready" : "Ready"
+    "providerSelection_ready" : "Ready",
+    
+    "rateUser_rate" : "Please submit your rate",
+    "rateUser_observation" : "If you have an observation, please tell us",
+    "rateUser_continue" : "Continue",
+    "rateUser_save" : "Save"
     
 }

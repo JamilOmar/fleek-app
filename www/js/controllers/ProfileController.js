@@ -1,4 +1,6 @@
- 
+ //*******************************************************************************************
+//Controller that provides all the user's profile information
+//*******************************************************************************************   
 mainApp.controller('ProfileController', function($scope,$state,UserService,UserUtils,ErrorHelper) {
  
 //*******************************************************************************************
@@ -25,12 +27,26 @@ mainApp.controller('ProfileController', function($scope,$state,UserService,UserU
     {
         $state.go(path,item);
     }
+//*******************************************************************************************
+//method for perform the personality check
+//*******************************************************************************************       
     
-    $scope.loadProfileImage=function()
-    {
-        
-        return UserUtils.getProfileFacebookImage();
-    }
+ $scope.personalityCheck = function()
+ {
+     var personalityInformation = UserService.evaluatePersonality();
+     
+ }
     
-      $scope.loadData();
+//*******************************************************************************************
+//method for load the profile image
+//*******************************************************************************************       
+$scope.loadProfileImage=function()
+{
+
+    return UserUtils.getProfileFacebookImage();
+} 
+//*******************************************************************************************
+//method for load the data
+//*******************************************************************************************  
+$scope.loadData();
 }); 

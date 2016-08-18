@@ -1,4 +1,39 @@
 mainApp.service('GoogleService', function($q,$compile) {
+    
+//*******************************************************************************************
+//get Address
+//*******************************************************************************************    
+  function getPlace (map,element)
+    {
+        return $q(function(resolve, reject) {
+    
+         var searchBox = new google.maps.places.SearchBox(element);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(element);
+            
+  // Listen for the event fired when the user selects a prediction and retrieve
+  // more details for that place.
+  searchBox.addListener('places_changed', function() {
+    try
+    {  
+    var place = searchBox.getPlace();
+           if (places.length>0)    
+            {
+              return resolve(place);
+                                
+            } 
+            else
+            {
+               return resolve(null);
+            }
+    }catch(err)
+        {
+              return reject(null);
+        }
+  });    
+
+    });
+    }    
+    
 //*******************************************************************************************
 //get Address
 //*******************************************************************************************    
@@ -43,14 +78,15 @@ mainApp.service('GoogleService', function($q,$compile) {
 //*******************************************************************************************
 //create marker
 //*******************************************************************************************        
-   function createMarker(map ,location,draggable)
+   function createMarker(map ,location,draggable,title)
     {
         
         var marker = new google.maps.Marker({
         map: map,
         draggable: draggable,
         animation: google.maps.Animation.DROP,  
-        position: location
+        position: location,
+        title:title    
         });
         return marker;
     }
@@ -73,6 +109,7 @@ mainApp.service('GoogleService', function($q,$compile) {
         createMap: createMap,
          getAddress:getAddress,
          createMarker:createMarker,
-         getAddressByLatLng:getAddressByLatLng
+         getAddressByLatLng:getAddressByLatLng,
+         getPlace:getPlace
     }
 });

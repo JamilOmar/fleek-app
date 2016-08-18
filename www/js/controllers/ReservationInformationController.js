@@ -39,6 +39,12 @@ $scope.cancelReservation = function(reservation)
          
        });
         
-}    
+}
+ //*******************************************************************************************
+//format date
+//*******************************************************************************************     
+    $scope.formatDate = function(date) {
+       return moment(date).format('MM/DD/YYYY');
+    };
     
 }); 

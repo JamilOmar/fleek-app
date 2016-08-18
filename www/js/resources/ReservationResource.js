@@ -99,6 +99,22 @@ function getReservationByCustomerIdStatePaged(id,state, offset,limit) {
    });
   };
  //*******************************************************************************************
+//method for get the reservation by id
+//*******************************************************************************************      
+function getReservationById(id) {
+
+   return $q(function(resolve, reject) {    
+    $http({
+        method : "GET",
+        url :baseUrl+ "/v1/reservationService/getReservationById/"+id
+         }).then(function (result) {
+            return resolve(result);
+    }, function (error) {
+            return reject(error);
+    });
+   });
+  };    
+ //*******************************************************************************************
 //method for get the reservation by provider id , state and paged
 //*******************************************************************************************      
 function getReservationByProviderIdStatePaged(id,state, offset,limit) {
@@ -121,6 +137,7 @@ function getReservationByProviderIdStatePaged(id,state, offset,limit) {
     generateAvailableTimes:generateAvailableTimes,
       getReservationByCustomerIdStatePaged:getReservationByCustomerIdStatePaged,
       getReservationByProviderIdStatePaged:getReservationByProviderIdStatePaged,
-      approvalReservation:approvalReservation
+      approvalReservation:approvalReservation,
+      getReservationById:getReservationById
   }
 });

@@ -1,45 +1,47 @@
 <ion-view view-title="Fleek" id="provider-selection-view">  
     <ion-content>
-        <div style="background-image:url('../img/app/background.jpg');text-align:center;color:white;">
-        <div class="row" style="height:150px">
+        <div class="global-profile-background">
+        <div class="row global-row-profile-height-title">
             <div class="col">
-            <img  ng-src="img/app/home/neworder.jpg" style="position: static;
-   border-radius: 50%;
-    max-width: 120px;
-    height: 120px;"  />
+           <img   facebook-usr-src="{{reservation.customer.facebookId}}"  class="global-profile-avatar"  />
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <div class="row global-row-center">
             <div class="col">
-        <rating ng-model="rate"  max="max"></rating>
+       
             </div>
         </div><div class="row global-row-center">
             <div class="col">
               <p style="background:black;">
-        "Maria Fernanda Colina"
+       {{reservation.customer.name + " "+reservation.customer.lastname  }}
                 </p>
-                El inca
+              {{reservation.customer.username}}
             </div>
         </div>
             </div>
         </div>
         </div>    
  <ion-slide-box show-pager="false">
-     <ion-slide>
+     <ion-slide>  
     <div class="row  global-row-center">
         <div class="col">
             <p>
-               Confirmas tu cita
+            Tu tienes una cita en
             </p>
             <p>
-               Hora: 930
+             <p>{{formatDate(reservation.date)}}</p>
+    <p>{{reservation.startTime}}<p>
             </p>
-            <p>
-               El inca
+              <p>
+                   <img id="map-static"   google-static-map-src="{{reservation}}"   />  
+                   {{reservation.address}}
+
             </p>
-              <div class="button-bar">
+            <div class="button-bar">
+                <a class="button button-balanced" ng-click="approveReservation(reservation)">Approve</a>
+              
   <a class="button button-assertive" ng-click="nextSlide()">Cancelar</a>
 </div>
         </div>         
@@ -64,6 +66,7 @@
             
         </div>         
     </div>
+           
             <div class="button-bar">
                 <a class="button button-assertive" ng-click="nextSlide(reservation)">Cancelar</a></div>
     </ion-slide>

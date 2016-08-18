@@ -1,0 +1,25 @@
+<ion-view id="map-controller" view-title="Fleek" hide-back-button ="false" > 
+<ion-header>    
+</ion-header> 
+ <ion-content>
+ <div class="item item-input map-controls">
+                <i class="icon ion-search placeholder-icon" style="left:0"></i>
+                <input id="pac-input" type="text" placeholder="Search Location" data-tap-disabled="true" ng-model="data.search">
+            </div>
+     <div id="map" data-tap-disabled="true"></div>
+      <div class="bar bar-footer" style="background:transparent; position:absolute; z-index:1" ng-show="data.location != undefined">
+  <div class="row row-center" >
+        <div class="col col-33">
+        </div>
+        <div class="col col-33">
+            <button  class="button button-block button-royal" type="submit"  ng-click="chooseLocation(data.location,data.search)"  >
+            {{"create_user_next" | translate}}
+            </button>        
+        </div>
+        <div class="col col-33">
+                
+        </div>
+    </div> 
+</div>
+</ion-content>
+</ion-view>   

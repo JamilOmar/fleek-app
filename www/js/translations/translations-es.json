@@ -110,5 +110,10 @@
     "providerSelection_thanks" : "Gracias!!!",
      "providerSelection_doubts" : "Si tienes alguna duda, por favor llama a",
     "providerSelection_save" : "Guardar",
-    "providerSelection_ready" : "Listo"
+    "providerSelection_ready" : "Listo",
+        
+    "rateUser_rate" : "Por favor ingresa tu calificación",
+    "rateUser_observation" : "Si tienes alguna observación, por favor comentanos",
+    "rateUser_continue" : "Continuar",
+    "rateUser_save" : "Guardar"
 }

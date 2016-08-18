@@ -39,8 +39,7 @@ mainApp.controller('ProviderReservationController', function($scope,$state,Reser
 //*******************************************************************************************       
     $scope.query = function(broadcastAction)
     {
-    var usr = UserUtils.getUserLocal();  ReservationService.getReservationByCustomerIdStatePaged( usr.id,Constants.REQUEST_STATES_RESERVATION.APPROVED,$scope.offset, $scope.limit).then(function (result) {
-        console.log(result);
+    var usr = UserUtils.getUserLocal();  ReservationService.getReservationByProviderIdStatePaged( usr.id,Constants.REQUEST_STATES_RESERVATION.APPROVED,$scope.offset, $scope.limit).then(function (result) {
         $scope.providers = $scope.providers.concat(result);
         $scope.offset = $scope.providers.length +1 ;
         $scope.limit =  $scope.offset + Constants.ITEMS_PER_REQUEST;
@@ -48,7 +47,7 @@ mainApp.controller('ProviderReservationController', function($scope,$state,Reser
  $scope.$broadcast(broadcastAction); 
         },function (error) {
          
-          $scope.stopRequest =true;
+         $scope.stopRequest =true;
          $scope.$broadcast(broadcastAction);
           if(error.managed)
             {

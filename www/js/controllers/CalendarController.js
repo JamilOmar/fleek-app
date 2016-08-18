@@ -1,7 +1,7 @@
 
 //Main Controller that makes the calendar
 //***************************************************************
-mainApp.controller('CalendarController', function($scope,$state,$stateParams,ProviderScheduleService,ReservationService) {
+mainApp.controller('CalendarController', function($scope,$state,$stateParams,ProviderScheduleService,ReservationService,ErrorHelper) {
     $scope.calendarClass ={
     date : moment(),
     providerInformation : null,
@@ -21,7 +21,7 @@ $scope.providerService = $stateParams.providerService;
             selectedDate : {day :$scope.calendarClass.selectedDate , time:  parameters},
             selectedService: $scope.providerService.selectedService
         };
-        $state.go(path,{reservation:data});
+        $state.go(path,{metadata:{data:data,path:"tabs.providerselection"}});
     }    
 
 //*******************************************************************************************
@@ -41,7 +41,14 @@ $scope.providerService = $stateParams.providerService;
            $scope.calendarClass.providerInformation = providerInformation;
        
         }, function (error) {
-            console.log('error');
+          if(error.managed)
+            {
+                ErrorHelper.showError('TODO: MANAGED');
+            }
+          else
+              {
+                ErrorHelper.showError(error);  
+              }       
         });   
     } 
 //Method to communicate the controler with the view for retreive the selected date
@@ -54,7 +61,14 @@ $scope.providerService = $stateParams.providerService;
            
         $scope.items = result;
         }, function (error) {
-            console.log('error');
+           if(error.managed)
+            {
+                ErrorHelper.showError('TODO: MANAGED');
+            }
+          else
+              {
+                ErrorHelper.showError(error);  
+              }       
         }); 
         }
         else

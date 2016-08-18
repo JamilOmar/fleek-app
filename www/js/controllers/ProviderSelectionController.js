@@ -1,5 +1,5 @@
   
-mainApp.controller('ProviderSelectionController', function($scope,$state,$stateParams,UserUtils,ReservationService,$ionicSlideBoxDelegate,$ionicTabsDelegate) { 
+mainApp.controller('ProviderSelectionController', function($scope,$state,$stateParams,UserUtils,ReservationService,$ionicSlideBoxDelegate,$ionicTabsDelegate,ErrorHelper) { 
     
 //*******************************************************************************************
 //set thab to firts screen
@@ -19,8 +19,9 @@ mainApp.controller('ProviderSelectionController', function($scope,$state,$stateP
 //*******************************************************************************************
 //get the provider's basic information
 //*******************************************************************************************     
-$scope.reservation = $stateParams.reservation;   
+$scope.reservation = $stateParams.metadata.data;
     console.log($scope.reservation);
+
 //*******************************************************************************************
 //go to method
 //*******************************************************************************************  
@@ -49,12 +50,14 @@ $scope.reservation = $stateParams.reservation;
         
         customerId : UserUtils.getUserLocal().id,
         providerId : $scope.reservation.provider.id,
-        address : $scope.reservation.provider.address,
+        address : $scope.reservation.address,
+        longitude: $scope.reservation.location.longitude,  latitude: $scope.reservation.location.latitude,
         startTime : $scope.reservation.selectedDate.time.from,
         date: $scope.reservation.selectedDate.day.date.toDate(),
         providerScheduleId : $scope.reservation.provider.Metadata.providerScheduleId,
         reservationDetail: []
     }
+    console.log(reservation);
     if( $scope.reservation.selectedService.averageTimePerSession >0)
     {
     var time = moment($scope.reservation.selectedService.averageTimePerSession,"minutes").format('HH:mm:ss');
@@ -78,7 +81,26 @@ $scope.reservation = $stateParams.reservation;
     }
            
   }
-    
+//*******************************************************************************************
+//get reservation's info
+//*******************************************************************************************     
+    $scope.loadData = function()
+    {
+       var providerInformation ={}; ProviderScheduleService.getProviderScheduleCompleteByProviderIdAndDefault($scope.providerService.provider.id).then(function (result) {
+           if(result.providerScheduleDay)
+               {
+                 providerInformation.enabledDays = result.providerScheduleDay.distinct(function(a, b){ return a.dayOfWeek == b.dayOfWeek });
+               }
+            if(result.providerScheduleException)
+               {
+                providerInformation.exceptionDays = result.providerScheduleException.distinct(function(a, b){ return a.dayOfWeek == b.dayOfWeek });
+               }
+           $scope.calendarClass.providerInformation = providerInformation;
+       
+        }, function (error) {
+            console.log('error');
+        });   
+    }     
 //*******************************************************************************************
 //format date
 //*******************************************************************************************     

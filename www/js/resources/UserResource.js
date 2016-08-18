@@ -33,7 +33,23 @@ mainApp.factory('UserResource', function($http,$q,$base64) {
             return reject(error);
     });
    });
-  };    
+  };
+//*******************************************************************************************
+//evaluate the personality of the user
+//*******************************************************************************************    
+  function evaluatePersonality() {
+
+   return $q(function(resolve, reject) {    
+    $http({
+        method : "POST",
+        url :baseUrl+ "/v1/userService/evaluatePersonality"
+        }).then(function (result) {
+            return resolve(result);
+    }, function (error) {
+            return reject(error);
+    });
+   });
+  };      
  //*******************************************************************************************
 //update the actual user
 //*******************************************************************************************    
@@ -56,6 +72,7 @@ mainApp.factory('UserResource', function($http,$q,$base64) {
 
     getUserByUserName:getUserByUserName,
     getActualUser:getActualUser,
-    updateUser:updateUser  
+    updateUser:updateUser,
+    evaluatePersonality:evaluatePersonality
   }
 });

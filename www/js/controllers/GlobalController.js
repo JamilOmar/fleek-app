@@ -35,6 +35,20 @@ $rootScope.isProvider = false;
     $rootScope.openModal = function() {
       
          $rootScope.modal.show();        
-    }  
+    }
+//*******************************************************************************************
+//close the modal
+//*******************************************************************************************     
+    $rootScope.closeModal = function() {
+        $rootScope.modal.service = null;
+        $rootScope.modal.hide();
+    };
+//*******************************************************************************************
+//destroy modal
+//*******************************************************************************************     
+    $rootScope.$on('$destroy', function() {
+        $rootScope.modal.remove();
+    });
+        
   
 }); 
